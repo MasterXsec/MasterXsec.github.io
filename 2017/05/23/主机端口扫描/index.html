@@ -1,0 +1,1178 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="概念端口扫描就是通过连接到目标系统的TCP或UDP端口，来确定什么服务正在运行。一个端口就是一个潜在的通信通道，也就是一个入侵通道。从对黑客攻击行为的分析和收集的漏洞来看，绝大多数都是针对某一个网络服务，也就是针对某一个特定的端口的。对目标计算机进行端口扫描，能得到许多有用的信息。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="主机端口扫描">
+<meta property="og:url" content="http://yoursite.com/2017/05/23/主机端口扫描/index.html">
+<meta property="og:site_name" content="Note&#39;s blog">
+<meta property="og:description" content="概念端口扫描就是通过连接到目标系统的TCP或UDP端口，来确定什么服务正在运行。一个端口就是一个潜在的通信通道，也就是一个入侵通道。从对黑客攻击行为的分析和收集的漏洞来看，绝大多数都是针对某一个网络服务，也就是针对某一个特定的端口的。对目标计算机进行端口扫描，能得到许多有用的信息。">
+<meta property="og:image" content="http://yoursite.com/主机端口扫描/sP.jpg">
+<meta property="og:updated_time" content="2017-05-24T01:11:58.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="主机端口扫描">
+<meta name="twitter:description" content="概念端口扫描就是通过连接到目标系统的TCP或UDP端口，来确定什么服务正在运行。一个端口就是一个潜在的通信通道，也就是一个入侵通道。从对黑客攻击行为的分析和收集的漏洞来看，绝大多数都是针对某一个网络服务，也就是针对某一个特定的端口的。对目标计算机进行端口扫描，能得到许多有用的信息。">
+<meta name="twitter:image" content="http://yoursite.com/主机端口扫描/sP.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/23/主机端口扫描/"/>
+
+
+
+
+
+  <title>主机端口扫描 | Note's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Note's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/23/主机端口扫描/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                主机端口扫描
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-23T22:21:58+08:00">
+                2017-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>端口扫描就是通过连接到目标系统的TCP或UDP端口，来确定什么服务正在运行。一个端口就是一个潜在的通信通道，也就是一个入侵通道。从对黑客攻击行为的分析和收集的漏洞来看，绝大多数都是针对某一个网络服务，也就是针对某一个特定的端口的。对目标计算机进行端口扫描，能得到许多有用的信息。<br><a id="more"></a></p>
+<h1 id="扫描技术分类"><a href="#扫描技术分类" class="headerlink" title="扫描技术分类"></a>扫描技术分类</h1><p>全连接扫描，半连接扫描，秘密扫描和其他端口扫描技术。<br>其中，TCP connect()扫描是端口扫描最基础的一种扫描方式。<br>TCP SYN扫描在扫描过程中没有建立完整的TCP连接，这和TCP connect()扫描不同，因此又称为半连接扫描。<br>秘密扫描包含有TCP FIN扫描、TCPACK扫描等多种扫描方式。<br>其他扫描技术包含有UDP扫描和IP头信息dumb扫描等。</p>
+<h1 id="全TCP连接扫描"><a href="#全TCP连接扫描" class="headerlink" title="全TCP连接扫描"></a>全TCP连接扫描</h1><p>这是最基本的TCP扫描，实现方法最简单，直接连到目标端口并完成一个完整的三次握手过程(SYN，SYN／ACK和ACK)。Socket API提供的Connect()系统调用，用来与每一个感兴趣的目标计算机的端口进行连接。如果端口处于监听状态，那么Connect()就能成功。否则，这个端口是不能用的，即没有提供服务。这个技术的一个最大优点是不需要任何权限，系统中的任何用户都可以使用这个调用。另一个好处就是速度。如果对每个目标端口以线性的方式，使用单独的Connect()调用，那么将会花费相当长的时间，你可以通过同时打开多个套接字，从而加速扫描。这种扫描方法的缺点是很容易被目标系统检测到，并且被过滤掉。目前的系统会对连接进行记录，因此目标计算机的日志文件会显示大量密集的连接和连接出错的消息记录，并且能很快地使它关闭。如：TCP Wrapper监测程序通常用来进行监测，可以对连接请求进行控制，所以它可以用来阻止来自不明主机的全连接扫描。针对这一缺陷，便产生了TCP SYN扫描，也就是通常说的半开放扫描。<br>优点：<br>扫描速度快；<br>缺点：<br>容易被目标系统检测到，记录到日志文件。</p>
+<h1 id="TCP-SYN扫描"><a href="#TCP-SYN扫描" class="headerlink" title="TCP SYN扫描"></a>TCP SYN扫描</h1><p>在这种技术中，扫描主机向目标主机的选择端口发送SYN数据段。如果应答是RST，那么说明端口是关闭的；如果应答中包含SYN和ACK，说明目标端口处于监听状态。由于在SYN扫描时，全连接尚未建立，所以这种技术通常被称为半打开扫描或者半开放扫描。SYN扫描的优点在于即使日志中对扫描有所记录，但是尝试进行连接的记录也要比全扫描少得多。缺点是在大部分操作系统下，发送主机需要构造适用于这种扫描的IP包，并且在通常情况下必须要有超级用户权限才能建立自己的SYN数据包。<br>优点：<br>连接的记录信息少；<br>缺点：<br>需要权限建立SYN数据包。</p>
+<h1 id="秘密扫描"><a href="#秘密扫描" class="headerlink" title="秘密扫描"></a>秘密扫描</h1><h2 id="TCP-FIN扫描"><a href="#TCP-FIN扫描" class="headerlink" title="TCP FIN扫描"></a>TCP FIN扫描</h2><p>对某端口发送一个TCP FIN数据报给远端主机。如果主机没有任何反馈，那么这个主机是存在的，而且正在监听这个端口；主机反馈一个TCP RST回来，那么说明该主机是存在的，但是没有监听这个端口。由于这种技术不包含标准的TCP三次握手协议的任何部分，所以无法被记录下来，从而比SYN扫描隐蔽得多，也称作秘密扫描。这种扫描技术使用FIN数据包来探测端口。当一个FIN数据包到达一个关闭的端口，数据包会被丢掉，并且会返回一个RST数据包。否则，当一个FIN数据包到达一个打开的端口，数据包只是简单的丢掉(不返回RST)。这种方法和系统实现有一定的关系，有的系统不管端口是否打开，都回复RST，如：Windows，CISCO。所以，这种技术通常适用于UNIX目标主机，跟SYN扫描类似，FIN扫描也需要自己构造IP包。<br>优点：<br>隐蔽；<br>缺点：<br>通常只适用于UNIX主机。</p>
+<h2 id="TCP-ACK扫描"><a href="#TCP-ACK扫描" class="headerlink" title="TCP ACK扫描"></a>TCP ACK扫描</h2><p>这种扫描技术主要用来探测过滤性防火墙的过滤规则，无论目标端口的状态如何，如果发送ACK报文，就只能收到RST响应报文。但是对于防火墙，如果端口被过滤，要么收不到报文，要么收到ICMP(目标不可达)，相反，如果没有被过滤时则收到有关RST报文。</p>
+<h2 id="NULL扫描"><a href="#NULL扫描" class="headerlink" title="NULL扫描"></a>NULL扫描</h2><p>扫描主机将TCP数据包中的ACK(确认)、FIN(结束连接)、RST(重新设定连接)、SYN(连接同步化要求)、URG(紧急)、PSH(接收端将数据转由应用处理)标志位置空后发送给目标主机。若目标端口开放，目标主机将不返回任何信息。若目标主机返回RST信息，则表示端口关闭。</p>
+<h2 id="XMAS扫描"><a href="#XMAS扫描" class="headerlink" title="XMAS扫描"></a>XMAS扫描</h2><p>XMAS扫描和NULL扫描类似，将TCP数据包中的ACK、FIN、RST、SYN、URG、PSH标志位置1后发送给目标主机，在目标端口开放的情况下，目标主机将不返回任何信息，若目标端口关闭，则目标主机将返回RST信息。还需要说明的是，MS Windows、Cisco、BSDI、HP/UX、MVS以及IRIX等操作系统如果采用TCP FIN、XMAS以及NULL扫描等方式进行扫描的话，对于打开的端口也会发送RST数据包，即使所有端口都关闭，也可以进行应答。在这种情况下，就可以进行TCP SYN扫描，如果出现打开的端口，操作系统就会知道是MS Windows、Cisco、BSDI、HP/UX、MVS以及IRIX中哪类了。</p>
+<h2 id="SYN-ACK扫描"><a href="#SYN-ACK扫描" class="headerlink" title="SYN/ACK扫描"></a>SYN/ACK扫描</h2><p>这种扫描故意忽略TCP的三次握手：SYN—SYN/ACK—ACK。这里，扫描主机不向目标主机发送SYN数据包，而先发送SYN/ACK数据包。目标主机将报错，并判断为一次错误的连接。若目标端口开放，目标主机将返回RST信息，若目标端口关闭，目标主机将不返回任何信息，数据包会被丢掉。</p>
+<h1 id="UDP-ICMP端口不可达扫描"><a href="#UDP-ICMP端口不可达扫描" class="headerlink" title="UDP ICMP端口不可达扫描"></a>UDP ICMP端口不可达扫描</h1><p>由于UDP协议很简单，所以扫描变得相对比较困难。这是由于打开的端口对扫描探测并不发送一个确认，关闭的端口也并不需要发送一个错误数据包。幸运的是，许多主机在你向一个未打开的UDP端口发送一个数据包时，会返回一个ICMP_PORT_UNREACH错误。<strong>这样就能发现哪个端口是关闭的。</strong>由于UDP协议是面向无连接的协议，这种扫描技术的精确性高度依赖于网络性能和系统资源。另外，如果目标主机采用了大量的分组过滤技术，那么UDP扫描过程会变的非常慢。比如大部分系统都采用了 RFC1812 的建议，限定了ICMP差错分组的速率，比如LINUX系统中只允许4秒最多只发送80个目的地不可达消息，而Solaris每秒只允许发送两个不可到达消息，然而微软仍保留了它一贯的做法，忽略了RFC1812的建议，没有对速率进行任何限制，因此，能在很短的时间内扫完WINDOWS机器上所有64K 的UDP端口。说到这里，我想大家都应该心里有数，在什么情况下可以有效的使用UDP扫描，而不是一味去埋怨扫描器的速度慢了。UDP和ICMP错误都不保证能到达，因此这种扫描器必须还实现在一个包看上去是丢失的时候能重新传输。同样，这种扫描方法需要具有root权限。<br>优点：<br>能够很方便的判断哪些UDP端口是关闭的；<br>缺点：<br>扫描的精确性高度依赖于网络性能和系统资源；</p>
+<h1 id="Nmap扫描类型"><a href="#Nmap扫描类型" class="headerlink" title="Nmap扫描类型"></a>Nmap扫描类型</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-sT：全TCP连接扫描</div><div class="line">-sS：TCP-SYN扫描</div><div class="line">-sP：以ping方式进行扫描</div><div class="line">-sU：以UDP数据包格式进行扫描</div><div class="line">-sF,-sX,-sN：以Fin,Xmas,Null方式扫描</div></pre></td></tr></table></figure>
+<p>nmap -sP 192.168.1.100<br>Nmap给每个扫描到的主机发送一个ICMP echo和一个ACK，被扫描主机对任何一种的响应都会被Nmap得到。这种方式可用来检测局域网内有哪些主机正在运行，还能查看到机器的MAC地址。可以使用nmap -sP 192.168.1.0/24。<br><img src="/主机端口扫描/sP.jpg" alt=""></p>
+<p>nmap –sT 192.168.1.100<br>Nmap将使用connect()系统调用打开目标机上相关端口的连接，并完成三次TCP握手。</p>
+<p>nmap –sS 192.168.1.100<br>使用半开SYN标记扫描，在一定程度上防止被扫描目标主机识别和记录。-sS命令将发送一个SYN扫描探测主机或网络。通过发送一个SYN包(是TCP协议中的第一个包)开始一次SYN的扫描。任何开放的端口都将有一个SYN|ACK响应。然而，攻击者发送一个RST替代ACK，连接中止。三次握手得不到实现，也就很少有站点能记录这样的探测。如果是关闭的端口，对最初的SYN信号的响应也会是RST，让nmap知道该端口不在监听。</p>
+<p>nmap –sS –O 192.168.1.100<br>利用不同的系统对于nmap不同类型探测信号的不同响应来辨别操作系统的类型。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/23/Windows如何禁止运行某个应用程序/" rel="next" title="Windows如何禁止运行某个应用程序">
+                <i class="fa fa-chevron-left"></i> Windows如何禁止运行某个应用程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/24/Windows注册表详解/" rel="prev" title="Windows注册表详解">
+                Windows注册表详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favico.gif"
+               alt="Note" />
+          <p class="site-author-name" itemprop="name">Note</p>
+           
+              <p class="site-description motion-element" itemprop="description">布施、持戒、忍辱、精进、禅定、般若</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com/" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ichunqiu.com/" title="i春秋" target="_blank">i春秋</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.amobbs.com/" title="amoBBS" target="_blank">amoBBS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codesec.net/" title="CodeSec" target="_blank">CodeSec</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://new.butian.360.cn/" title="补天" target="_blank">补天</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://klionsec.github.io/" title="klion" target="_blank">klion</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pediy.com/" title="看雪论坛" target="_blank">看雪论坛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vulbox.com/" title="漏洞盒子" target="_blank">漏洞盒子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.91ri.org/" title="91ri" target="_blank">91ri</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扫描技术分类"><span class="nav-number">2.</span> <span class="nav-text">扫描技术分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全TCP连接扫描"><span class="nav-number">3.</span> <span class="nav-text">全TCP连接扫描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-SYN扫描"><span class="nav-number">4.</span> <span class="nav-text">TCP SYN扫描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#秘密扫描"><span class="nav-number">5.</span> <span class="nav-text">秘密扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-FIN扫描"><span class="nav-number">5.1.</span> <span class="nav-text">TCP FIN扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-ACK扫描"><span class="nav-number">5.2.</span> <span class="nav-text">TCP ACK扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NULL扫描"><span class="nav-number">5.3.</span> <span class="nav-text">NULL扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XMAS扫描"><span class="nav-number">5.4.</span> <span class="nav-text">XMAS扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SYN-ACK扫描"><span class="nav-number">5.5.</span> <span class="nav-text">SYN/ACK扫描</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP-ICMP端口不可达扫描"><span class="nav-number">6.</span> <span class="nav-text">UDP ICMP端口不可达扫描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nmap扫描类型"><span class="nav-number">7.</span> <span class="nav-text">Nmap扫描类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Note</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

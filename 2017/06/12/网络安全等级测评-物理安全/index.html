@@ -1,0 +1,1219 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="等级保护," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="物理安全测评说明物理安全测评共有10步，分别是机房物理位置的选择、机房物理的访问控制、防盗窃和防破坏、防雷击、防火、防水和防潮、防静电、温湿度控制、电力供应、电磁防护，如下是步骤详解。">
+<meta name="keywords" content="等级保护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全等级测评-物理安全">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/网络安全等级测评-物理安全/index.html">
+<meta property="og:site_name" content="Note&#39;s blog">
+<meta property="og:description" content="物理安全测评说明物理安全测评共有10步，分别是机房物理位置的选择、机房物理的访问控制、防盗窃和防破坏、防雷击、防火、防水和防潮、防静电、温湿度控制、电力供应、电磁防护，如下是步骤详解。">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/水罐.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/机房.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/核心汇聚交换机.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/深信服.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/固定.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/上层走线.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/下层走线.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/PDU.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/插座.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/防雷.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/灭火.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/玻璃.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/接地.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/地板.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/空调.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/电磁屏蔽机柜.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-物理安全/普通机柜.jpg">
+<meta property="og:updated_time" content="2017-06-12T14:18:47.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全等级测评-物理安全">
+<meta name="twitter:description" content="物理安全测评说明物理安全测评共有10步，分别是机房物理位置的选择、机房物理的访问控制、防盗窃和防破坏、防雷击、防火、防水和防潮、防静电、温湿度控制、电力供应、电磁防护，如下是步骤详解。">
+<meta name="twitter:image" content="http://yoursite.com/网络安全等级测评-物理安全/水罐.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/12/网络安全等级测评-物理安全/"/>
+
+
+
+
+
+  <title>网络安全等级测评-物理安全 | Note's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Note's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/网络安全等级测评-物理安全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                网络安全等级测评-物理安全
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T21:13:13+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="物理安全测评说明"><a href="#物理安全测评说明" class="headerlink" title="物理安全测评说明"></a>物理安全测评说明</h1><p>物理安全测评共有10步，分别是<strong>机房物理位置的选择、机房物理的访问控制、防盗窃和防破坏、防雷击、防火、防水和防潮、防静电、温湿度控制、电力供应、电磁防护</strong>，如下是步骤详解。<br><a id="more"></a></p>
+<h1 id="现场检测步骤和预期结果"><a href="#现场检测步骤和预期结果" class="headerlink" title="现场检测步骤和预期结果"></a>现场检测步骤和预期结果</h1><h2 id="机房物理位置的选择"><a href="#机房物理位置的选择" class="headerlink" title="机房物理位置的选择"></a>机房物理位置的选择</h2><h3 id="a-机房和办公场地应选择在具有防震、防风和防雨等能力的建筑内。"><a href="#a-机房和办公场地应选择在具有防震、防风和防雨等能力的建筑内。" class="headerlink" title="a)机房和办公场地应选择在具有防震、防风和防雨等能力的建筑内。"></a>a)机房和办公场地应选择在具有防震、防风和防雨等能力的建筑内。</h3><p>1.查看机房是否设置在在具有防风、防雨能力的建筑内，对防震能力，先询问机房建设等级，如可以看建设文档，则请求查看建设文档，但一般机房管理员不知情，机房所在建筑肉眼可见非危楼即可默认符合。</p>
+<h3 id="b-机房场地应避免设在建筑物的高层或地下室，以及用水设备的下层和隔壁。"><a href="#b-机房场地应避免设在建筑物的高层或地下室，以及用水设备的下层和隔壁。" class="headerlink" title="b)机房场地应避免设在建筑物的高层或地下室，以及用水设备的下层和隔壁。"></a>b)机房场地应避免设在建筑物的高层或地下室，以及用水设备的下层和隔壁。</h3><p>1.机房不应该设置在顶楼和负一楼，因为顶楼渗水的风险较大，且太阳直射温度较高，负一楼存在雨水倒灌和易受潮的风险。<br>2.机房左右是否有厕所、厨房设备间，如机房在顶楼，需要注意机房上方是否有蓄水罐。<br><img src="/网络安全等级测评-物理安全/水罐.jpg" alt=""></p>
+<h2 id="物理访问控制"><a href="#物理访问控制" class="headerlink" title="物理访问控制"></a>物理访问控制</h2><h3 id="a-机房出入口应安排专人值守，控制、鉴别和记录进入的人员。"><a href="#a-机房出入口应安排专人值守，控制、鉴别和记录进入的人员。" class="headerlink" title="a)机房出入口应安排专人值守，控制、鉴别和记录进入的人员。"></a>a)机房出入口应安排专人值守，控制、鉴别和记录进入的人员。</h3><p>1.检查一下机房外是否有专人值守或者是否设置了电子门禁系统（满足一个即可），如有专人值守，则应有人员进出机房的记录文件；如设置了电子门禁系统，则电子门禁系统需要有来访人员身份记录，且记录信息需要保持6个月以上。</p>
+<h3 id="b-需进入机房的来访人员应经过申请和审批流程，并限制和监控其活动范围。"><a href="#b-需进入机房的来访人员应经过申请和审批流程，并限制和监控其活动范围。" class="headerlink" title="b)需进入机房的来访人员应经过申请和审批流程，并限制和监控其活动范围。"></a>b)需进入机房的来访人员应经过申请和审批流程，并限制和监控其活动范围。</h3><p>1.查看进入机房检查是否需要提前申请（口头、电话、电子或纸质申请单均算）进入机房是否有配合人员全程随同。（需要记录机房有几个门，分别做什么用，是否有门禁）。</p>
+<h3 id="c-应对机房划分区域进行管理，区域和区域之间设置物理隔离装置，在重要区域前设置交付或安装过度区域。"><a href="#c-应对机房划分区域进行管理，区域和区域之间设置物理隔离装置，在重要区域前设置交付或安装过度区域。" class="headerlink" title="c)应对机房划分区域进行管理，区域和区域之间设置物理隔离装置，在重要区域前设置交付或安装过度区域。"></a>c)应对机房划分区域进行管理，区域和区域之间设置物理隔离装置，在重要区域前设置交付或安装过度区域。</h3><p>1.对机房是否划分了不同的区域，如UPS房间、主要设备间、存储设备间或操作间等区，中间是否有墙壁（玻璃或实体墙壁或其他具有防火功能隔离物均符合）隔离开，如下图。机房分为哪几个区，每个区的功能，并画出机房分区草图。<br><img src="/网络安全等级测评-物理安全/机房.jpg" alt=""></p>
+<h3 id="d-重要区域应配置电子门禁系统，控制、鉴别和记录进入的人员。"><a href="#d-重要区域应配置电子门禁系统，控制、鉴别和记录进入的人员。" class="headerlink" title="d)重要区域应配置电子门禁系统，控制、鉴别和记录进入的人员。"></a>d)重要区域应配置电子门禁系统，控制、鉴别和记录进入的人员。</h3><p>1.进入主机房或存放网络设备、服务器、存储设备的区域是否需有单独电子门禁？如上图所示。进入机房绿色区域是一个门禁权限，进入红色区域还会有电子门禁权限。</p>
+<h2 id="防盗窃和防破坏"><a href="#防盗窃和防破坏" class="headerlink" title="防盗窃和防破坏"></a>防盗窃和防破坏</h2><h3 id="a-应将主要设备放置在机房内。"><a href="#a-应将主要设备放置在机房内。" class="headerlink" title="a)应将主要设备放置在机房内。"></a>a)应将主要设备放置在机房内。</h3><p>1.主要设备指网络设备（核心、汇聚交换机等）、安全设备（waf、fw、IPS、流控、上网行为管理等）、服务器（虚拟服务器的物理机、普通服务机）、存储设备等。<br><img src="/网络安全等级测评-物理安全/核心汇聚交换机.jpg" alt=""><br><img src="/网络安全等级测评-物理安全/深信服.jpg" alt=""></p>
+<h3 id="b-应将设备或主要部件进行固定，并设置明显的不易除去的标记。"><a href="#b-应将设备或主要部件进行固定，并设置明显的不易除去的标记。" class="headerlink" title="b)应将设备或主要部件进行固定，并设置明显的不易除去的标记。"></a>b)应将设备或主要部件进行固定，并设置明显的不易除去的标记。</h3><p>1.检查设备是否都固定在机柜上，设备上是否有打标签。<br><img src="/网络安全等级测评-物理安全/固定.jpg" alt=""></p>
+<h3 id="c-应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。"><a href="#c-应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。" class="headerlink" title="c)应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。"></a>c)应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。</h3><p>下图均符合：<br><img src="/网络安全等级测评-物理安全/上层走线.jpg" alt=""><br><img src="/网络安全等级测评-物理安全/下层走线.jpg" alt=""></p>
+<h3 id="d-应对介质分类标识，存储在介质库或档案室中。"><a href="#d-应对介质分类标识，存储在介质库或档案室中。" class="headerlink" title="d)应对介质分类标识，存储在介质库或档案室中。"></a>d)应对介质分类标识，存储在介质库或档案室中。</h3><p>介质定义：1.设备的相关文档说明书、光盘；2.备用的或未上架或待维修的网络设备、存储设备；3.机房运维工具；<br>检查时注意：1.主机房不能堆放杂物;2.最好有存储房间或有存储柜（储物柜需要分类）分类存放上述物品。</p>
+<h3 id="e-应利用光、电等技术设置机房防盗报警系统。"><a href="#e-应利用光、电等技术设置机房防盗报警系统。" class="headerlink" title="e)应利用光、电等技术设置机房防盗报警系统。"></a>e)应利用光、电等技术设置机房防盗报警系统。</h3><p>1.查看是否有红外探测设置防盗报警系统。红外探测，一般布在机房入口通道，或有其他动设备会自动报警的设备或技术也算。</p>
+<h3 id="f-应对机房设置监控报警系统。"><a href="#f-应对机房设置监控报警系统。" class="headerlink" title="f)应对机房设置监控报警系统。"></a>f)应对机房设置监控报警系统。</h3><p>1.检查机房是否有监控摄像头（如无不符合），检查机房每排机柜间和各设备间入口是否有摄像头监控（部分符合），检查监控是否可正常查看（如无不符合），检查监控是否可保存3个月以上（部分符合）。<br>结果记录需要写清楚有几个摄像头，分别对应的位置。</p>
+<h2 id="防雷击"><a href="#防雷击" class="headerlink" title="防雷击"></a>防雷击</h2><h3 id="a-机房建筑应设置避雷装置。"><a href="#a-机房建筑应设置避雷装置。" class="headerlink" title="a)机房建筑应设置避雷装置。"></a>a)机房建筑应设置避雷装置。</h3><p>一般机房所在大楼会安装避雷针，询问即可，正规会有防雷检测报告，如有报告最好，一般符合。</p>
+<h3 id="b-应设置防雷保安器，防止感应雷。"><a href="#b-应设置防雷保安器，防止感应雷。" class="headerlink" title="b)应设置防雷保安器，防止感应雷。"></a>b)应设置防雷保安器，防止感应雷。</h3><p>一般UPS会提供电流过滤的设置，但也会单独设置防雷箱，一般在市电进入到UPS之前的位置布置。如无防雷箱，不符合，如机柜使用普通接线板，不符合，如两者有一个符合，算部分符合。<br><img src="/网络安全等级测评-物理安全/PDU.jpg" alt=""><br><img src="/网络安全等级测评-物理安全/插座.jpg" alt=""></p>
+<h3 id="c-机房应设置交流电源地线。"><a href="#c-机房应设置交流电源地线。" class="headerlink" title="c)机房应设置交流电源地线。"></a>c)机房应设置交流电源地线。</h3><p>1.需要掀开地板查看，下图中防雷接地铜片或铜线算符合，如无不符合。<br><img src="/网络安全等级测评-物理安全/防雷.jpg" alt=""></p>
+<h2 id="防火"><a href="#防火" class="headerlink" title="防火"></a>防火</h2><h3 id="a-机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。"><a href="#a-机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。" class="headerlink" title="a)机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。"></a>a)机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。</h3><p>检查机房是否有自动灭火系统，是否设置有七氟丙烷等自动灭火设备。如果仅有手提式灭火器，不符合。此处需要检查罐体气压，如指针在绿色，气压正常，在红色区域，气压不正常，可算为部分符合。如果条件允许，需要查看巡检记录和方式。<br><img src="/网络安全等级测评-物理安全/灭火.jpg" alt=""></p>
+<h3 id="b-机房及相关的工作房间和辅助房应具有耐火等级的建筑材料。"><a href="#b-机房及相关的工作房间和辅助房应具有耐火等级的建筑材料。" class="headerlink" title="b)机房及相关的工作房间和辅助房应具有耐火等级的建筑材料。"></a>b)机房及相关的工作房间和辅助房应具有耐火等级的建筑材料。</h3><p>现场检测查看是否有如木板、塑料地毯和纸质挡板等易燃的物品，如果有，算不符合或部分符合，最好是用玻璃或墙体隔离。<br><img src="/网络安全等级测评-物理安全/玻璃.jpg" alt=""></p>
+<h3 id="c-机房应采取区域隔离防火措施，将重要设备与其他设备隔离开。"><a href="#c-机房应采取区域隔离防火措施，将重要设备与其他设备隔离开。" class="headerlink" title="c)机房应采取区域隔离防火措施，将重要设备与其他设备隔离开。"></a>c)机房应采取区域隔离防火措施，将重要设备与其他设备隔离开。</h3><p>1.不同区域隔离要有墙体或其他隔离方式，如仅过道隔离算不符合。</p>
+<h2 id="防水和防潮"><a href="#防水和防潮" class="headerlink" title="防水和防潮"></a>防水和防潮</h2><h3 id="a-水管安装，不得穿过机房屋顶和活动地板下。"><a href="#a-水管安装，不得穿过机房屋顶和活动地板下。" class="headerlink" title="a)水管安装，不得穿过机房屋顶和活动地板下。"></a>a)水管安装，不得穿过机房屋顶和活动地板下。</h3><p>查看机房顶部或地板下是否有水管（空调水管除外）穿过，如有，算不符合。</p>
+<h3 id="b-应采取措施防止雨水通过机房窗口、屋顶和墙壁渗透。"><a href="#b-应采取措施防止雨水通过机房窗口、屋顶和墙壁渗透。" class="headerlink" title="b)应采取措施防止雨水通过机房窗口、屋顶和墙壁渗透。"></a>b)应采取措施防止雨水通过机房窗口、屋顶和墙壁渗透。</h3><p>此处应检查是否有窗口，如无法打开符合，可打开算部分符合，现场查看墙壁、屋顶和窗户处是否有渗水的痕迹，如有均算不符。此处需要注意空调外接口需要封闭，如未彻底封闭算不符。</p>
+<h3 id="c-应采取措施防止机房内水蒸气结露和地下积水的转移和渗透。"><a href="#c-应采取措施防止机房内水蒸气结露和地下积水的转移和渗透。" class="headerlink" title="c)应采取措施防止机房内水蒸气结露和地下积水的转移和渗透。"></a>c)应采取措施防止机房内水蒸气结露和地下积水的转移和渗透。</h3><p>查看是否有环控或设有水汽凝结探测仪（也有叫水神、探测头、感应器），如有，算符合，没有询问是否有其他措施，如果没有，不符合。</p>
+<h3 id="d-应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。"><a href="#d-应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。" class="headerlink" title="d)应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。"></a>d)应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。</h3><p>参考上述c。</p>
+<h2 id="防静电"><a href="#防静电" class="headerlink" title="防静电"></a>防静电</h2><h3 id="a-主要设备应采用必要的接地防静电措施。"><a href="#a-主要设备应采用必要的接地防静电措施。" class="headerlink" title="a)主要设备应采用必要的接地防静电措施。"></a>a)主要设备应采用必要的接地防静电措施。</h3><p>1.设备需要使用三角插口，如有发现两脚插口或普通接线板（如家用公牛接线板）均算不符。<br>2.机柜需要接地，任意一项符合算部分符合，两项均符合给5分。<br><img src="/网络安全等级测评-物理安全/接地.jpg" alt=""></p>
+<h3 id="b-机房应采用防静电地板。"><a href="#b-机房应采用防静电地板。" class="headerlink" title="b)机房应采用防静电地板。"></a>b)机房应采用防静电地板。</h3><p>1.机房使用静电地板均符合，尚未对静电地板的质量和损坏程度有要求。<br><img src="/网络安全等级测评-物理安全/地板.jpg" alt=""></p>
+<h2 id="温湿度控制"><a href="#温湿度控制" class="headerlink" title="温湿度控制"></a>温湿度控制</h2><h3 id="a-机房应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。"><a href="#a-机房应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。" class="headerlink" title="a)机房应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。"></a>a)机房应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。</h3><p>1.检查机房是否有具有自动调节温湿度的精密空调，并记录当前温湿度范围，并检查空调厂商巡检维护记录，如使用普通家用空调或无自动调节的吸顶空调或温湿度不在范围内，均算不符合。<br>符合范围：温度21~25摄氏度之间，湿度45%～65%之间。<br><img src="/网络安全等级测评-物理安全/空调.jpg" alt=""><br>空调送风有的是设备自带出风口，有的走地板下出风，有的吸顶空调出风。天花板上出风口需要注意下方是否有机柜，因可能存在出风口结露下滴的情况。</p>
+<h2 id="电力供应"><a href="#电力供应" class="headerlink" title="电力供应"></a>电力供应</h2><h3 id="a-应在机房供电线缆上配置稳压器和过电压防护设备。"><a href="#a-应在机房供电线缆上配置稳压器和过电压防护设备。" class="headerlink" title="a)应在机房供电线缆上配置稳压器和过电压防护设备。"></a>a)应在机房供电线缆上配置稳压器和过电压防护设备。</h3><p>1.机房需要配有UPS设备，如无则算不符合。</p>
+<h3 id="b-应提供短期的备用电力供应，至少满足主要设备在断电情况下的正常运行要求。"><a href="#b-应提供短期的备用电力供应，至少满足主要设备在断电情况下的正常运行要求。" class="headerlink" title="b)应提供短期的备用电力供应，至少满足主要设备在断电情况下的正常运行要求。"></a>b)应提供短期的备用电力供应，至少满足主要设备在断电情况下的正常运行要求。</h3><p>1.参考第一条，如电池可提供临时供电即可，但需要记录一下UPS电池支撑的时间。</p>
+<h3 id="c-应设置冗余或并行的电力电缆线路为计算机系统供电。"><a href="#c-应设置冗余或并行的电力电缆线路为计算机系统供电。" class="headerlink" title="c)应设置冗余或并行的电力电缆线路为计算机系统供电。"></a>c)应设置冗余或并行的电力电缆线路为计算机系统供电。</h3><p>机房需要有两条市电线路接入到机房，一般此种情况需要两路市电接入，到每个机柜均有两组PDU，设备有双电源可分别接在不同路电源上，如无不符合。</p>
+<h3 id="d-应建立备用供电系统。"><a href="#d-应建立备用供电系统。" class="headerlink" title="d)应建立备用供电系统。"></a>d)应建立备用供电系统。</h3><p>机房是否有备用发电机房，如柴油发电机等发电设备，如无则不符合。</p>
+<h2 id="电磁防护"><a href="#电磁防护" class="headerlink" title="电磁防护"></a>电磁防护</h2><h3 id="a-应采用接地方式防止外界电磁干扰和设备寄生耦合干扰。"><a href="#a-应采用接地方式防止外界电磁干扰和设备寄生耦合干扰。" class="headerlink" title="a)应采用接地方式防止外界电磁干扰和设备寄生耦合干扰。"></a>a)应采用接地方式防止外界电磁干扰和设备寄生耦合干扰。</h3><p>设备和机柜均需要接地。</p>
+<h3 id="b-电源线和通信线缆应隔离铺设，避免互相干扰。"><a href="#b-电源线和通信线缆应隔离铺设，避免互相干扰。" class="headerlink" title="b)电源线和通信线缆应隔离铺设，避免互相干扰。"></a>b)电源线和通信线缆应隔离铺设，避免互相干扰。</h3><p>强电（电源线）和弱电（通信线）需要隔离铺设，常见隔离方式：强电走地板下，弱电走高架桥，或强弱电均走高架桥，但不同桥架分开，或均走地下，但采用不同线槽走，如强弱电在地板下或高架上均走一起未严格区分，算不符合。</p>
+<h3 id="c-应对关键网络设备和磁介质实施电磁屏蔽。"><a href="#c-应对关键网络设备和磁介质实施电磁屏蔽。" class="headerlink" title="c)应对关键网络设备和磁介质实施电磁屏蔽。"></a>c)应对关键网络设备和磁介质实施电磁屏蔽。</h3><p>1.机柜的柜门设有防止外界电磁干扰的屏蔽门，即为合格。<br><img src="/网络安全等级测评-物理安全/电磁屏蔽机柜.jpg" alt=""><br><img src="/网络安全等级测评-物理安全/普通机柜.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/等级保护/" rel="tag"># 等级保护</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/11/使用Ettercap实现DNS欺骗/" rel="next" title="使用Ettercap实现DNS欺骗">
+                <i class="fa fa-chevron-left"></i> 使用Ettercap实现DNS欺骗
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/14/网络安全等级测评-等保概念以及项目实施流程/" rel="prev" title="网络安全等级测评-等保概念以及项目实施流程">
+                网络安全等级测评-等保概念以及项目实施流程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favico.gif"
+               alt="Note" />
+          <p class="site-author-name" itemprop="name">Note</p>
+           
+              <p class="site-description motion-element" itemprop="description">布施、持戒、忍辱、精进、禅定、般若</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com/" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ichunqiu.com/" title="i春秋" target="_blank">i春秋</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.amobbs.com/" title="amoBBS" target="_blank">amoBBS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codesec.net/" title="CodeSec" target="_blank">CodeSec</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://new.butian.360.cn/" title="补天" target="_blank">补天</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://klionsec.github.io/" title="klion" target="_blank">klion</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pediy.com/" title="看雪论坛" target="_blank">看雪论坛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vulbox.com/" title="漏洞盒子" target="_blank">漏洞盒子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.91ri.org/" title="91ri" target="_blank">91ri</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理安全测评说明"><span class="nav-number">1.</span> <span class="nav-text">物理安全测评说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#现场检测步骤和预期结果"><span class="nav-number">2.</span> <span class="nav-text">现场检测步骤和预期结果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#机房物理位置的选择"><span class="nav-number">2.1.</span> <span class="nav-text">机房物理位置的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-机房和办公场地应选择在具有防震、防风和防雨等能力的建筑内。"><span class="nav-number">2.1.1.</span> <span class="nav-text">a)机房和办公场地应选择在具有防震、防风和防雨等能力的建筑内。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-机房场地应避免设在建筑物的高层或地下室，以及用水设备的下层和隔壁。"><span class="nav-number">2.1.2.</span> <span class="nav-text">b)机房场地应避免设在建筑物的高层或地下室，以及用水设备的下层和隔壁。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理访问控制"><span class="nav-number">2.2.</span> <span class="nav-text">物理访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-机房出入口应安排专人值守，控制、鉴别和记录进入的人员。"><span class="nav-number">2.2.1.</span> <span class="nav-text">a)机房出入口应安排专人值守，控制、鉴别和记录进入的人员。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-需进入机房的来访人员应经过申请和审批流程，并限制和监控其活动范围。"><span class="nav-number">2.2.2.</span> <span class="nav-text">b)需进入机房的来访人员应经过申请和审批流程，并限制和监控其活动范围。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-应对机房划分区域进行管理，区域和区域之间设置物理隔离装置，在重要区域前设置交付或安装过度区域。"><span class="nav-number">2.2.3.</span> <span class="nav-text">c)应对机房划分区域进行管理，区域和区域之间设置物理隔离装置，在重要区域前设置交付或安装过度区域。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-重要区域应配置电子门禁系统，控制、鉴别和记录进入的人员。"><span class="nav-number">2.2.4.</span> <span class="nav-text">d)重要区域应配置电子门禁系统，控制、鉴别和记录进入的人员。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防盗窃和防破坏"><span class="nav-number">2.3.</span> <span class="nav-text">防盗窃和防破坏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-应将主要设备放置在机房内。"><span class="nav-number">2.3.1.</span> <span class="nav-text">a)应将主要设备放置在机房内。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-应将设备或主要部件进行固定，并设置明显的不易除去的标记。"><span class="nav-number">2.3.2.</span> <span class="nav-text">b)应将设备或主要部件进行固定，并设置明显的不易除去的标记。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。"><span class="nav-number">2.3.3.</span> <span class="nav-text">c)应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-应对介质分类标识，存储在介质库或档案室中。"><span class="nav-number">2.3.4.</span> <span class="nav-text">d)应对介质分类标识，存储在介质库或档案室中。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-应利用光、电等技术设置机房防盗报警系统。"><span class="nav-number">2.3.5.</span> <span class="nav-text">e)应利用光、电等技术设置机房防盗报警系统。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-应对机房设置监控报警系统。"><span class="nav-number">2.3.6.</span> <span class="nav-text">f)应对机房设置监控报警系统。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防雷击"><span class="nav-number">2.4.</span> <span class="nav-text">防雷击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-机房建筑应设置避雷装置。"><span class="nav-number">2.4.1.</span> <span class="nav-text">a)机房建筑应设置避雷装置。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-应设置防雷保安器，防止感应雷。"><span class="nav-number">2.4.2.</span> <span class="nav-text">b)应设置防雷保安器，防止感应雷。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-机房应设置交流电源地线。"><span class="nav-number">2.4.3.</span> <span class="nav-text">c)机房应设置交流电源地线。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火"><span class="nav-number">2.5.</span> <span class="nav-text">防火</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。"><span class="nav-number">2.5.1.</span> <span class="nav-text">a)机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-机房及相关的工作房间和辅助房应具有耐火等级的建筑材料。"><span class="nav-number">2.5.2.</span> <span class="nav-text">b)机房及相关的工作房间和辅助房应具有耐火等级的建筑材料。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-机房应采取区域隔离防火措施，将重要设备与其他设备隔离开。"><span class="nav-number">2.5.3.</span> <span class="nav-text">c)机房应采取区域隔离防火措施，将重要设备与其他设备隔离开。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防水和防潮"><span class="nav-number">2.6.</span> <span class="nav-text">防水和防潮</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-水管安装，不得穿过机房屋顶和活动地板下。"><span class="nav-number">2.6.1.</span> <span class="nav-text">a)水管安装，不得穿过机房屋顶和活动地板下。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-应采取措施防止雨水通过机房窗口、屋顶和墙壁渗透。"><span class="nav-number">2.6.2.</span> <span class="nav-text">b)应采取措施防止雨水通过机房窗口、屋顶和墙壁渗透。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-应采取措施防止机房内水蒸气结露和地下积水的转移和渗透。"><span class="nav-number">2.6.3.</span> <span class="nav-text">c)应采取措施防止机房内水蒸气结露和地下积水的转移和渗透。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。"><span class="nav-number">2.6.4.</span> <span class="nav-text">d)应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防静电"><span class="nav-number">2.7.</span> <span class="nav-text">防静电</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-主要设备应采用必要的接地防静电措施。"><span class="nav-number">2.7.1.</span> <span class="nav-text">a)主要设备应采用必要的接地防静电措施。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-机房应采用防静电地板。"><span class="nav-number">2.7.2.</span> <span class="nav-text">b)机房应采用防静电地板。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#温湿度控制"><span class="nav-number">2.8.</span> <span class="nav-text">温湿度控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-机房应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。"><span class="nav-number">2.8.1.</span> <span class="nav-text">a)机房应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电力供应"><span class="nav-number">2.9.</span> <span class="nav-text">电力供应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-应在机房供电线缆上配置稳压器和过电压防护设备。"><span class="nav-number">2.9.1.</span> <span class="nav-text">a)应在机房供电线缆上配置稳压器和过电压防护设备。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-应提供短期的备用电力供应，至少满足主要设备在断电情况下的正常运行要求。"><span class="nav-number">2.9.2.</span> <span class="nav-text">b)应提供短期的备用电力供应，至少满足主要设备在断电情况下的正常运行要求。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-应设置冗余或并行的电力电缆线路为计算机系统供电。"><span class="nav-number">2.9.3.</span> <span class="nav-text">c)应设置冗余或并行的电力电缆线路为计算机系统供电。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-应建立备用供电系统。"><span class="nav-number">2.9.4.</span> <span class="nav-text">d)应建立备用供电系统。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电磁防护"><span class="nav-number">2.10.</span> <span class="nav-text">电磁防护</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-应采用接地方式防止外界电磁干扰和设备寄生耦合干扰。"><span class="nav-number">2.10.1.</span> <span class="nav-text">a)应采用接地方式防止外界电磁干扰和设备寄生耦合干扰。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-电源线和通信线缆应隔离铺设，避免互相干扰。"><span class="nav-number">2.10.2.</span> <span class="nav-text">b)电源线和通信线缆应隔离铺设，避免互相干扰。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-应对关键网络设备和磁介质实施电磁屏蔽。"><span class="nav-number">2.10.3.</span> <span class="nav-text">c)应对关键网络设备和磁介质实施电磁屏蔽。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Note</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

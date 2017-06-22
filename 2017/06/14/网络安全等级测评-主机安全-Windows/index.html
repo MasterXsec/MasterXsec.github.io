@@ -1,0 +1,1217 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="等级保护," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="主机安全测评说明物理安全测评共有7项，分别是身份鉴别、访问控制、安全审计、剩余信息保护、入侵防范、恶意代码防范、资源控制。">
+<meta name="keywords" content="等级保护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全等级测评-主机安全-Windows">
+<meta property="og:url" content="http://yoursite.com/2017/06/14/网络安全等级测评-主机安全-Windows/index.html">
+<meta property="og:site_name" content="Note&#39;s blog">
+<meta property="og:description" content="主机安全测评说明物理安全测评共有7项，分别是身份鉴别、访问控制、安全审计、剩余信息保护、入侵防范、恶意代码防范、资源控制。">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/本地安全策略.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/账户锁定策略.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/终端服务配置.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/属性.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/net.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/文件权限.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/默认共享.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/最小权限.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/账户.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/审核策略.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/开启.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/系统日志.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/剩余信息保护.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/清除虚拟内存.jpg">
+<meta property="og:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/服务.jpg">
+<meta property="og:updated_time" content="2017-06-14T14:56:08.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全等级测评-主机安全-Windows">
+<meta name="twitter:description" content="主机安全测评说明物理安全测评共有7项，分别是身份鉴别、访问控制、安全审计、剩余信息保护、入侵防范、恶意代码防范、资源控制。">
+<meta name="twitter:image" content="http://yoursite.com/网络安全等级测评-主机安全-Windows/本地安全策略.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/14/网络安全等级测评-主机安全-Windows/"/>
+
+
+
+
+
+  <title>网络安全等级测评-主机安全-Windows | Note's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Note's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/网络安全等级测评-主机安全-Windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                网络安全等级测评-主机安全-Windows
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T18:16:10+08:00">
+                2017-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="主机安全测评说明"><a href="#主机安全测评说明" class="headerlink" title="主机安全测评说明"></a>主机安全测评说明</h1><p>物理安全测评共有7项，分别是<strong>身份鉴别、访问控制、安全审计、剩余信息保护、入侵防范、恶意代码防范、资源控制</strong>。<br><a id="more"></a></p>
+<h1 id="各项要求、检查防范以及建议值（三级标准）"><a href="#各项要求、检查防范以及建议值（三级标准）" class="headerlink" title="各项要求、检查防范以及建议值（三级标准）"></a>各项要求、检查防范以及建议值（三级标准）</h1><p>注意：加粗字体为三级相对于二级增加的项目。</p>
+<h2 id="身份鉴别"><a href="#身份鉴别" class="headerlink" title="身份鉴别"></a>身份鉴别</h2><p>a) 应对登录操作系统和数据库系统的用户进行身份标识和鉴别；<br>访谈管理员，是否为系统用户设置密码，并查看系统账户登录过程中是否使用了密码进行登录验证。</p>
+<p>b) 操作系统和数据库系统管理用户身份标识应具有不易被冒用的特点，口令应有复杂度要求并定期更换；<br>检查密码历史记录、密码最长使用期限、最短密码长度、密码复杂性要求等。<br>检查方法：<br>cmd-&gt;secpol.msc<br><img src="/网络安全等级测评-主机安全-Windows/本地安全策略.jpg" alt=""><br>密码策略建议值：<br>密码必须符合复杂性要求：启用（大写字母、小写字母、数字、特殊符号4种中的3种组合）<br>密码长度最小值：8个字符<br>密码最短使用期限：2天<br>密码最长使用期限：70天<br>强制密码历史：24个<br>可用还原的加密来储存密码：禁用</p>
+<p>c) 应启用登录失败处理功能，可采取结束会话、限制非法登录次数和自动退出等措施；<br>cmd-&gt;secpol.msc<br>查看账户锁定策略：<br><img src="/网络安全等级测评-主机安全-Windows/账户锁定策略.jpg" alt=""><br>建议值：<br>账户锁定阈值：3~5次<br>账户锁定时间:30min</p>
+<p>d) 当对服务器进行远程管理时，应采取必要措施，防止鉴别信息在网络传输过程中被窃听；<br>1.确认操作系统必须是Windows Server 2003或者之后的版本；<br>2.检查终端服务器是否使用了SSL加密，检查方法：<br><img src="/网络安全等级测评-主机安全-Windows/终端服务配置.jpg" alt=""><br><img src="/网络安全等级测评-主机安全-Windows/属性.jpg" alt=""><br>检查安全层参数是否为SSL。</p>
+<p>e) 应为操作系统和数据库系统的不同用户分配不同的用户名，确保用户名具有唯一性。<br>只需检查Windows系统用户名是否有重复。<br>检查方法：<br>cmd-&gt;net user<br><img src="/网络安全等级测评-主机安全-Windows/net.jpg" alt=""></p>
+<p><strong>f) 应采用两种或两种以上组合的鉴别技术对管理用户进行身份鉴别。</strong><br>如果有除用户名/密码外的其他身份鉴别方法，则记录这种方法。否则记录“只使用用户名/口令”。</p>
+<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><p>a) 应启用访问控制功能，依据安全策略控制用户对资源的访问；<br>本项主要涉及两个方面的内容：文件权限、默认共享<br>文件权限：<br>重要目录不能对everyone账户开放。<br>检查%systemdrive%\windows\system、%systemroot%\system32\config两个目录下的各个用户组的权限并记录。<br><img src="/网络安全等级测评-主机安全-Windows/文件权限.jpg" alt=""><br>默认共享：<br>默认共享功能是为了方便网络管理员通过网络对计算机进行远程管理设计的，为了保证系统安全，通常关闭。检查方法：<br>cmd-&gt;net share<br>netstat -an | find “LISTEN” 查看监听的端口<br><img src="/网络安全等级测评-主机安全-Windows/默认共享.jpg" alt=""><br>查看注册表:<br>HLM\SYSTEM\CurrentControlSet\Control\Lsa\restrictanonymous值是否为0，0表示共享开启，应为1。记录下默认的共享。</p>
+<p><strong>b) 应根据管理用户的角色分配权限，实现管理用户的权限分离，仅授予管理用户所需的最小权限；</strong><br>本地策略用户权限分配中查看：<br>1.“从远端系统强制关机”只指派给Administrators组。<br>2.“关闭系统”仅指派给Administrators组。<br>3.“取得文件或其它对象的所有权”仅指派给Administrators。<br>4.“管理审核和安全日志”仅指派给Administrators组。<br>5.“从本地登录此计算机”指派给指定授权用户。<br>6.“从网络访问此计算机”指派给Administrators组。<br>检查方法：<br>cmd-&gt;secpol.msc<br>本地策略-&gt;用户权限分配<br><img src="/网络安全等级测评-主机安全-Windows/最小权限.jpg" alt=""></p>
+<p>c) 应实现操作系统和数据库系统特权用户的权限分离；<br>如果主机运行了数据库，询问并记录操作系统管理员和数据库管理员是否为同一人。如果没安装数据库，此项标记为不适用。</p>
+<p>d) 应严格限制默认帐户的访问权限，重命名系统默认帐户，修改这些帐户的默认口令；<br>1.检查默认账户是否重命名；<br>2.询问是否已经修改默认账户口令；<br>3.查看是否已经禁用Guest账户；<br>检查方法：记录未重命名的默认账户，未禁用的默认账户。<br><img src="/网络安全等级测评-主机安全-Windows/账户.jpg" alt=""></p>
+<p>e) 应及时删除多余的、过期的帐户，避免共享帐户的存在。<br>询问账户的用途，确认账户是否是多余的、过期的、共享的账户。</p>
+<p><strong>f) 应对重要信息资源设置敏感标记；</strong><br>敏感标记的意思：比如某个文件的安全标记是10，权限小于10的用户，没有权利访问。</p>
+<p><strong>g) 应依据安全策略严格控制用户对有敏感标记重要信息资源的操作；</strong><br>主要是访谈和记录。</p>
+<h2 id="安全审计"><a href="#安全审计" class="headerlink" title="安全审计"></a>安全审计</h2><p>a) 审计范围应覆盖到服务器和<strong>重要客户端上</strong>的每个操作系统用户和数据库用户；<br>查看系统是否开启了安全审计功能，询问是否有第三方审计工具或者系统，并且记录运行状态。<br>检查方法：<br>secpol.msc<br><img src="/网络安全等级测评-主机安全-Windows/审核策略.jpg" alt=""><br><img src="/网络安全等级测评-主机安全-Windows/开启.jpg" alt=""></p>
+<p>b) 审计内容应包括重要用户行为、系统资源的异常使用和重要系统命令的使用等系统内重要的安全相关事件；<br>全部开启。</p>
+<p>c) 审计记录应包括事件的日期、时间、类型、主体标识、客体标识和结果等；<br>compmgmt.msc，查看日志文件是否满足要求。<br><img src="/网络安全等级测评-主机安全-Windows/系统日志.jpg" alt=""></p>
+<p><strong>d) 应能够根据记录数据进行分析，并生成审计报表；</strong></p>
+<p><strong>e) 应保护审计进程， 避免受到未预期的中断；</strong><br>检查审计进程的访问权限是否设置的合理。</p>
+<p>f) 应保护审计记录， 避免受到未预期的删除、修改或覆盖等。<br>访谈审计记录的存储、备份和保护措施，如配置日志服务器等。</p>
+<h2 id="剩余信息保护"><a href="#剩余信息保护" class="headerlink" title="剩余信息保护"></a>剩余信息保护</h2><p><strong>a) 应保证操作系统和数据库系统用户的鉴别信息所在的存储空间，被释放或再分配给其他用户前得到完全清除，无论这些信息是存放在硬盘上还是在内存中；</strong><br>本地策略的安全选项中查看是否启用“不显示上次登录用户名”，建议启用。<br><img src="/网络安全等级测评-主机安全-Windows/剩余信息保护.jpg" alt=""></p>
+<p><strong>b) 应确保系统内的文件、目录和数据库记录等资源所在的存储空间，被释放或重新分配给其他用；</strong><br>在密码策略中禁用“用可还原的加密来存储密码”。<br>“关机：清除虚拟内存页面文件”配置为“已启用”。<br><img src="/网络安全等级测评-主机安全-Windows/清除虚拟内存.jpg" alt=""></p>
+<h2 id="入侵防范"><a href="#入侵防范" class="headerlink" title="入侵防范"></a>入侵防范</h2><p><strong>a) 应能够检测到对重要服务器进行入侵的行为，能够记录入侵的源IP、攻击的类型、攻击的目的、攻击的时间，并在发生严重入侵事件时提供报警；</strong><br>主要是访谈，询问管理员查看日志的频率，是否合理配置防火墙，是否部署并合理配置了入侵检测系统，入侵检测系统是否具备报警的功能。</p>
+<p><strong>b) 应能够对重要程序的完整性进行检测，并在检测到完整性受到破坏后具有恢复的措施；</strong><br>访谈使用文件完整性检查工具或者脚本定期对重要文件的完整性进行检查，是否对重要的配置文件进行备份等。</p>
+<p>c) 操作系统应遵循最小安装的原则，仅安装需要的组件和应用程序，并通过设置升级服务器等方式保持系统补丁及时得到更新。<br>记录服务器中安装的多余的组件、应用程序。查看“程序和功能”是否安装了不必要的软件，Windows Update升级方式，升级频度，是否有厂家定期巡检进行系统补丁升级；询问是否安装了IPS(入侵防御系统)。</p>
+<h2 id="恶意代码防范"><a href="#恶意代码防范" class="headerlink" title="恶意代码防范"></a>恶意代码防范</h2><p>a) 应安装防恶意代码软件，并及时更新防恶意代码软件版本和恶意代码库；<br>查看是否安装了防恶意代码软件，若有，记录版本号，最后一次更新日期，升级方式。</p>
+<p><strong>b) 主机防恶意代码产品应具有与网络防恶意代码产品不同的恶意代码库；</strong><br>询问是否使用同一病毒库。</p>
+<p>c) 应支持防恶意代码的统一管理。<br>询问管理员是否采用统一的病毒更新策略和查杀策略。</p>
+<h2 id="资源控制"><a href="#资源控制" class="headerlink" title="资源控制"></a>资源控制</h2><p>a) 应通过设定终端接入方式、网络地址范围等条件限制终端登录；<br>限制终端登录：<br>1.关闭3389端口（regedit打开注册表查看HLM\SYSTEM\ CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp和HLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp中PortNamber的值是否为默认值3389）;<br>2.查看防火墙入站规则；<br>3.查看网络层防火墙过滤规则。</p>
+<p>b) 应根据安全策略设置登录终端的操作超时锁定；<br>限制远程登录空闲断开时间：<br>本地策略安全选项中查看“Microsoft网络服务器：在挂起会话之前所需的空闲时间”（W2003）是否配置为15分钟。/“Microsoft网络服务器：暂停会话前所需的空闲时间量”（W2008）是否配置为15分钟。</p>
+<p><strong>c) 应对重要服务器进行监视，包括监视服务器的CPU、硬盘、内存、网络等资源的使用情况；</strong><br>打开“管理工具—性能监视器”查看CPU、内存等使用情况。</p>
+<p>d) 应限制单个用户对系统资源的最大或最小使用限度；<br>若不限制，一个用户占用的资源过多，很容易造成DoS攻击。</p>
+<p><strong>e) 应能够对系统的服务水平降低到预先规定的最小值进行检测和报警。</strong><br>询问系统管理员如何监控系统服务水平。，若有第三方监控程序，询问并查看是否有相关功能。</p>
+<h1 id="部分整改方法"><a href="#部分整改方法" class="headerlink" title="部分整改方法"></a>部分整改方法</h1><h2 id="禁用默认共享"><a href="#禁用默认共享" class="headerlink" title="禁用默认共享"></a>禁用默认共享</h2><p>如果要禁止C$、D$、E$一类的共享，可以单击“开始→运行”命令，在运行窗口键入“Regedit”后回车，打开注册表编辑器。依次展开[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters]分支，将右侧窗口中的DOWRD值“AutoShareServer”设置为“0”即可。<br>如果要禁止ADMIN$共享，可以在同样的分支下，将右侧窗口中的DOWRD值“AutoShareWKs” 设置为“0”即可。<br>如果要禁止IPC$共享，可以在注册表编辑器中依次展开[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]分支，将右侧窗口中的DOWRD值“restrictanonymous”设置值为“1”即可。<br>禁止admin$共享：net share admin$ /del 含义：关闭名admin$的共享。</p>
+<h2 id="访问默认共享"><a href="#访问默认共享" class="headerlink" title="访问默认共享"></a>访问默认共享</h2><p>开始-&gt;运行-&gt;\172.168.2.2\C$，直接访问C盘或者在浏览器下输入\172.168.2.2\C$回车 输入用户名、密码就可以了。</p>
+<h2 id="不必要的服务"><a href="#不必要的服务" class="headerlink" title="不必要的服务"></a>不必要的服务</h2><p><img src="/网络安全等级测评-主机安全-Windows/服务.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/等级保护/" rel="tag"># 等级保护</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/14/网络安全等级测评-等保概念以及项目实施流程/" rel="next" title="网络安全等级测评-等保概念以及项目实施流程">
+                <i class="fa fa-chevron-left"></i> 网络安全等级测评-等保概念以及项目实施流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favico.gif"
+               alt="Note" />
+          <p class="site-author-name" itemprop="name">Note</p>
+           
+              <p class="site-description motion-element" itemprop="description">布施、持戒、忍辱、精进、禅定、般若</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com/" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ichunqiu.com/" title="i春秋" target="_blank">i春秋</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.amobbs.com/" title="amoBBS" target="_blank">amoBBS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codesec.net/" title="CodeSec" target="_blank">CodeSec</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://new.butian.360.cn/" title="补天" target="_blank">补天</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://klionsec.github.io/" title="klion" target="_blank">klion</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pediy.com/" title="看雪论坛" target="_blank">看雪论坛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vulbox.com/" title="漏洞盒子" target="_blank">漏洞盒子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.91ri.org/" title="91ri" target="_blank">91ri</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#主机安全测评说明"><span class="nav-number">1.</span> <span class="nav-text">主机安全测评说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各项要求、检查防范以及建议值（三级标准）"><span class="nav-number">2.</span> <span class="nav-text">各项要求、检查防范以及建议值（三级标准）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#身份鉴别"><span class="nav-number">2.1.</span> <span class="nav-text">身份鉴别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问控制"><span class="nav-number">2.2.</span> <span class="nav-text">访问控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全审计"><span class="nav-number">2.3.</span> <span class="nav-text">安全审计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剩余信息保护"><span class="nav-number">2.4.</span> <span class="nav-text">剩余信息保护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入侵防范"><span class="nav-number">2.5.</span> <span class="nav-text">入侵防范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恶意代码防范"><span class="nav-number">2.6.</span> <span class="nav-text">恶意代码防范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源控制"><span class="nav-number">2.7.</span> <span class="nav-text">资源控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部分整改方法"><span class="nav-number">3.</span> <span class="nav-text">部分整改方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用默认共享"><span class="nav-number">3.1.</span> <span class="nav-text">禁用默认共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问默认共享"><span class="nav-number">3.2.</span> <span class="nav-text">访问默认共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不必要的服务"><span class="nav-number">3.3.</span> <span class="nav-text">不必要的服务</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Note</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

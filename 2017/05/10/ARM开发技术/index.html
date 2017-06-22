@@ -1,0 +1,1279 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ARM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="ARMARM（ Advanced RISC Machines）有 3 种含义，它是一个公司的名称，是一类微处理器的通称，还是一种技术的名称。主要出售芯片设计技术的授权。 哈佛体系结构程序和数据空间独立的体系结构，重新设计区分了数据总线和指令总线。 ARM9 处理器系列采用了 5 级指令流水线。到 ARM7 为止的 ARM 处理器使用简单的 3 级流水线。取指令、译码、执行。">
+<meta name="keywords" content="ARM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARM开发技术">
+<meta property="og:url" content="http://yoursite.com/2017/05/10/ARM开发技术/index.html">
+<meta property="og:site_name" content="Note&#39;s blog">
+<meta property="og:description" content="ARMARM（ Advanced RISC Machines）有 3 种含义，它是一个公司的名称，是一类微处理器的通称，还是一种技术的名称。主要出售芯片设计技术的授权。 哈佛体系结构程序和数据空间独立的体系结构，重新设计区分了数据总线和指令总线。 ARM9 处理器系列采用了 5 级指令流水线。到 ARM7 为止的 ARM 处理器使用简单的 3 级流水线。取指令、译码、执行。">
+<meta property="og:image" content="http://yoursite.com/ARM开发技术/大端小端.jpg">
+<meta property="og:image" content="http://yoursite.com/ARM开发技术/工作模式1.jpeg">
+<meta property="og:image" content="http://yoursite.com/ARM开发技术/工作模式2.jpeg">
+<meta property="og:image" content="http://yoursite.com/ARM开发技术/寄存器.jpeg">
+<meta property="og:image" content="http://yoursite.com/ARM开发技术/程序状态字寄存器.jpeg">
+<meta property="og:image" content="http://yoursite.com/ARM开发技术/立即数.jpeg">
+<meta property="og:updated_time" content="2017-05-13T01:55:51.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARM开发技术">
+<meta name="twitter:description" content="ARMARM（ Advanced RISC Machines）有 3 种含义，它是一个公司的名称，是一类微处理器的通称，还是一种技术的名称。主要出售芯片设计技术的授权。 哈佛体系结构程序和数据空间独立的体系结构，重新设计区分了数据总线和指令总线。 ARM9 处理器系列采用了 5 级指令流水线。到 ARM7 为止的 ARM 处理器使用简单的 3 级流水线。取指令、译码、执行。">
+<meta name="twitter:image" content="http://yoursite.com/ARM开发技术/大端小端.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/10/ARM开发技术/"/>
+
+
+
+
+
+  <title>ARM开发技术 | Note's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Note's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/10/ARM开发技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ARM开发技术
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T16:23:01+08:00">
+                2017-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
+                    <span itemprop="name">嵌入式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ARM"><a href="#ARM" class="headerlink" title="ARM"></a>ARM</h1><p>ARM（ Advanced RISC Machines）有 3 种含义，它是一个公司的名称，是一类微处理器的通称，还是一种技术的名称。主要出售芯片设计技术的授权。</p>
+<h1 id="哈佛体系结构"><a href="#哈佛体系结构" class="headerlink" title="哈佛体系结构"></a>哈佛体系结构</h1><p>程序和数据空间独立的体系结构，重新设计区分了数据总线和指令总线。</p>
+<h1 id="ARM9-处理器系列"><a href="#ARM9-处理器系列" class="headerlink" title="ARM9 处理器系列"></a>ARM9 处理器系列</h1><p>采用了 5 级指令流水线。到 ARM7 为止的 ARM 处理器使用简单的 3 级流水线。取指令、译码、执行。<br><a id="more"></a></p>
+<h1 id="ARM11-处理器系列"><a href="#ARM11-处理器系列" class="headerlink" title="ARM11 处理器系列"></a>ARM11 处理器系列</h1><p>8 级流水线， ARMv6 架构。在 Cortex-A8 中有一条 13 级的流水线。</p>
+<h1 id="Cortex-处理器系列"><a href="#Cortex-处理器系列" class="headerlink" title="Cortex 处理器系列"></a>Cortex 处理器系列</h1><p>ARMv7 架构，采用了 Thumb-2 （32位）技术。</p>
+<h1 id="ARM处理命名规则"><a href="#ARM处理命名规则" class="headerlink" title="ARM处理命名规则"></a>ARM处理命名规则</h1><p>后缀名称:<br>T     -&gt;     Thumb<br>D     -&gt;     调试[JTAG]<br>M     -&gt;     长乘法<br>I     -&gt;     嵌入式ICE单元 [支持设置断点]<br>E     -&gt;     增强型DSP指令<br>J     -&gt;     支持Java字节码</p>
+<p>在命名方式上，基于 ARMv7 架构的 ARM 处理器已经不再延用过去的数字命名方式，而是冠以 Cortex 的代号。基于 v7A 的称为“ Cortex-A 系州”，基于v7R 的称为“ Cortex-R 系列”，基于 v7M 的称为“ Cortex-M3”。</p>
+<h1 id="ARM-微处理器结构"><a href="#ARM-微处理器结构" class="headerlink" title="ARM 微处理器结构"></a>ARM 微处理器结构</h1><p>ARM 内核采用 RISC 体系结构。 ARM 体系结构的主要特征如下：<br>（ 1） 采用大量的寄存器，它们都可以用于多种用途。<br>（ 2） 采用 Load/Store 体系结构。<br>（ 3） 每条指令都条件执行。<br>（ 4） 采用多寄存器的 Load/Store 指令。<br>（ 5） 能够在单时钟周期执行的单条指令内完成一项普通的移位操作和一项普通的 ALU 操作。<br>（ 6） 通过协处理器指令集来扩展 ARM 指令集，包括在编程模式中增加了新的寄存器和数据类型。<br>（ 7） 如果把 Thumb 指令集也当做 ARM 体系结构的一部分，那么在 Thumb 体系结构中还可以高<br>密度 16 位压缩形式表示指令集。</p>
+<h1 id="中断控制器"><a href="#中断控制器" class="headerlink" title="中断控制器"></a>中断控制器</h1><p>ARM 内核只提供快速中断（ FIQ）和标准中断（ IRQ）两个中断向量。但各个半导体厂家在设计芯片时加入了自己定义的中断控制器，以便支持诸如串行口、外部中断、时钟中断等硬件中断。</p>
+<h1 id="ARM-的基本数据类型"><a href="#ARM-的基本数据类型" class="headerlink" title="ARM 的基本数据类型"></a>ARM 的基本数据类型</h1><p>ARM 采用的是 32 位架构， ARM 的基本数据类型有以下 3 种。<br>Ø <strong>Byte</strong>：字节，8bit。<br>Ø <strong>Halfword</strong>：半字，16bit（半字必须与 2 字节边界对齐）。<br>Ø <strong>Word</strong>：字，32bit（字必须与 4 字节边界对齐）。<br>注意：<br>所有数据类型指令的操作数都是字类型的，如“ ADD r1， r0，＃ 0x1”中的操作数“ 0x1”就是以字类型数据处理的。<br><strong>ARM 指令编译后是 4 个字节（与字边界对齐）。 Thumb 指令编译后是 2 个字节（与半字边界对齐）。</strong></p>
+<h1 id="存储器大-小端"><a href="#存储器大-小端" class="headerlink" title="存储器大/小端"></a>存储器大/小端</h1><p>在大端模式下，一个字的高地址放的是数据的低位，而在小端模式下，数据的低位放在内存中的低地址。即低字节放在低地址中。<br><img src="/ARM开发技术/大端小端.jpg" alt=""></p>
+<h1 id="ARM有几种工作模式？"><a href="#ARM有几种工作模式？" class="headerlink" title="ARM有几种工作模式？"></a>ARM有几种工作模式？</h1><p>ARM有7个基本工作模式： 用户模式(user)、系统模式(system)、数据访问中止模式(abort)、未定义指令中止模式(undef)、快速中断模式(FIQ)、外部中断模式(IRQ)、管理模式(SVC)。<br>cortex-A系列特有：M (monitor) : 安全模式</p>
+<p>记忆方法：USA     UFI（不是UFO）    SM（你懂的）<br><img src="/ARM开发技术/工作模式1.jpeg" alt=""><br><img src="/ARM开发技术/工作模式2.jpeg" alt=""><br>除用户模式外的其他 7 种处理器模式称为特权模式（ Privileged Modes）。在特权模式下，程序可以访问所有的系统资源，也可以任意地进行处理器模式切换。<br>非特权模式 : 用户模式<br>特权模式   : S,A,U,F,I,S,M<br>异常模式   : abt,udef,fiq,irq,svc </p>
+<h1 id="ARM有哪几个异常类型？"><a href="#ARM有哪几个异常类型？" class="headerlink" title="ARM有哪几个异常类型？"></a>ARM有哪几个异常类型？</h1><p>(1)复位异常        -&gt;     SVC 模式 [开发板复位]<br>(2)未定义异常     -&gt;     UDF 模式 [执行未定义的指令]<br>(2)软中断异常      -&gt;     SVC 模式 [通过SWI指令产生]<br>(4)取数据终止      -&gt;     ABT 模式 [没有取到数据]<br>(5)取指令终止      -&gt;     ABT 模式 [没有取指令]<br>(6)IRQ中断         -&gt;     IRQ    模式 [硬件触发的IRQ中断]<br>(7)FIQ中断         -&gt;     FIQ 模式 [硬件触发的FIQ中断]<br>处理器模式可以通过软件控制进行切换，也可以通过外部中断或异常处理过程进行切换。</p>
+<h1 id="协处理器（-CP15）"><a href="#协处理器（-CP15）" class="headerlink" title="协处理器（ CP15）"></a>协处理器（ CP15）</h1><p>ARM 处理器支持 16 个协处理器。</p>
+<h1 id="存储管理单元（-MMU）"><a href="#存储管理单元（-MMU）" class="headerlink" title="存储管理单元（ MMU）"></a>存储管理单元（ MMU）</h1><p>MMU 作为转换器，将程序和数据的虚拟地址（编译时的连接地址）转换成实际的物理地址，即在物理主存中的地址。虚拟地址由编译器和连接器在定位程序时分配；物理地址用来访问实际的主存硬件模块（物理上程序存在的区域）。</p>
+<h1 id="高速缓冲存储器（-Cache）"><a href="#高速缓冲存储器（-Cache）" class="headerlink" title="高速缓冲存储器（ Cache）"></a>高速缓冲存储器（ Cache）</h1><p>Cache 经常与写缓存器（ write buffer）一起使用。写缓存器是一个非常小的先进先出（ FIFO）存储器，位于处理器核与主存之间。使用写缓存的目的是，将处理器核和 Cache 从较慢的主存写操作中解脱出来。当 CPU 向主存储器做写入操作时，它先将数据写入到写缓存区中，由于写缓存器的速度很高，这种写入操作的速度也将很高。写缓存区在 CPU 空闲时，以较低的速度将数据写入到主存储器中相应的位置。</p>
+<p>当进行数据写操作时Cache未命中，根据Cache执行的操作不同，将Cache分为两类( C )<br>A:数据Cache和指令Cache<br>B:统一Cache和独立Cache<br>C:写通Cache和写回Cache<br>D:读操作分配Cache和写操作分配Cache</p>
+<h1 id="ARM核有多少个寄存器？"><a href="#ARM核有多少个寄存器？" class="headerlink" title="ARM核有多少个寄存器？"></a>ARM核有多少个寄存器？</h1><p>ARM 处理器有如下 40 个 32 位长的寄存器。<br>（ 1） 33 个通用寄存器。<br>（ 2） 6 个状态寄存器： 1 个 CPSR（ Current Program Status Register，当前程序状态寄存器）， 6 个SPSR（ Saved Program Status Register，备份程序状态寄存器）。<br>（ 3） 1 个 PC（ Program Counter，程序计数器）。</p>
+<p>当前处理器的模式决定着哪组寄存器可操作，任何模式都可以存取下列寄存器。<br>（ 1） 相应的 R0～R12。<br>（ 2） 相应的 R13（ Stack Pointer， SP，栈指向）和 R14（ the Link Register， LR，链路寄存器）。<br>（ 3） 相应的 R15（ PC）。<br>（ 4） 相应的 CPSR。<br>特权模式（除 System 模式外）还可以存取相应的 SPSR。<br>通用寄存器根据其分组与否可分为以下两类。<br>（ 1） 未分组寄存器（ Unbanked Register），包括 R0～R7。<br>（ 2） 分组寄存器（ Banked Register），包括 R8～R14。<br><img src="/ARM开发技术/寄存器.jpeg" alt=""></p>
+<h1 id="哪种模式使用的寄存器最少？"><a href="#哪种模式使用的寄存器最少？" class="headerlink" title="哪种模式使用的寄存器最少？"></a>哪种模式使用的寄存器最少？</h1><p>用户模式/系统模式（不用SPSR）。</p>
+<h1 id="未分组寄存器"><a href="#未分组寄存器" class="headerlink" title="未分组寄存器"></a>未分组寄存器</h1><p>未分组寄存器包括 R0～R7。顾名思义，在所有处理器模式下对于每一个未分组寄存器来说，指的都是同一个物理寄存器。未分组寄存器没有被系统用于特殊的用途，任何可采用通用寄存器的应用场合都可以使用未分组寄存器。但由于其通用性，在异常中断所引起的处理器模式切换时，其使用的是相同的物理寄存器，所以也就很容易使寄存器中的数据被破坏。切换模式时要保护。</p>
+<h1 id="分组寄存器"><a href="#分组寄存器" class="headerlink" title="分组寄存器"></a>分组寄存器</h1><p>R8～R14 是分组寄存器，它们每一个访问的物理寄存器取决于当前的处理器模式。<br>对于分组寄存器 R8～R12 来说，每个寄存器对应两个不同的物理寄存器。一组用于除 FIQ 模式外的所有处理器模式，而另一组则专门用于 FIQ 模式。这样的结构设计有利于加快 FIQ 的处理速度。不同模式下寄存器的使用，要使用寄存器名后缀加以区分。例如，当使用 FIQ 模式下的寄存器时，寄存器 R8 和寄存器 R9 分别记为 R8_fiq、 R9_fiq；当使用用户模式下的寄存器时，寄存器 R8 和 R9 分别记为 R8_usr、 R9_usr等。在 ARM 体系结构中， R8～R12 没有任何指定的其他的用途，所以当 FIQ 中断到达时，不用保存这些通用寄存器，也就是说， FIQ 处理程序可以不必执行保存和恢复中断现场的指令，从而可以使中断处理过程非常迅速。所以 FIQ 模式常被用来处理一些时间紧急的任务，如 DMA 处理。<br>对于分组寄存器 R13 和 R14 来说，每个寄存器对应 6 个不同的物理寄存器。其中的一个是用户模式和系统模式公用的，而另外 5 个分别用于 5 种异常模式。访问时需要指定它们的模式。<br>R13 寄存器在 ARM 处理器中常用做堆栈指针，称为 SP。<br>寄存器 R14 又被称为连接寄存器（ Link Register， LR）。每一种处理器模式用自己的 R14 存放当前子程序的返回地址。当通过 BL 或 BLX 指令调用子程序时， R14被设置成该子程序的返回地址。在子程序返回时，把 R14 的值复制到程序计数器（ PC）。</p>
+<h1 id="程序状态寄存器"><a href="#程序状态寄存器" class="headerlink" title="程序状态寄存器"></a>程序状态寄存器</h1><p>每一种处理器模式下都有一个专用的物理寄存器做备份程序状态寄存器（ Saved Program StatusRegister， SPSR）。当特定的异常中断发生时，这个物理寄存器负责存放当前程序状态寄存器的内容。当异常处理程序返回时，再将其内容恢复到当前程序状态寄存器。<br><img src="/ARM开发技术/程序状态字寄存器.jpeg" alt=""><br>cpsr (反应CPU状态)   </p>
+<p>N Z C V    ….     I F T mode</p>
+<p>N : 计算结果为负则置1<br>Z : 记录结果为0,则置1<br>C : 加法计算最高位产生进位,则置1，减法运算没有产生借位，则置1<br>V : 有符号数溢出[两个整数相加，结果为负数,则置1<br>T : 置1(Thumb状态),否则（ARM 状态)<br>F ：置1(禁用FIQ)<br>I : 置1(禁用IRQ)<br>mode : 模式位</p>
+<p>总结:<br>(1)所有模式通用  r0-r7 ,pc,CPSR   [10]<br>(2)除了快中断模式，其他模式共用 : r8-r12 ,快中断模式的r8-r12私有的  [5 + 5 = 10]<br>(3)异常模式特有的寄存器 : sp,lr,spsr  [5 * 3 = 15]<br>(4)用户模式和系统模式共用同一套寄存器(所有的寄存器) : sp,lr [2]</p>
+<p>一个模式最多可以访问的寄存器:r0-r12,sp,lr,pc,cpsr,spsr<br>注意:在Thumb状态下，r8-r12是不可见，其他寄存器映射ARM状态的寄存器</p>
+<h1 id="ARM异常处理"><a href="#ARM异常处理" class="headerlink" title="ARM异常处理"></a>ARM异常处理</h1><p>1.ARM 异常类型<br>(1)复位异常        -&gt;     SVC 模式 [开发板复位]<br>(2)未定义异常      -&gt;     UDF 模式 [执行未定义的指令]<br>(2)软中断异常      -&gt;     SVC 模式 [通过SWI指令产生]<br>(4)取数据终止      -&gt;     ABT 模式 [没有取到数据]<br>(5)取指令终止      -&gt;     ABT 模式 [没有取指令]<br>(6)IRQ中断         -&gt;     IRQ    模式 [硬件触发的IRQ中断]<br>(7)FIQ中断         -&gt;    FIQ 模式 [硬件触发的FIQ中断]</p>
+<p>2.异常产生的时候<br>(1)ARM 核自动完成的事情</p>
+<p><1>CPSR拷贝到异常模式的SPSR </1></p>
+<p><2>设置CPSR的相应位<br>   进入ARM状态<br>   设为对应的异常模式<br>   禁止中断[中断产生的时候]</2></p>
+<p><3>将PC保存到异常模式的LR </3></p>
+<p><4>修改PC的值到异常向量表 </4></p>
+<hr>
+<p>异常向量表:一块内存，内存的中存放的是一些跳转指令，跳转异常处理函数</p>
+<p>异常向量表可以存放的位置:<br>在非CortexA系列异常，异常向量表可以存放在0x0000,0000 或 0xffff,0000 </p>
+<h2 id="在CoctexA系列异常向量表可以存放在任何位置，只需将异常向量表所在起始位置告诉CP15-协处理器-的C12寄存器"><a href="#在CoctexA系列异常向量表可以存放在任何位置，只需将异常向量表所在起始位置告诉CP15-协处理器-的C12寄存器" class="headerlink" title="在CoctexA系列异常向量表可以存放在任何位置，只需将异常向量表所在起始位置告诉CP15[协处理器]的C12寄存器"></a>在CoctexA系列异常向量表可以存放在任何位置，只需将异常向量表所在起始位置告诉CP15[协处理器]的C12寄存器</h2><p>(2)程序员需要的事情</p>
+<p>异常进入:保护通用寄存器<br>异常退出:恢复现场[恢复保护的寄存器，恢复LR[异常]到PC , 恢复SPSR[异常]到CPSR]  </p>
+<h1 id="ARM核是如何让FIQ快速处理"><a href="#ARM核是如何让FIQ快速处理" class="headerlink" title="ARM核是如何让FIQ快速处理?"></a>ARM核是如何让FIQ快速处理?</h1><p><1>FIQ模式有私有的r8-r12,如果只是用私有的寄存器，不需要保护通用寄存器</1></p>
+<p><2>FIQ异常在异常向量表最顶端，可以直接写FIQ异常处理函数，不需要跳转</2></p>
+<h1 id="ARM-处理器的寻址方式"><a href="#ARM-处理器的寻址方式" class="headerlink" title="ARM 处理器的寻址方式"></a>ARM 处理器的寻址方式</h1><p>ARM 指令的寻址方式分为数据处理指令寻址方式和内存访问指令寻址方式。</p>
+<h1 id="数据处理指令寻址方式可以分为以下几种？"><a href="#数据处理指令寻址方式可以分为以下几种？" class="headerlink" title="数据处理指令寻址方式可以分为以下几种？"></a>数据处理指令寻址方式可以分为以下几种？</h1><p>（ 1） 立即数寻址方式。<br>（ 2） 寄存器寻址方式。<br>（ 3） 寄存器移位寻址方式。</p>
+<h1 id="判断一个数是不是合法的立即数，最好的方法就是拿编译器验证，不是，编译器就会报错。但是在面试或者是笔试的时候，可能会遇到判断立即数的题目，那有没有好的方法判断呢？"><a href="#判断一个数是不是合法的立即数，最好的方法就是拿编译器验证，不是，编译器就会报错。但是在面试或者是笔试的时候，可能会遇到判断立即数的题目，那有没有好的方法判断呢？" class="headerlink" title="判断一个数是不是合法的立即数，最好的方法就是拿编译器验证，不是，编译器就会报错。但是在面试或者是笔试的时候，可能会遇到判断立即数的题目，那有没有好的方法判断呢？"></a>判断一个数是不是合法的立即数，最好的方法就是拿编译器验证，不是，编译器就会报错。但是在面试或者是笔试的时候，可能会遇到判断立即数的题目，那有没有好的方法判断呢？</h1><p>1.首先将这个数转换为32bits 16进制形式，例如218 = 0xda = 0x000000da<br>2.除零外，仅有一位数字的如0x00100000，为合法立即数该数字可为0-F<br>3.除零外，仅有两位数字，并且相邻（包括首位，如0x1000000A）的为合法立即数。<br>4.除零外，仅有三位数字，并且相邻（包括中间有0相间，例如0x10800000，包括首尾相邻，如：0x14000003），这三位数中最高位取值仅能为1,2,3，最低位取值仅能为4,8,C，中间位0-f，这样的数为合法立即数。<br>5.除去以上三种，其他基本上都是非法立即数。<br><img src="/ARM开发技术/立即数.jpeg" alt=""></p>
+<h1 id="寄存器寻址方式"><a href="#寄存器寻址方式" class="headerlink" title="寄存器寻址方式"></a>寄存器寻址方式</h1><p>寄存器的值可以被直接用于数据操作指令，这种寻址方式是各类处理器经常采用的一种方式，也是一种执行效率较高的寻址方式，如：<br>MOV R2,R0 ;R0 的值送 R2<br>ADD R4,R3,R2 ;R2 加 R3，结果送 R4<br>CMP R7,R8 ; 比较 R7 和 R8 的值</p>
+<p>#寄存器移位寻址方式<br>寄存器的值在被送到 ALU 之前，可以事先经过桶形移位寄存器的处理。预处理和移位发生在同一周期内，所以有效地使用移位寄存器，可以增加代码的执行效率。<br>下面是一些在指令中使用了移位操作的例子：<br>ADD R2,R0,R1,LSR #5<br>MOV R1,R0,LSL #2<br>RSB R9,R5,R5,LSL #1<br>SUB R1,R2,R0,LSR #4<br>MOV R2,R4,ROR R0</p>
+<h1 id="内存访问指令寻址方式"><a href="#内存访问指令寻址方式" class="headerlink" title="内存访问指令寻址方式"></a>内存访问指令寻址方式</h1><p>内存访问指令的寻址方式可以分为以下几种。<br>（ 1） 字及无符号字节的 Load/Store 指令的寻址方式。<br>（ 2） 杂类 Load/Store 指令的寻址方式。<br>（ 3） 批量 Load/Store 指令的寻址方式。<br>（ 4） 协处理器 Load/Store 指令的寻址方式。</p>
+<p>如果在数据处理指令前使用 S 前缀，指令的执行结果将会影响 CPSR 中的标志位。</p>
+<p>当 PC 作为目标寄存器且指令中 S 位被设置时，指令在执行跳转操作的同时，将当前处理器模式的 SPSR寄存器的内容复制到 CPSR 中。这种指令“ MOVS PC LR”可以实现从某些异常中断中返回。</p>
+<h1 id="汇编加法程序设计"><a href="#汇编加法程序设计" class="headerlink" title="汇编加法程序设计"></a>汇编加法程序设计</h1><p>.globl     _start<br>_start:<br>mov r0,#9     //9 存入 r0<br>mov r1,#15      //15 存入 r1<br>add r1,r1,r0     //r1 与 r0 相加存入 r1<br>stop:<br>b stop<br>.globl指示告诉汇编器，_start这个符号要被链接器用到，所以要在目标文件的符号表中标记它是一个全局符号（在第 5.1 节 “目标文件”详细解释）。_start就像C程序的main函数一样特殊，是整个程序的入口，链接器在链接时会查找目标文件中的_start符号代表的地址，把它设置为整个程序的入口地址，所以每个汇编程序都要提供一个_start符号并且用.globl声明。如果一个符号没有用.globl声明，就表示这个符号不会被链接器用到。</p>
+<h1 id="指令助记符-条件-S-Rd-Rn-operand2"><a href="#指令助记符-条件-S-Rd-Rn-operand2" class="headerlink" title="指令助记符{条件}{S}  Rd,Rn,{operand2}"></a>指令助记符{条件}{S}  Rd,Rn,{operand2}</h1><p>@指令助记符号  ADD,SUB …<br>@条件          只有在条件满足，指令才会执行 eq,ne,gt,lt,ge,le<br>@S      指令执行结果影响CPSR的N,Z,C,V<br>@Rd     目标寄存器[R0-R15]<br>@Rn     第一个操作数寄存器 [r0-r15]<br>@operand2      第二个操作数</p>
+<h1 id="如何判断一个数是否为合法立即数？"><a href="#如何判断一个数是否为合法立即数？" class="headerlink" title="如何判断一个数是否为合法立即数？"></a>如何判断一个数是否为合法立即数？</h1><p>立即数<br>表示方法   :  # + 数字<br>合法立即数 :  如果能从[0-255]直接找到一个数，将这个数循环右移偶数为得到当前的数字，则数字是合法立即数 ,否则为非法立即数。</p>
+<h1 id="寄存器移位"><a href="#寄存器移位" class="headerlink" title="寄存器移位"></a>寄存器移位</h1><p>移位方式: lsl[逻辑左移] ,lsr[逻辑右移] , asr[算术右移：需要关心最高位是否是符号位]<br>例如:<br>ADD r0,r1,r2,lsl #3 //r0 = r1 + (r2 &lt;&lt; 3) </p>
+<h1 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令 [+, - , *]"></a>算术运算指令 [+, - , *]</h1><p>1.加法指令<br>ADD Rd,Rn,operand2<br>例如:<br>ADD r0,#5,#6//错误<br>ADD r0,r1,#6 //r0 = r1 + 6<br>2.减法指令<br>SUB Rd,Rn,operand2<br>SUB r0,r1,#6 //r0 = r1 - 6<br>3.乘法指令<br>MUL Rd,Rn,寄存器<br>例如:<br>MUL r1,r2,r3  //r1 = r2 * r3<br>注意:Rd和Rn不能一样</p>
+<h1 id="数据装载指令"><a href="#数据装载指令" class="headerlink" title="数据装载指令"></a>数据装载指令</h1><p>1.MOV Rd,operand2<br>MOV r0,#5 //r0 = 5<br>2.装载任意数据到寄存器<br>LDR Rd,=数据 </p>
+<h2 id="LDR-r0-0x123456-r0-0x123456"><a href="#LDR-r0-0x123456-r0-0x123456" class="headerlink" title="LDR r0,=0x123456 //r0 = 0x123456"></a>LDR r0,=0x123456 //r0 = 0x123456</h2><h2 id="伪指令-是给编译器使用的，编译器最终会将这条指令翻成ARM核所能识别的指令"><a href="#伪指令-是给编译器使用的，编译器最终会将这条指令翻成ARM核所能识别的指令" class="headerlink" title="伪指令:是给编译器使用的，编译器最终会将这条指令翻成ARM核所能识别的指令"></a>伪指令:是给编译器使用的，编译器最终会将这条指令翻成ARM核所能识别的指令</h2><p>3.MVN Rd,operand2<br>MVN  r0,#0x10  //r0 = ~ 0x10  </p>
+<h1 id="按位操作-按位与，按位或，异或-位清除"><a href="#按位操作-按位与，按位或，异或-位清除" class="headerlink" title="按位操作 [按位与，按位或，异或,位清除]"></a>按位操作 [按位与，按位或，异或,位清除]</h1><p>(1)按位与<br>AND Rd,Rn,operand2<br>AND r0,r1,#5 //r0 = r1 &amp; 5<br>(2)按位或<br>ORR Rd,Rn,operand2<br>ORR r0,r1,#5 //r0 = r1 | 5<br>(3)异或<br>EOR Rd,Rn,operand2<br>EOR r0,r1,#5 //r0 = r1 ^ 5<br>(4)位清除<br>BIC  Rd,Rn,operand2  //Rd = Rn &amp; ~ operand2<br>//r0:0xff<br>BIC r0,r0,#3 //r0 = 0xff &amp; ~3 =  0xfc</p>
+<h1 id="比较指令"><a href="#比较指令" class="headerlink" title="比较指令"></a>比较指令</h1><p>CMP Rd,operand2<br>注意:自动影响CPSR的N,Z,C,V   eq,ne,gt,lt,ge,le<br>练习: a 的值10<br>if(a &gt;= 5)<br>a ++ ;<br>else<br>  a –;</p>
+<p>mov r0,#10<br>cmp r0,#5<br>addge r0,r0,#1<br>sublt r0,r0,#1</p>
+<h1 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h1><p>B   标签<br>BL  标签  [会将PC的值保存到Lr寄存器]<br>思考:如何实现长跳转?<br>直接给PC赋值 :ldr pc,=lable </p>
+<h1 id="内存访问指令"><a href="#内存访问指令" class="headerlink" title="内存访问指令"></a>内存访问指令</h1><ol>
+<li>ldr / str<br>ldr r0,[r1]      //r0 = <em>r1<br>//前索引<br>ldr r0,[r1,#4]   //r0 = </em>(r1 + 4)<br>//后索引<br>ldr r0,[r1],#4   //r0 = <em>r1,r1 = r1 + 4 ; data = </em>p ++;<br>//自动索引<br>ldr r0,[r1,#4]!  //r0 = *(r1 + 4); r1 = r1 + 4</li>
+</ol>
+<hr>
+<p>str r0,[r1]      //<em>r1 = r0<br>str r0,[r1,#4]   //</em>(r1 + 4) = r0<br>str r0,[r1],#4   //<em>r1 = r0 ,r1 = r1 + 4<br>str r0,[r1,#4]!  //</em>(r1 + 4) = r0,r1 = r1 + 4 </p>
+<p>2.ldm{mode} / stm{mode}<br>mode:<br>IA (increase after)       :     先操作数据，后增加地址<br>IB (increase before)      :     先增加地址，后操作数据<br>DA (decrement  after)     :     先操作数据，后减少地址<br>DB (decrement  before)    :     先减少地址，后操作数据</p>
+<p>//进栈/出栈 的方式<br>FD (full decrement)<br>ED (empty decrement)<br>FA (full  add)<br>EA (empty add)</p>
+<p>中断异常进入的时候，保护通用寄存器<br>sub lr,lr,#4<br>stm{mode}  sp!,{r0-r12,lr}<br>bl         c_lang</p>
+<p>//@^表示将SPSR拷贝到CPSR<br>ldm{mode}  sp!,{r0-r12,pc}^</p>
+<h1 id="多寄存器操作指令"><a href="#多寄存器操作指令" class="headerlink" title="多寄存器操作指令"></a>多寄存器操作指令</h1><p>STM/LDM{cond}{mode} 基地寄存器{!} {寄存器列表}{^}</p>
+<p>STM : 将列表中的寄存器写入内存<br>LDM : 从内存中读取数据到寄存器列表 </p>
+<p>@cond  eq,ne,gt,lt,ge,le<br>@mode  ia,ib,da,db,fd,fa,ed,ea </p>
+<p>@基地址寄存器 r0-r13<br>@!    最后更新基地址寄存器<br>@寄存器列表 {r0,r4,r5-r7}</p>
+<p>@^    如果寄存器列表没有pc,此时操作的是用户模式的寄存器;如果是LDM指令，并且有pc,此时恢复CPSR</p>
+<p>注意:<br>1.大地址对应大寄存器<br>2.寄存器列表从小到大<br>3.堆栈操作的时候，怎么进栈，怎么出栈 stmfd / ldmfd</p>
+<h1 id="ARM-一些伪指令"><a href="#ARM-一些伪指令" class="headerlink" title="ARM 一些伪指令"></a>ARM 一些伪指令</h1><p>(1)LDR 的几种写法<br>LDR r0,=0x123456 //r0 = 0x12345678<br>LDR r0,=label    //r0 = label<br>LDR r0,[r1]     // r0 = <em>r1<br>LDR r0,lable    // r0 = </em>label </p>
+<p>(2)ADR  :小范围的地址装载</p>
+<p>ADR r0,label   //r0 = label</p>
+<h1 id="ARM异常处理-1"><a href="#ARM异常处理-1" class="headerlink" title="ARM异常处理"></a>ARM异常处理</h1><p><1>告诉异常向量表的位置<br>ldr    r0,=0x20000<br>mcr    p15,0,r0,c12,c0,0</1></p>
+<p><2>编写异常向量表，在异常向量表中存放跳转指令<br>例如:<br>b   handler_swi / ldr pc,=handler_swi</2></p>
+<p><3>异常处理</3></p>
+<ol>
+<li>保存通用的寄存器[r0-r12]</li>
+<li>处理 </li>
+<li>异常返回,恢复通用的寄存器，恢复PC,恢复CPSR </li>
+</ol>
+<hr>
+<p>ldr pc,_handler_swi </p>
+<p>_handler_swi:</p>
+<h1 id="word-handler-swi"><a href="#word-handler-swi" class="headerlink" title=".word  handler_swi"></a>.word  handler_swi</h1><h2 id="ldr-pc-handler-swi"><a href="#ldr-pc-handler-swi" class="headerlink" title="ldr pc,=handler_swi"></a>ldr pc,=handler_swi</h2><p>irq:<br>handler_swi:<br>软中断处理<br>获取软中断号，存放到r0</p>
+<h1 id="软中断实验"><a href="#软中断实验" class="headerlink" title="软中断实验"></a>软中断实验</h1><p>_start:<br>异常向量表</p>
+<p>reset:<br>mov r0,#10<br>mov r1,#20<br>@告诉ARM核心异常向量表位置<br>ldr    r0,=0x20000<br>mcr    p15,0,r0,c12,c0,0<br>@切换到用户模式[MRS/MSR]<br>SWI  0x80<br>mov r2,#30<br>stop:<br>b stop<br>software_interrupt:<br>保护通用的寄存器<br>ldr sp,=0x38000<br>stmfd sp!,{r0-r12,lr}<br>获得软中断号，存放在r0<br>恢复现场</p>
+<h1 id="ARM-核的异常返回"><a href="#ARM-核的异常返回" class="headerlink" title="ARM 核的异常返回"></a>ARM 核的异常返回</h1><p>(1)IRQ 和 FIQ 异常<br>指令1[执行] &lt;- IRQ异常到达<br>指令2<br>指令3<br>指令4 &lt;- pc<br>最终:lr 保存指令3的地址<br>返回: pc &lt;- lr - 4 </p>
+<p>(2)软中断异常<br>swi 0x80 &lt;- 产生软中断异常<br>指令2<br>指令3 &lt;-pc<br>指令4<br>最终:lr 保存指令2的地址<br>返回: pc &lt;- lr</p>
+<p>(3)预取指令终止异常 :取指令的时候，没有取到指令<br>指令1 &lt;-执行的时候,没有取到指令<br>指令2<br>指令3 &lt;- pc<br>指令4<br>最终:lr 保存指令2地址<br>返回: pc &lt;- lr - 4 [重新取没有取到指令]</p>
+<p>(4)预取数据终止异常 : 取数据的时候，没有取到数据<br>指令1 &lt;-执行结束后，产生数据终止异常<br>指令2<br>指令3<br>指令4 &lt;- pc<br>最终:lr 保存指令3地址<br>返回: pc &lt;- lr - 8</p>
+<p>(5)未定义指令异常  : 指令ARM核不能识别指令<br>指令1 &lt;-执行的时候，ARM核不能识别指令<br>指令2<br>指令3 &lt;- pc<br>指令4<br>最终:lr 保存指令2的地址<br>返回: pc &lt;-lr </p>
+<h1 id="GCC-C语言内联汇编格式"><a href="#GCC-C语言内联汇编格式" class="headerlink" title="GCC C语言内联汇编格式"></a>GCC C语言内联汇编格式</h1><p>asm(<br>“汇编指令1\n”<br>“汇编指令2\n”<br>…<br>:输出列表<br>:输入列表<br>:修改列表<br>);</p>
+<p>(1)输出列表 : 将寄存器的值赋值给”C”变量</p>
+<p> :”=r”(C变量)</p>
+<p>(2)输入列表 : 将”C”变量值赋值给寄存器<br> :”r”(C变量)</p>
+<p> 注意:<br> “=r”(C变量) : 表示C变量可以写<br> “+r”(C变量) : 表示C变量可以读、可以写<br> “r” (C变量)     : 表示C变量只读</p>
+<p> 汇编指令中如何引用C变量?<br> 在输出列表和输入列表中，对C变量做编号，第一个C变量为%0,第二个C变量%1,….</p>
+<p> (3)修改列表 : 发生变化的寄存器<br> 好处，编译器会这些寄存器先做一个压栈保护</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ARM/" rel="tag"># ARM</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/08/软件按钮事件/" rel="next" title="软件按钮事件">
+                <i class="fa fa-chevron-left"></i> 软件按钮事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/10/SVN源代码泄露漏洞/" rel="prev" title="SVN源代码泄露漏洞">
+                SVN源代码泄露漏洞 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favico.gif"
+               alt="Note" />
+          <p class="site-author-name" itemprop="name">Note</p>
+           
+              <p class="site-description motion-element" itemprop="description">布施、持戒、忍辱、精进、禅定、般若</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com/" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ichunqiu.com/" title="i春秋" target="_blank">i春秋</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.amobbs.com/" title="amoBBS" target="_blank">amoBBS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codesec.net/" title="CodeSec" target="_blank">CodeSec</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://new.butian.360.cn/" title="补天" target="_blank">补天</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://klionsec.github.io/" title="klion" target="_blank">klion</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pediy.com/" title="看雪论坛" target="_blank">看雪论坛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vulbox.com/" title="漏洞盒子" target="_blank">漏洞盒子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.91ri.org/" title="91ri" target="_blank">91ri</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM"><span class="nav-number">1.</span> <span class="nav-text">ARM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哈佛体系结构"><span class="nav-number">2.</span> <span class="nav-text">哈佛体系结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM9-处理器系列"><span class="nav-number">3.</span> <span class="nav-text">ARM9 处理器系列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM11-处理器系列"><span class="nav-number">4.</span> <span class="nav-text">ARM11 处理器系列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cortex-处理器系列"><span class="nav-number">5.</span> <span class="nav-text">Cortex 处理器系列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM处理命名规则"><span class="nav-number">6.</span> <span class="nav-text">ARM处理命名规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM-微处理器结构"><span class="nav-number">7.</span> <span class="nav-text">ARM 微处理器结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断控制器"><span class="nav-number">8.</span> <span class="nav-text">中断控制器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM-的基本数据类型"><span class="nav-number">9.</span> <span class="nav-text">ARM 的基本数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储器大-小端"><span class="nav-number">10.</span> <span class="nav-text">存储器大/小端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM有几种工作模式？"><span class="nav-number">11.</span> <span class="nav-text">ARM有几种工作模式？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM有哪几个异常类型？"><span class="nav-number">12.</span> <span class="nav-text">ARM有哪几个异常类型？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协处理器（-CP15）"><span class="nav-number">13.</span> <span class="nav-text">协处理器（ CP15）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储管理单元（-MMU）"><span class="nav-number">14.</span> <span class="nav-text">存储管理单元（ MMU）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高速缓冲存储器（-Cache）"><span class="nav-number">15.</span> <span class="nav-text">高速缓冲存储器（ Cache）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM核有多少个寄存器？"><span class="nav-number">16.</span> <span class="nav-text">ARM核有多少个寄存器？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哪种模式使用的寄存器最少？"><span class="nav-number">17.</span> <span class="nav-text">哪种模式使用的寄存器最少？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未分组寄存器"><span class="nav-number">18.</span> <span class="nav-text">未分组寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组寄存器"><span class="nav-number">19.</span> <span class="nav-text">分组寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序状态寄存器"><span class="nav-number">20.</span> <span class="nav-text">程序状态寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM异常处理"><span class="nav-number">21.</span> <span class="nav-text">ARM异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在CoctexA系列异常向量表可以存放在任何位置，只需将异常向量表所在起始位置告诉CP15-协处理器-的C12寄存器"><span class="nav-number">21.1.</span> <span class="nav-text">在CoctexA系列异常向量表可以存放在任何位置，只需将异常向量表所在起始位置告诉CP15[协处理器]的C12寄存器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM核是如何让FIQ快速处理"><span class="nav-number">22.</span> <span class="nav-text">ARM核是如何让FIQ快速处理?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM-处理器的寻址方式"><span class="nav-number">23.</span> <span class="nav-text">ARM 处理器的寻址方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据处理指令寻址方式可以分为以下几种？"><span class="nav-number">24.</span> <span class="nav-text">数据处理指令寻址方式可以分为以下几种？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断一个数是不是合法的立即数，最好的方法就是拿编译器验证，不是，编译器就会报错。但是在面试或者是笔试的时候，可能会遇到判断立即数的题目，那有没有好的方法判断呢？"><span class="nav-number">25.</span> <span class="nav-text">判断一个数是不是合法的立即数，最好的方法就是拿编译器验证，不是，编译器就会报错。但是在面试或者是笔试的时候，可能会遇到判断立即数的题目，那有没有好的方法判断呢？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器寻址方式"><span class="nav-number">26.</span> <span class="nav-text">寄存器寻址方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存访问指令寻址方式"><span class="nav-number">27.</span> <span class="nav-text">内存访问指令寻址方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇编加法程序设计"><span class="nav-number">28.</span> <span class="nav-text">汇编加法程序设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指令助记符-条件-S-Rd-Rn-operand2"><span class="nav-number">29.</span> <span class="nav-text">指令助记符{条件}{S}  Rd,Rn,{operand2}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何判断一个数是否为合法立即数？"><span class="nav-number">30.</span> <span class="nav-text">如何判断一个数是否为合法立即数？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器移位"><span class="nav-number">31.</span> <span class="nav-text">寄存器移位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算术运算指令"><span class="nav-number">32.</span> <span class="nav-text">算术运算指令 [+, - , *]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据装载指令"><span class="nav-number">33.</span> <span class="nav-text">数据装载指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LDR-r0-0x123456-r0-0x123456"><span class="nav-number">33.1.</span> <span class="nav-text">LDR r0,=0x123456 //r0 = 0x123456</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪指令-是给编译器使用的，编译器最终会将这条指令翻成ARM核所能识别的指令"><span class="nav-number">33.2.</span> <span class="nav-text">伪指令:是给编译器使用的，编译器最终会将这条指令翻成ARM核所能识别的指令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按位操作-按位与，按位或，异或-位清除"><span class="nav-number">34.</span> <span class="nav-text">按位操作 [按位与，按位或，异或,位清除]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比较指令"><span class="nav-number">35.</span> <span class="nav-text">比较指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跳转指令"><span class="nav-number">36.</span> <span class="nav-text">跳转指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存访问指令"><span class="nav-number">37.</span> <span class="nav-text">内存访问指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多寄存器操作指令"><span class="nav-number">38.</span> <span class="nav-text">多寄存器操作指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM-一些伪指令"><span class="nav-number">39.</span> <span class="nav-text">ARM 一些伪指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM异常处理-1"><span class="nav-number">40.</span> <span class="nav-text">ARM异常处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#word-handler-swi"><span class="nav-number">41.</span> <span class="nav-text">.word  handler_swi</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ldr-pc-handler-swi"><span class="nav-number">41.1.</span> <span class="nav-text">ldr pc,=handler_swi</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软中断实验"><span class="nav-number">42.</span> <span class="nav-text">软中断实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM-核的异常返回"><span class="nav-number">43.</span> <span class="nav-text">ARM 核的异常返回</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC-C语言内联汇编格式"><span class="nav-number">44.</span> <span class="nav-text">GCC C语言内联汇编格式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Note</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

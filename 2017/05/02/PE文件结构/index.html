@@ -1,0 +1,1214 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="逆向," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是PE文件？PE（Portable Execute）文件是Windows下可移植可执行文件的总称，常见的有DLL，EXE，OCX，SYS等，事实上，一个文件是否是PE文件与其扩展名无关。本文要说的PE文件结构，就是指的Window可移植可执行文件结构。">
+<meta name="keywords" content="逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件结构">
+<meta property="og:url" content="http://yoursite.com/2017/05/02/PE文件结构/index.html">
+<meta property="og:site_name" content="Note&#39;s blog">
+<meta property="og:description" content="什么是PE文件？PE（Portable Execute）文件是Windows下可移植可执行文件的总称，常见的有DLL，EXE，OCX，SYS等，事实上，一个文件是否是PE文件与其扩展名无关。本文要说的PE文件结构，就是指的Window可移植可执行文件结构。">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/结构总览.png">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/Dos结构.jpg">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/e_lfanew.jpg">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/Dos块.png">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/PE头.jpg">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/PE头数据块.png">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/文件头结构定义.jpg">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/可选头定义.jpg">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/相对虚拟地址.jpg">
+<meta property="og:image" content="http://yoursite.com/PE文件结构/节表.jpg">
+<meta property="og:updated_time" content="2017-05-06T08:11:59.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PE文件结构">
+<meta name="twitter:description" content="什么是PE文件？PE（Portable Execute）文件是Windows下可移植可执行文件的总称，常见的有DLL，EXE，OCX，SYS等，事实上，一个文件是否是PE文件与其扩展名无关。本文要说的PE文件结构，就是指的Window可移植可执行文件结构。">
+<meta name="twitter:image" content="http://yoursite.com/PE文件结构/结构总览.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/02/PE文件结构/"/>
+
+
+
+
+
+  <title>PE文件结构 | Note's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Note's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/02/PE文件结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PE文件结构
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T10:21:47+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件安全/" itemprop="url" rel="index">
+                    <span itemprop="name">软件安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="什么是PE文件？"><a href="#什么是PE文件？" class="headerlink" title="什么是PE文件？"></a>什么是PE文件？</h1><p>PE（Portable Execute）文件是Windows下可移植可执行文件的总称，常见的有DLL，EXE，OCX，SYS等，事实上，一个文件是否是PE文件与其扩展名无关。本文要说的PE文件结构，就是指的Window可移植可执行文件结构。<br><a id="more"></a></p>
+<h1 id="PE文件结构"><a href="#PE文件结构" class="headerlink" title="PE文件结构"></a>PE文件结构</h1><p>PE文件具有较强的移植性；<br>PE结构是一种数据组织方式；<br>PE结构主要应用于windows系统；<br>具有PE结构的文件称为PE文件；<br>EXE、DLL都是PE文件；</p>
+<p>一个完整的PE文件主要有4个部分组成：<strong>DOS头，PE头，节表以及节数据</strong>。<br>1.Dos部分主要用来对非FE格式文件的处理，DOS时代遗留的产物，是PE文件的一个遗传基因;<br>2.PE头部分用于宏观上记录文件的一些信息，，运行平台，大小，创建日期，属性等。<br>3.节表部分用于对各中类型的数据进行定义分段;<br>4.节数据不言而喻就是文件的数据部分，实际上我们编写程序的过程中就是对该部分的数据进行编写。而其他的部分则是由编译器依照我们编写的部分进行相应的填写而得到的。<br><img src="/PE文件结构/结构总览.png" alt=""><br>上图从下往上看，该结构清晰的描述了各个数据块在pe文件中的排列顺序和部分数据块之间的关联方式。</p>
+<h2 id="Dos部分"><a href="#Dos部分" class="headerlink" title="Dos部分"></a>Dos部分</h2><p>DOS部分由如下两部分构成：Dos头和Dos块。<br>Dos头：长度40h；<br>Dos块：长度不定，DOS插桩代码，是DOS下的16位程序代码，只是为了显示上面的提示数据。这段代码是编译器在程序编译过程中自动添加的。<br>Dos头对于非pe结构的文件将指引dos可执行程序部分，也就指引到dos块。而<strong>对于PE结构的文件将指引到PE结构部分</strong>。具体如何指引是通过dos头结构进行指定的。</p>
+<h3 id="Dos结构定义"><a href="#Dos结构定义" class="headerlink" title="Dos结构定义"></a>Dos结构定义</h3><p><img src="/PE文件结构/Dos结构.jpg" alt=""><br>这里是对dos头结构的完整定义，该字段的长度固定为40h。<br>第一项是字段的名称，第二项是字段的大小，第三项是字段的是数据内容。对于研究PE结构而言，该结构的定义中对我们有意义的字段只有最后一个（也就是红色的那一行），该字段的内容是一个长度为4个字节的地址，用于指向PE结构部分。<br><strong>dosHeader-&gt;e_lfanew是DWORD类型,指出真正PE头相对于文件基地址的偏移值，即偏移多少个字节。</strong><br>该字段在文件中如何查找，需要计算该字段E_lfanew的偏移（就是3Ch）。偏移的计算方法很简单，就是计算从结构头部到该字节的长度。找到Dos头的地址，然后加上偏移量3Ch就是e_lfanew的地址。或者使用OlluDebug查看：<br><img src="/PE文件结构/e_lfanew.jpg" alt=""><br>我们已经知道dos头部分的长度是40h，其后面紧跟的就是dos块部分，而dos块的长度则是不固定的。它起始于dos头的结束位置，结束于pe头开始之前。也就是说，位于dos头和pe头之间的数据就是dos块。<br>下图中被选中的部分就是dos块。<br><img src="/PE文件结构/Dos块.png" alt=""><br>Dos块：长度不定，DOS插桩代码，是DOS下的16位程序代码，只是为了显示上面的提示数据。这段代码是编译器在程序编译过程中自动添加的。</p>
+<h2 id="PE头部分"><a href="#PE头部分" class="headerlink" title="PE头部分"></a>PE头部分</h2><p>PE头的三个构成部分：<br><strong>PE标志位</strong>，长度4H（4个字节）<br><strong>文件头</strong>，长度14H（20个字节）<br><strong>可选头</strong>，长度E0H（224个字节）<br>PE header 是真正的Win32程序的格式头部，其中包括如下：<br>PE标志位：共有4个字节的长度，用来判断文件是否为pe文件的标识。PE文件该字段的值固定为00004550，在字符串中看到的数据为“PE..”<br>文件头：共占有14H个字节的长度，主要记录该文件的一些调试信息。<br>可选头：长度为E0H个字节。该部分虽然叫可选头，PE文件中不可或缺的一部分。文件在装入内存时，主要的参照的就是该结构。文件在从源代码进行编译的时候也主要是对该部分进行填写。并在生成的时候依照该结构的一些字段的设置。<br>（ PE表头内含的重要信息包括程序代码和资料区域的大小位置、适用的操作系统、堆栈（stack）的最初大小等等。 ）<br><img src="/PE文件结构/PE头.jpg" alt=""><br><img src="/PE文件结构/PE头数据块.png" alt=""><br>上面的图显示的是各个数据块的情况。<br>红色方框圈起来的是pe标志位（4字节），PE文件头标志 :“PE\0\0”。在开始DOS header的偏移3CH处所指向的地址开始 。<br>粉色方框内的数据是PE文件头部分（20字节），IMAGE_FILE_HEADER FileHeader；PE文件物理分布的信息 。<br>下面最大的那一部分是可选头部分，IMAGE_OPTIONAL_HEADER32 OptionalHeader；PE文件逻辑分布的信息 。</p>
+<h3 id="文件头结构定义"><a href="#文件头结构定义" class="headerlink" title="文件头结构定义"></a>文件头结构定义</h3><p><img src="/PE文件结构/文件头结构定义.jpg" alt=""><br>20个字节，对应的结构体名字：<strong>IMAGE_FILE_HEADER STRUCT</strong><br>从结构的定义可以看到第二个字段是当前PE文件的节的数目。<br>Machine：指出该文件运行所需的CPU。<br>NumberOfSections：文件的节数目。<br>Characteristics文件属性：区分文件是exe还是dll等。</p>
+<h3 id="可选头定义"><a href="#可选头定义" class="headerlink" title="可选头定义"></a>可选头定义</h3><p><img src="/PE文件结构/可选头定义.jpg" alt=""><br>对应的结构体名字：IMAGE_OPTIONAL_HEADER32 STRUCT<br>由于可选头字段数目多达32个，这里没有对全部字段的定义进行列举，只列举了几个相对重要的一些字段（12个）。<br><strong>DWORD AddressOfEntryPoint；//PE装载器准备运行的PE文件的第一个指令的RVA，若要改变整个执行的流程，可以将该值指定到新的RVA，这样新RVA处的指令首先被执行。</strong><br>DWORD SectionAlignment; //块对齐<br>DWORD FileAlignment; //文件块对齐<br>（其中注释部分前面的16进制数据是该字段相对于PE头的偏移量。）<br>“RVA”：全名是“Relative Virtual Address”，翻译过来是“相对虚拟地址”。但该地址在用16进制工具打开磁盘文件后得到的数据中并不能找到。这是因为RVA是一个内存地址，我们打开的磁盘中的文件是找不到该地址的。 使用动态调试工具可以看到，如OD：<br><img src="/PE文件结构/相对虚拟地址.jpg" alt=""><br>PE文件中的许多字段内容都是以RVA表示。<br>一个RVA是某一资料项的offset（偏移）值 – 从文件被映像进来的起点算起。<br>举个例子，我们说Windows加载器把一个PE档映像到虚拟地址空间的 0x400000 处，如果此image有一个表格开始于0x401464，那么这个表格 RVA就是0x1464：<br><strong>虚拟地址 0x401464 - 基地址 0x400000 = RVA 0x1464 </strong><br>只要把RVA加上基地址，RVA就可以被转换为一个有用的指针。<br>由于内存中和文件中节对齐粒度不同，同一数据相对于文件头的偏移量在内存中和在磁盘文件中可能是不同的，为了提高程序执行的效率，PE文件头中使用的都是内存映像中的偏移量，也就是RVA。 </p>
+<p>注意，可选头的最后一个字段是一个结构体：<br>DataDirectory IMAGE_DATA_DIRECTORY 16 dup(&lt;&gt;) ;0078h<br>该结构体定义如下：<br>IMAGE_DATA_DIRECTORY STRUCT<br>  VirtualAddress    DWORD      ?    ；数据的起始RVA<br>  Size                DWORD      ?    ；数据块的长度大小<br>IMAGE_DATA_DIRECTORY ENDS<br>分别定义一个数据的起始地址，另一个是定义一个数据块的长度。</p>
+<p>可选头中定义了如下重要信息：</p>
+<ul>
+<li>所有含代码的节的总大小</li>
+<li>所有含已初始化数据的节的总大小</li>
+<li>所有含未初始化数据的节的大小</li>
+<li>程序执行入口RVA</li>
+<li>代码的节的起始RVA</li>
+<li>数据的节的起始RVA</li>
+<li>程序的建议装载地址</li>
+<li>内存中的节的对齐粒度</li>
+<li>文件中的节的对齐粒度</li>
+<li>内存中整个PE映像尺寸</li>
+<li>所有头＋节表的大小</li>
+<li>导出表</li>
+<li>导入表</li>
+<li>资源</li>
+<li>重定位表</li>
+<li>调试信息</li>
+<li>版权信息</li>
+<li>导入函数地址表</li>
+</ul>
+<h2 id="节表"><a href="#节表" class="headerlink" title="节表"></a>节表</h2><p><img src="/PE文件结构/节表.jpg" alt=""><br>节表：PE代码和数据的结构数据，指示装载系统代码段在哪里，数据段在哪里等。<br>PE文件中所有节的属性都被定义在节表（段表）中，节表是一个由IMAGE_SECTION_HEADER结构组成的数组，每个结构用来描述一个节。我们来分析一下这个结构。<br>结构的排列顺序和它们描述的节在文件中的排列顺序是一致的。全部有效结构的最后以一个空的IMAGE_SECTION_HEADER结构作为结束，所以节表中总的IMAGE_SECTION_HEADER结构数量等于节的数量加一。节表总是被存放在紧接在PE文件头的地方，也就是从PE文件头开始的偏移为00f8h的地方。<br>（注意：不是文件本身的头部，由于程序的dos块的大小并不是固定的，所以导致PE头相对于mz头的偏移变化的。 所以我们在计算偏移的时候，对于PE头后面的数据都习惯用相对于PE头的偏移，PE头大小是固定的的。）<br>在文件头中已经定义了文件的节的数目：0ah个，那么该文件的节表共有11个IMAGE_SECTION_HEADER结构。</p>
+<h2 id="节数据"><a href="#节数据" class="headerlink" title="节数据"></a>节数据</h2><p>常见的节数据：<br>.text：代码段，是在编译或汇编结束时产生的一种块，它的内容全部是指令代码。也有的编译器将该段命名为.code<br>.data：初始化的数据块，是初始化的数据块，包含那些编译时被初始化的变量、字符串<br>.idata：输入表，包含其他外来dll的函数和数据信息，也就是输入表，也有人称之为导入表。<br>.rsrc：资源数据块，包含模块的全部资源数据，如图标、菜单、位图等。<br>.reloc：重定位表，用于保存基址的重定位表。即当装在程序不能按照连接器所指定的地址装载文件是，需要对指令或已经初始化的变量进行调整，该块中也包含了调整过程中所需要的一些数据，如果装载能够正常装在则忽略此段中的数据。<br>.edata：导出表，是pe文件的输出表，以供其他模块使用，并不是每个pe文件都有此数据段，因为有的文件并不需要输出一些函数，该数据段常见于动态连接库文件中。<br>.radata：存放调试目录、说明字符串，该数据块并不常见主要是用于存放一些调试信息。</p>
+<h3 id="导入表"><a href="#导入表" class="headerlink" title="导入表"></a>导入表</h3><p>导入表由一系列的IMAGE_IMPORT_DESCRIPTOR结构组成，结构的数量取决于程序要使用的DLL文件的数量，每个结构对应一个DLL文件，例如，如果一个PE文件从10个不同的DLL文件中引入了函数，那么就存在10个IMAGE_IMPORT_DESCRIPTOR结构来描述这些DLL文件，在所有这些结构的最后，由一个内容全为0的IMAGE_IMPORT_DESCRIPTOR结构作为结束。<br>IMAGE_IMPORT_DESCRIPTOR STRUCT<br>    union<br>        Characteristics         DWORD     ?<br>        OriginalFirstThunk     DWORD     ?    ；指向被调函数名的指针数组的指针<br>    ends<br>    TimeDateStamp         DWORD     ?    ；时间日期记录，无实际意义，可忽略<br>    ForwarderChain         DWORD     ?    ；正向连接索引<br>    Name1                  DWORD     ?    ；指向被调用dll的名字指针数组的指针<br>    FirstThunk              DWORD     ?    ；指向被调函数地址的指针数组的指针<br>IMAGE_IMPORT_DESCRIPTOR ENDS<br>ForwarderChain：当程序调用一个dll中的函数A，而函数A又需要调用其他dll中的函数B时使用该字段。这种情况很少见，该字段也就很少被用到。一般为0。<br>FirstThunk：该字段在文件中看到的数据是和第一个字段OriginalFirstThunk是一样的，这里之所以叫做地址是由于程序加载到内存后是会对该字段重写，将地址写入到这里。</p>
+<h3 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h3><p>IMAGE_EXPORT_DIRECTORY STRUCT<br>  Characteristics                   DWORD      ?    ；未使用，总是为0<br>  TimeDateStamp                     DWORD      ?    ；文件的产生时刻<br>  MajorVersion                      WORD       ?     ；未使用，总是为0<br>  MinorVersion                          WORD       ?     ；未使用，总是为0<br>  nName                             DWORD      ?    ；指向文件名的RVA<br>  nBase                             DWORD      ?    ；导出函数的起始序号<br>  NumberOfFunctions                 DWORD      ?    ；导出函数的总数<br>  NumberOfNames                     DWORD      ?    ；以名称导出的函数总数<br>  AddressOfFunctions                DWORD      ?    ；指向导出函数地址表的RVA<br>  AddressOfNames                    DWORD      ?    ；指向函数名地址表的RVA<br>  AddressOfNameOrdinals             DWORD      ?    ；指向函数名序号表的RVA<br>IMAGE_EXPORT_DIRECTORY ENDS</p>
+<p>nName字段：这个字段是一个RVA值，指向一个定义了模块名称的字符串。这个字符串说明了模块的原始文件名，比如说即使Kernel32.dll文件被改名为Ker.dll，仍然可以从这个字符串中的值得知它被编译时的文件名是“Kernel32.dll”。<br>NumberOfFunctions字段：文件中包含的导出函数的总数。<br>NumberOfNames字段：被定义了函数名称的导出函数的总数。显然，只有这个数量的函数既可以用函数名方式导出，也可以用序号方式导出，剩下的NumberOfFunctions减去NumberOfNames数量的函数只能用序号方式导出。NumberOfNames字段的值只会小于或者等于NumberOfFunctions字段的值，如果这个值是0，表示所有的函数都是以序号方式导出的。<br>AddressOfFunctions字段：这是一个RVA值，指向包含全部导出函数入口地址的双字数组，数组中的每一项是一个RVA值，数组的项数等于NumberOfFunctions字段的值。<br>nBase字段：导出函数序号的起始值。将AddressOfFunctions字段指向的入口地址表的索引号加上这个起始值就是对应函数的导出序号，举例来说，假如nBase字段的值为x，那么入口地址表指定的第一个导出函数的序号就是x，第二个导出函数的序号就是x＋1，总之，一个导出函数的导出序号等于nBase字段的值加上其在入口地址表中的位置索引值。<br>AddressOfNames和AddressOfNameOrdinals字段：AddressOfNames字段的数值是一个RVA值，指向函数名字符串地址表，这个地址表是一个双字数组，数组中的每一项指向一个函数名称字符串的RVA，数组的项数等于NumberOfNames字段的值，所有有名称的导出函数的名称字符串都定义在这个表中。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/逆向/" rel="tag"># 逆向</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/01/OllyDebug-去除NAG窗口/" rel="next" title="OllyDebug-去除NAG窗口">
+                <i class="fa fa-chevron-left"></i> OllyDebug-去除NAG窗口
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/03/OllyDebug-软件破解常用方法/" rel="prev" title="OllyDebug-软件破解常用方法">
+                OllyDebug-软件破解常用方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favico.gif"
+               alt="Note" />
+          <p class="site-author-name" itemprop="name">Note</p>
+           
+              <p class="site-description motion-element" itemprop="description">布施、持戒、忍辱、精进、禅定、般若</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com/" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ichunqiu.com/" title="i春秋" target="_blank">i春秋</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.amobbs.com/" title="amoBBS" target="_blank">amoBBS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codesec.net/" title="CodeSec" target="_blank">CodeSec</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://new.butian.360.cn/" title="补天" target="_blank">补天</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://klionsec.github.io/" title="klion" target="_blank">klion</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pediy.com/" title="看雪论坛" target="_blank">看雪论坛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vulbox.com/" title="漏洞盒子" target="_blank">漏洞盒子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.91ri.org/" title="91ri" target="_blank">91ri</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是PE文件？"><span class="nav-number">1.</span> <span class="nav-text">什么是PE文件？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PE文件结构"><span class="nav-number">2.</span> <span class="nav-text">PE文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dos部分"><span class="nav-number">2.1.</span> <span class="nav-text">Dos部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dos结构定义"><span class="nav-number">2.1.1.</span> <span class="nav-text">Dos结构定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PE头部分"><span class="nav-number">2.2.</span> <span class="nav-text">PE头部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件头结构定义"><span class="nav-number">2.2.1.</span> <span class="nav-text">文件头结构定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选头定义"><span class="nav-number">2.2.2.</span> <span class="nav-text">可选头定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#节表"><span class="nav-number">2.3.</span> <span class="nav-text">节表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#节数据"><span class="nav-number">2.4.</span> <span class="nav-text">节数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入表"><span class="nav-number">2.4.1.</span> <span class="nav-text">导入表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出表"><span class="nav-number">2.4.2.</span> <span class="nav-text">导出表</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Note</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
