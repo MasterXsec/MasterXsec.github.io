@@ -96,17 +96,17 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/04/手工木马检测/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="检查网络连接情况由于不少木马会主动侦听端口，或者会连接特定的IP和端口，所以我们可以在没有正常程序连接网络的情况下，通过检查网络连情情况来发现木马的存在。使用的命令为：1netstat -ano">
-<meta property="og:image" content="http://yoursite.com/手工木马检测/netstat.png">
-<meta property="og:image" content="http://yoursite.com/手工木马检测/服务.jpg">
-<meta property="og:image" content="http://yoursite.com/手工木马检测/注册表.jpg">
-<meta property="og:image" content="http://yoursite.com/手工木马检测/system.jpg">
-<meta property="og:image" content="http://yoursite.com/手工木马检测/文件内容.jpg">
-<meta property="og:image" content="http://yoursite.com/手工木马检测/管理员组.jpg">
-<meta property="og:updated_time" content="2017-06-04T14:57:08.742Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/手工木马检测/netstat.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/手工木马检测/服务.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/手工木马检测/注册表.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/手工木马检测/system.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/手工木马检测/文件内容.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/手工木马检测/管理员组.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:01:19.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手工木马检测">
 <meta name="twitter:description" content="检查网络连接情况由于不少木马会主动侦听端口，或者会连接特定的IP和端口，所以我们可以在没有正常程序连接网络的情况下，通过检查网络连情情况来发现木马的存在。使用的命令为：1netstat -ano">
-<meta name="twitter:image" content="http://yoursite.com/手工木马检测/netstat.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/04/手工木马检测/netstat.png">
 
 
 
@@ -417,13 +417,13 @@
 
       
         <h1 id="检查网络连接情况"><a href="#检查网络连接情况" class="headerlink" title="检查网络连接情况"></a>检查网络连接情况</h1><p>由于不少木马会主动侦听端口，或者会连接特定的IP和端口，所以我们可以在没有正常程序连接网络的情况下，通过检查网络连情情况来发现木马的存在。<br>使用的命令为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ano</div></pre></td></tr></table></figure></p>
-<p><img src="/手工木马检测/netstat.png" alt=""><br><a id="more"></a></p>
-<h1 id="查看正在运行的服务"><a href="#查看正在运行的服务" class="headerlink" title="查看正在运行的服务"></a>查看正在运行的服务</h1><p>服务是很多木马用来保持自己在系统中永远能处于运行状态的方法之一。我们可以通过点击“开始”-&gt;“运行”-&gt;“cmd”，然后输入“net start”来查看系统中究竟有什么服务处于运行状态，如果发现了不是自己开放的服务，我们可以进入“服务”管理工具中的“服务”，找到相应的服务，停止并禁用它。<br><img src="/手工木马检测/服务.jpg" alt=""></p>
-<h1 id="检查系统启动项"><a href="#检查系统启动项" class="headerlink" title="检查系统启动项"></a>检查系统启动项</h1><p>由于注册表对于普通用户来说比较复杂，木马常常喜欢隐藏在这里。<br><img src="/手工木马检测/注册表.jpg" alt=""><br>检查的项目为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">HKEY_LOCAL_MACHINE/Software/Microsoft/Windows/CurrentVersion</div><div class="line">HKEY_CURRENT_USERS/software/Microsoft/Windows/CurrentVersion</div><div class="line">HKEY-USERS/.Default/Software/Microsoft/Windows/CurrentVersion</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/06/04/手工木马检测/netstat.png" alt=""><br><a id="more"></a></p>
+<h1 id="查看正在运行的服务"><a href="#查看正在运行的服务" class="headerlink" title="查看正在运行的服务"></a>查看正在运行的服务</h1><p>服务是很多木马用来保持自己在系统中永远能处于运行状态的方法之一。我们可以通过点击“开始”-&gt;“运行”-&gt;“cmd”，然后输入“net start”来查看系统中究竟有什么服务处于运行状态，如果发现了不是自己开放的服务，我们可以进入“服务”管理工具中的“服务”，找到相应的服务，停止并禁用它。<br><img src="/2017/06/04/手工木马检测/服务.jpg" alt=""></p>
+<h1 id="检查系统启动项"><a href="#检查系统启动项" class="headerlink" title="检查系统启动项"></a>检查系统启动项</h1><p>由于注册表对于普通用户来说比较复杂，木马常常喜欢隐藏在这里。<br><img src="/2017/06/04/手工木马检测/注册表.jpg" alt=""><br>检查的项目为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">HKEY_LOCAL_MACHINE/Software/Microsoft/Windows/CurrentVersion</div><div class="line">HKEY_CURRENT_USERS/software/Microsoft/Windows/CurrentVersion</div><div class="line">HKEY-USERS/.Default/Software/Microsoft/Windows/CurrentVersion</div></pre></td></tr></table></figure></p>
 <p>以上项目中所有以“run”开头的键值。</p>
-<h1 id="system-ini文件"><a href="#system-ini文件" class="headerlink" title="system.ini文件"></a>system.ini文件</h1><p>Windows安装目录下的system.ini也是木马喜欢隐蔽的地方。打开这个文件看看，打开C盘下的windows目录，找到system.ini文件：<br><img src="/手工木马检测/system.jpg" alt=""><br>在该文件的[boot]字段中，是不是有shell=Explorer.exe file.exe这样的内容，如有这样的内容，那这里的file.exe就是木马程序了!<br><img src="/手工木马检测/文件内容.jpg" alt=""></p>
+<h1 id="system-ini文件"><a href="#system-ini文件" class="headerlink" title="system.ini文件"></a>system.ini文件</h1><p>Windows安装目录下的system.ini也是木马喜欢隐蔽的地方。打开这个文件看看，打开C盘下的windows目录，找到system.ini文件：<br><img src="/2017/06/04/手工木马检测/system.jpg" alt=""><br>在该文件的[boot]字段中，是不是有shell=Explorer.exe file.exe这样的内容，如有这样的内容，那这里的file.exe就是木马程序了!<br><img src="/2017/06/04/手工木马检测/文件内容.jpg" alt=""></p>
 <h1 id="检查系统帐户"><a href="#检查系统帐户" class="headerlink" title="检查系统帐户"></a>检查系统帐户</h1><p>恶意的攻击者喜欢在电脑中留有一个账户的方法来控制你的计算机。他们采用的方法就是激活一个系统中的默认账户，但这个账户却很少使用，然后把这个账户的权限提升为管理员权限，这个帐户将是系统中最大的安全隐患。恶意的攻击者可以通过这个账户任意地控制你的计算机。如果系统中管理员组存在其他的帐户，那么很有可能是被入侵了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net localgroup administrators</div></pre></td></tr></table></figure></p>
-<p><img src="/手工木马检测/管理员组.jpg" alt=""></p>
+<p><img src="/2017/06/04/手工木马检测/管理员组.jpg" alt=""></p>
 
       
     </div>

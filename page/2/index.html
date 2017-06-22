@@ -415,7 +415,7 @@
       
         
           <h1 id="检查网络连接情况"><a href="#检查网络连接情况" class="headerlink" title="检查网络连接情况"></a>检查网络连接情况</h1><p>由于不少木马会主动侦听端口，或者会连接特定的IP和端口，所以我们可以在没有正常程序连接网络的情况下，通过检查网络连情情况来发现木马的存在。<br>使用的命令为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ano</div></pre></td></tr></table></figure></p>
-<p><img src="/手工木马检测/netstat.png" alt=""><br>
+<p><img src="/2017/06/04/手工木马检测/netstat.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/04/手工木马检测/#more" rel="contents">
@@ -857,7 +857,7 @@
 
       
         
-          <h1 id="Tomcat的安装"><a href="#Tomcat的安装" class="headerlink" title="Tomcat的安装"></a>Tomcat的安装</h1><p>下载地址：<br><a href="http://tomcat.apache.org/" target="_blank" rel="external">http://tomcat.apache.org/</a><br>建议下载二进制免安装版：<br><img src="/Web服务器压力测试/安装.jpg" alt=""><br>解压缩之后，配置好环境变量即可运行。<br>
+          <h1 id="Tomcat的安装"><a href="#Tomcat的安装" class="headerlink" title="Tomcat的安装"></a>Tomcat的安装</h1><p>下载地址：<br><a href="http://tomcat.apache.org/" target="_blank" rel="external">http://tomcat.apache.org/</a><br>建议下载二进制免安装版：<br><img src="/2017/06/01/Tomcat的安全性分析和安全配置/安装.jpg" alt=""><br>解压缩之后，配置好环境变量即可运行。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/01/Tomcat的安全性分析和安全配置/#more" rel="contents">
@@ -1003,7 +1003,7 @@
 
       
         
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个网站或者博客到底能够承受多大的用户访问量经常是我们在用VPS或者独立服务器搭建网站了最关心的问题，还有不少人喜欢对LNMP或者LAMP进行一些优化以便提高Web性能，而优化后到底有多大的效果，就需要我们对网站进行服务器压力测试了。<br><img src="/Web服务器压力测试/website.jpg" alt=""><br>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个网站或者博客到底能够承受多大的用户访问量经常是我们在用VPS或者独立服务器搭建网站了最关心的问题，还有不少人喜欢对LNMP或者LAMP进行一些优化以便提高Web性能，而优化后到底有多大的效果，就需要我们对网站进行服务器压力测试了。<br><img src="/2017/06/01/Web服务器压力测试/website.jpg" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/01/Web服务器压力测试/#more" rel="contents">
@@ -1150,7 +1150,7 @@
       
         
           <p><strong>1.获取密码密文</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/shadow</div></pre></td></tr></table></figure></p>
-<p><img src="/Linux口令破解/获取密文.jpg" alt=""><br>root：用户名；<br>$6$：是表示一种类型标记为6的密码散列suans fa,这里指SHA-512哈希算法；<br>mxuA5cdy：指的是加盐(Salt)值；</p>
+<p><img src="/2017/05/30/Linux口令破解/获取密文.jpg" alt=""><br>root：用户名；<br>$6$：是表示一种类型标记为6的密码散列suans fa,这里指SHA-512哈希算法；<br>mxuA5cdy：指的是加盐(Salt)值；</p>
 <p><strong>2.保存root用户的hash密文到passwd.lst文件中</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/shadow /root/Desktop/passwd.lst</div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">

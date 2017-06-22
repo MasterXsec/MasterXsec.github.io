@@ -97,15 +97,15 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/21/ARP欺骗攻击与防御/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="ARP协议概述ARP：ip数据包常通过以太网发送，但是以太网设备并不识别32位ip地址，它们是以48位MAC地址传输以太网数据包的。因此，ip驱动器必须把ip目的地址转换成MAC目的地址。在这两种地址之间存在着某种静态的或算法的映射，常常需要查看一张表。地址解析协议(address resolution protocol，arp)就是用来确定这些映象的协议。">
-<meta property="og:image" content="http://yoursite.com/ARP欺骗攻击与防御/选择网卡.jpg">
-<meta property="og:image" content="http://yoursite.com/ARP欺骗攻击与防御/扫描.jpg">
-<meta property="og:image" content="http://yoursite.com/ARP欺骗攻击与防御/IP冲突.jpg">
-<meta property="og:image" content="http://yoursite.com/ARP欺骗攻击与防御/网关欺骗.jpg">
-<meta property="og:updated_time" content="2017-05-21T08:52:43.552Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/ARP欺骗攻击与防御/选择网卡.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/ARP欺骗攻击与防御/扫描.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/ARP欺骗攻击与防御/IP冲突.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/ARP欺骗攻击与防御/网关欺骗.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:08:36.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARP欺骗攻击与防御">
 <meta name="twitter:description" content="ARP协议概述ARP：ip数据包常通过以太网发送，但是以太网设备并不识别32位ip地址，它们是以48位MAC地址传输以太网数据包的。因此，ip驱动器必须把ip目的地址转换成MAC目的地址。在这两种地址之间存在着某种静态的或算法的映射，常常需要查看一张表。地址解析协议(address resolution protocol，arp)就是用来确定这些映象的协议。">
-<meta name="twitter:image" content="http://yoursite.com/ARP欺骗攻击与防御/选择网卡.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/21/ARP欺骗攻击与防御/选择网卡.jpg">
 
 
 
@@ -417,8 +417,8 @@
       
         <h1 id="ARP协议概述"><a href="#ARP协议概述" class="headerlink" title="ARP协议概述"></a>ARP协议概述</h1><p>ARP：<br>ip数据包常通过以太网发送，但是以太网设备并不识别32位ip地址，它们是以48位MAC地址传输以太网数据包的。因此，ip驱动器必须把ip目的地址转换成MAC目的地址。在这两种地址之间存在着某种静态的或算法的映射，常常需要查看一张表。地址解析协议(address resolution protocol，arp)就是用来确定这些映象的协议。<br><a id="more"></a><br>arp工作时，送出一个含有所希望的ip地址的以太网广播数据包。目的地主机，或另一个代表该主机的系统，以一个含有ip和MAC地址对的数据包作为应答。发送者将这个地址对高速缓存起来，以节约不必要的arp通信。如果有一个不被信任的节点对本地网络具有写访问许可权，那么也会有某种风险。这样一台机器可以发布虚假的arp报文并将所有通信都转向它自己，然后它就可以扮演某些机器，或者顺便对数据流进行简单的修改。arp机制常常是自动起作用的。在特别安全的网络上，arp映射可以用固件，并且具有自动抑制协议达到防止干扰的目的。<br>RARP：<br>反向地址转换协议（reverse address resolution protocol）（rarp）允许局域网的物理机器从网关服务器的 arp表或者缓存上请求其 IP 地址。网络管理员在局域网网关路由器里创建一个表以映射物理地址（mac）和与其对应的 IP 地址。当设置一台新的机器时，其 rarp 客户机程序需要向路由器上的 rarp 服务器请求相应的 IP 地址。假设在路由表中已经设置了一个记录，rarp 服务器将会返回 IP 地址给机器，此机器就会存储起来以便日后使用。<br>我们以主机a（192.168.1.5）向主机b（192.168.1.1）发送数据为例。当发送数据时，主机a会在自己的arp缓存表中寻找是否有目标IP地址。如果找到了，也就知道了目标mac地址，直接把目标mac地址写入帧里面发送就可以了；如果在arp缓存表中没有找到相对应的IP地址，主机a就会在网络上发送一个广播，目标mac地址是“ff.ff.ff.ff.ff.ff”，这表示向同一网段内的所有主机发出这样的询问：“192.168.1.1的mac地址是什么？”网络上其他主机并不响应arp询问，只有主机b接收到这个帧时，才向主机a做出这样的回应：“192.168.1.1的mac地址是00-aa-00-62-c6-09”。这样，主机a就知道了主机b的mac地址，它就可以向主机b发送信息了。同时它还更新了自己的arp缓存表，下次再向主机b发送信息时，直接从arp缓存表里查找就可以了。arp缓存表采用了老化机制，在一段时间内如果表中的某一行没有使用，就会被删除，这样可以大大减少arp缓存表的长度，加快查询速度。</p>
 <h1 id="ARP欺骗"><a href="#ARP欺骗" class="headerlink" title="ARP欺骗"></a>ARP欺骗</h1><p>arp攻击就是通过伪造IP地址和mac地址实现arp欺骗，能够在网络中产生大量的arp通信量使网络阻塞，攻击者只要持续不断的发出伪造的arp响应包就能更改目标主机arp缓存中的ip-mac条目，造成网络中断或中间人攻击。arp攻击主要是存在于局域网网络中，局域网中若有一个人感染arp木马，则感染该arp木马的系统将会试图通过“arp欺骗”手段截获所在网络内其它计算机的通信信息，并因此造成网内其它计算机的通信故障。<br>从影响网络连接通畅的方式来看，arp欺骗分为二种，一种是对路由器arp表的欺骗，另一种是对内网pc的网关欺骗。<br>第一种arp欺骗的原理是：<br>截获网关数据。它通知路由器一系列错误的内网mac地址，并按照一定的频率不断进行，使真实的地址信息无法通过更新保存在路由器中，结果路由器的所有数据只能发送给错误的mac地址，造成正常pc无法收到信息。<br>第二种arp欺骗的原理是：<br>伪造网关。它的原理是建立假网关，让被它欺骗的pc向假网关发数据，而不是通过正常的路由器途径上网。在pc看来，就是上不了网了，“网络掉线了”。</p>
-<h1 id="ARP攻击"><a href="#ARP攻击" class="headerlink" title="ARP攻击"></a>ARP攻击</h1><p>使用的工具为WinArpAttacker3.72.exe，该工具需要winpacp的支持。<br><strong>1.路由器ARP表的欺骗</strong><br>运行软件，options选择正确的网卡：<br><img src="/ARP欺骗攻击与防御/选择网卡.jpg" alt=""><br>局域网扫描，Scan-&gt;lan Scan：<br><img src="/ARP欺骗攻击与防御/扫描.jpg" alt=""><br>ip冲突：<br><img src="/ARP欺骗攻击与防御/IP冲突.jpg" alt=""><br>WinArpAttacker通过伪造此IP的数据包进行路由器arp表欺骗，这样，路由器返回的数据包就不能正常的返回给被攻击的主机，使其不能连接网络。</p>
-<p>2.网关欺骗<br>选择“attack”-&gt;“bangateway”进行网关欺骗：<br><img src="/ARP欺骗攻击与防御/网关欺骗.jpg" alt=""><br>通过“网关欺骗”，会发送假的网关的MAC地址给主机保存，这样主机访问网络的数据包就不能经过真正的网关。</p>
+<h1 id="ARP攻击"><a href="#ARP攻击" class="headerlink" title="ARP攻击"></a>ARP攻击</h1><p>使用的工具为WinArpAttacker3.72.exe，该工具需要winpacp的支持。<br><strong>1.路由器ARP表的欺骗</strong><br>运行软件，options选择正确的网卡：<br><img src="/2017/05/21/ARP欺骗攻击与防御/选择网卡.jpg" alt=""><br>局域网扫描，Scan-&gt;lan Scan：<br><img src="/2017/05/21/ARP欺骗攻击与防御/扫描.jpg" alt=""><br>ip冲突：<br><img src="/2017/05/21/ARP欺骗攻击与防御/IP冲突.jpg" alt=""><br>WinArpAttacker通过伪造此IP的数据包进行路由器arp表欺骗，这样，路由器返回的数据包就不能正常的返回给被攻击的主机，使其不能连接网络。</p>
+<p>2.网关欺骗<br>选择“attack”-&gt;“bangateway”进行网关欺骗：<br><img src="/2017/05/21/ARP欺骗攻击与防御/网关欺骗.jpg" alt=""><br>通过“网关欺骗”，会发送假的网关的MAC地址给主机保存，这样主机访问网络的数据包就不能经过真正的网关。</p>
 <p>实际测试，效果并不理想，主机依旧可以访问互联网。/(ㄒoㄒ)/~~</p>
 
       

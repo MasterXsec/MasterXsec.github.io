@@ -97,19 +97,19 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="NAG本意是烦人的意思，NAG窗口是软件设计者用来时不时提醒用户购买正版的警告窗口。一般情况下，一个注册后的软件，是不会弹出NAG窗口的。所以，一般在程序启动的时候，会有一段代码检查改程序是否已经被注册，我们可以把这个程序的注册破解掉，NAG窗口即会自动消失。 运行程序：今天的目的是去除打开程序时的弹窗和关闭程序时的弹窗。">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/1.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/2.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/3.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/载入.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/MessageBoxA.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/jmp.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/nop.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/填充.jpg">
-<meta property="og:updated_time" content="2017-05-02T05:09:54.037Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/载入.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/MessageBoxA.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/jmp.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/nop.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/填充.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:27:40.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OllyDebug-去除NAG窗口">
 <meta name="twitter:description" content="NAG本意是烦人的意思，NAG窗口是软件设计者用来时不时提醒用户购买正版的警告窗口。一般情况下，一个注册后的软件，是不会弹出NAG窗口的。所以，一般在程序启动的时候，会有一段代码检查改程序是否已经被注册，我们可以把这个程序的注册破解掉，NAG窗口即会自动消失。 运行程序：今天的目的是去除打开程序时的弹窗和关闭程序时的弹窗。">
-<meta name="twitter:image" content="http://yoursite.com/OllyDebug-去除NAG窗口/1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/01/OllyDebug-去除NAG窗口/1.jpg">
 
 
 
@@ -420,9 +420,9 @@
 
       
         <p>NAG本意是烦人的意思，NAG窗口是软件设计者用来时不时提醒用户购买正版的警告窗口。一般情况下，一个注册后的软件，是不会弹出NAG窗口的。所以，一般在程序启动的时候，会有一段代码检查改程序是否已经被注册，我们可以把这个程序的注册破解掉，NAG窗口即会自动消失。</p>
-<p>运行程序：<br><img src="/OllyDebug-去除NAG窗口/1.jpg" alt=""><br><img src="/OllyDebug-去除NAG窗口/2.jpg" alt=""><br><img src="/OllyDebug-去除NAG窗口/3.jpg" alt=""><br>今天的目的是去除打开程序时的弹窗和关闭程序时的弹窗。<br><a id="more"></a></p>
-<p>使用OllyDebug载入程序：<br><img src="/OllyDebug-去除NAG窗口/载入.jpg" alt=""><br>正常运行程序，会调用MessageBoxA函数来弹出窗口，而上面的跳转je没有执行：<br><img src="/OllyDebug-去除NAG窗口/MessageBoxA.jpg" alt=""><br>je跳转的条件不满足，所以没有跳转，将je改为jmp，无条件跳转，就可以跳过第一个弹窗。<br>方法1：<br>将“je”改为“jmp”：<br><img src="/OllyDebug-去除NAG窗口/jmp.jpg" alt=""></p>
-<p>方法2：<br>将如下部分全部用“nop”指令替换：<br><img src="/OllyDebug-去除NAG窗口/nop.jpg" alt=""><br>右键-&gt;二进制-&gt;使用nop填充：<br><img src="/OllyDebug-去除NAG窗口/填充.jpg" alt=""></p>
+<p>运行程序：<br><img src="/2017/05/01/OllyDebug-去除NAG窗口/1.jpg" alt=""><br><img src="/2017/05/01/OllyDebug-去除NAG窗口/2.jpg" alt=""><br><img src="/2017/05/01/OllyDebug-去除NAG窗口/3.jpg" alt=""><br>今天的目的是去除打开程序时的弹窗和关闭程序时的弹窗。<br><a id="more"></a></p>
+<p>使用OllyDebug载入程序：<br><img src="/2017/05/01/OllyDebug-去除NAG窗口/载入.jpg" alt=""><br>正常运行程序，会调用MessageBoxA函数来弹出窗口，而上面的跳转je没有执行：<br><img src="/2017/05/01/OllyDebug-去除NAG窗口/MessageBoxA.jpg" alt=""><br>je跳转的条件不满足，所以没有跳转，将je改为jmp，无条件跳转，就可以跳过第一个弹窗。<br>方法1：<br>将“je”改为“jmp”：<br><img src="/2017/05/01/OllyDebug-去除NAG窗口/jmp.jpg" alt=""></p>
+<p>方法2：<br>将如下部分全部用“nop”指令替换：<br><img src="/2017/05/01/OllyDebug-去除NAG窗口/nop.jpg" alt=""><br>右键-&gt;二进制-&gt;使用nop填充：<br><img src="/2017/05/01/OllyDebug-去除NAG窗口/填充.jpg" alt=""></p>
 <p>方法3：<br>修改程序的入口点，跳过前面的弹窗部分。</p>
 <p>使用上面两种方法将两个弹窗修改掉，然后保存文件即可。</p>
 

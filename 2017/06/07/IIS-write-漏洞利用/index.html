@@ -97,19 +97,19 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="前言IIS写权限对网站系统的安全是致命的，拥有写权限意味着可以直接往网站目录写文件，在拥有写权限的服务器上，其安全相对设置薄弱，因此比较容易被入侵者控制。">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/写入权限.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/scan.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/上传测试.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/上传成功.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/工具.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/访问.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/重新提交.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS-write-漏洞利用/禁用.jpg">
-<meta property="og:updated_time" content="2017-06-07T03:25:52.552Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/写入权限.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/scan.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/上传测试.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/上传成功.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/工具.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/访问.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/重新提交.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/禁用.jpg">
+<meta property="og:updated_time" content="2017-06-22T10:54:52.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IIS write 漏洞利用">
 <meta name="twitter:description" content="前言IIS写权限对网站系统的安全是致命的，拥有写权限意味着可以直接往网站目录写文件，在拥有写权限的服务器上，其安全相对设置薄弱，因此比较容易被入侵者控制。">
-<meta name="twitter:image" content="http://yoursite.com/IIS-write-漏洞利用/写入权限.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/07/IIS-write-漏洞利用/写入权限.jpg">
 
 
 
@@ -420,10 +420,10 @@
 
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>IIS写权限对网站系统的安全是致命的，拥有写权限意味着可以直接往网站目录写文件，在拥有写权限的服务器上，其安全相对设置薄弱，因此比较容易被入侵者控制。<br><a id="more"></a></p>
-<h1 id="安全配置"><a href="#安全配置" class="headerlink" title="安全配置"></a>安全配置</h1><p>IIS服务器开启WebDAV服务扩展之后，会开启http的OPTIONS TRACE GET HEAD COPY PROPFIND SEARCH LOCK UNLOCK DELETE PUT POST MOVE MKCOL PROPPATCH这些方法。<br>如果同时IIS的网站目录有写入权限的话，此时开启PUT、MOVE等这些方法是非常危险的，攻击者能够上传weshell。<br><img src="/IIS-write-漏洞利用/写入权限.jpg" alt=""></p>
-<h1 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h1><p>使用IISPutScanner v1.3进行检测，查看服务器是否开启了PUT方法：<br><img src="/IIS-write-漏洞利用/scan.jpg" alt=""><br>若为开启状态，可以尝试右键单击主机进行上传测试：<br><img src="/IIS-write-漏洞利用/上传测试.jpg" alt=""><br><img src="/IIS-write-漏洞利用/上传成功.jpg" alt=""><br>注意，该工具不能上传脚本文件，需要使用另一个工具，对IIS写权限利用工具.exe</p>
-<h1 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h1><p>打开该工具，选用put方法，上传一个txt文件，文件内容可以是webshell或者一句话木马，上传该txt文件，提交数据包：<br><img src="/IIS-write-漏洞利用/工具.jpg" alt=""><br>上传成功之后，成功以txt类型访问：<br><img src="/IIS-write-漏洞利用/访问.jpg" alt=""><br>接下来在iiswrite中将方法改为move，然后重新提交，会发现黑色部分Destination是指生成的asp文件地址，如图所示：<br><img src="/IIS-write-漏洞利用/重新提交.jpg" alt=""><br>然后访问该文件即可。</p>
-<h1 id="修复方法"><a href="#修复方法" class="headerlink" title="修复方法"></a>修复方法</h1><p>禁用WebDAV：<br><img src="/IIS-write-漏洞利用/禁用.jpg" alt=""></p>
+<h1 id="安全配置"><a href="#安全配置" class="headerlink" title="安全配置"></a>安全配置</h1><p>IIS服务器开启WebDAV服务扩展之后，会开启http的OPTIONS TRACE GET HEAD COPY PROPFIND SEARCH LOCK UNLOCK DELETE PUT POST MOVE MKCOL PROPPATCH这些方法。<br>如果同时IIS的网站目录有写入权限的话，此时开启PUT、MOVE等这些方法是非常危险的，攻击者能够上传weshell。<br><img src="/2017/06/07/IIS-write-漏洞利用/写入权限.jpg" alt=""></p>
+<h1 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h1><p>使用IISPutScanner v1.3进行检测，查看服务器是否开启了PUT方法：<br><img src="/2017/06/07/IIS-write-漏洞利用/scan.jpg" alt=""><br>若为开启状态，可以尝试右键单击主机进行上传测试：<br><img src="/2017/06/07/IIS-write-漏洞利用/上传测试.jpg" alt=""><br><img src="/2017/06/07/IIS-write-漏洞利用/上传成功.jpg" alt=""><br>注意，该工具不能上传脚本文件，需要使用另一个工具，对IIS写权限利用工具.exe</p>
+<h1 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h1><p>打开该工具，选用put方法，上传一个txt文件，文件内容可以是webshell或者一句话木马，上传该txt文件，提交数据包：<br><img src="/2017/06/07/IIS-write-漏洞利用/工具.jpg" alt=""><br>上传成功之后，成功以txt类型访问：<br><img src="/2017/06/07/IIS-write-漏洞利用/访问.jpg" alt=""><br>接下来在iiswrite中将方法改为move，然后重新提交，会发现黑色部分Destination是指生成的asp文件地址，如图所示：<br><img src="/2017/06/07/IIS-write-漏洞利用/重新提交.jpg" alt=""><br>然后访问该文件即可。</p>
+<h1 id="修复方法"><a href="#修复方法" class="headerlink" title="修复方法"></a>修复方法</h1><p>禁用WebDAV：<br><img src="/2017/06/07/IIS-write-漏洞利用/禁用.jpg" alt=""></p>
 
       
     </div>

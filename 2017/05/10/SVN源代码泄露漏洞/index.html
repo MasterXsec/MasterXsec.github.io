@@ -97,13 +97,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/10/SVN源代码泄露漏洞/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="产生原因：SVN（subversion）是源代码版本管理软件，造成SVN源代码漏洞的主要原因是管理员操作不规范。“在使用SVN管理本地代码过程中，会自动生成一个名为.svn的隐藏文件夹，其中包含重要的源代码信息。但一些网站管理员在发布代码时，不愿意使用‘导出’功能，而是直接复制代码文件夹到WEB服务器上，这就使.svn隐藏文件夹被暴露于外网环境，黑客可以借助其中包含的用于版本信息追踪的‘entri">
-<meta property="og:image" content="http://yoursite.com/SVN源代码泄露漏洞/漏洞发现.jpg">
-<meta property="og:image" content="http://yoursite.com/SVN源代码泄露漏洞/Seay.jpg">
-<meta property="og:updated_time" content="2017-05-10T13:47:36.449Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/10/SVN源代码泄露漏洞/漏洞发现.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/10/SVN源代码泄露漏洞/Seay.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:19:01.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVN源代码泄露漏洞">
 <meta name="twitter:description" content="产生原因：SVN（subversion）是源代码版本管理软件，造成SVN源代码漏洞的主要原因是管理员操作不规范。“在使用SVN管理本地代码过程中，会自动生成一个名为.svn的隐藏文件夹，其中包含重要的源代码信息。但一些网站管理员在发布代码时，不愿意使用‘导出’功能，而是直接复制代码文件夹到WEB服务器上，这就使.svn隐藏文件夹被暴露于外网环境，黑客可以借助其中包含的用于版本信息追踪的‘entri">
-<meta name="twitter:image" content="http://yoursite.com/SVN源代码泄露漏洞/漏洞发现.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/10/SVN源代码泄露漏洞/漏洞发现.jpg">
 
 
 
@@ -414,8 +414,8 @@
 
       
         <p>产生原因：<br>SVN（subversion）是源代码版本管理软件，造成SVN源代码漏洞的主要原因是管理员操作不规范。“在使用SVN管理本地代码过程中，会自动生成一个名为.svn的隐藏文件夹，其中包含重要的源代码信息。但一些网站管理员在发布代码时，不愿意使用‘导出’功能，而是直接复制代码文件夹到WEB服务器上，这就使.svn隐藏文件夹被暴露于外网环境，黑客可以借助其中包含的用于版本信息追踪的‘entries’文件，逐步摸清站点结构。”（可以利用.svn/entries文件，获取到服务器源码、svn服务器账号密码等信息）更严重的问题在于，SVN产生的.svn目录下还包含了以.svn-base结尾的源代码文件副本（低版本SVN具体路径为text-base目录，高版本SVN为pristine目录），如果服务器没有对此类后缀做解析，黑客则可以直接获得文件源代码。</p>
-<p>漏洞发现：<br><img src="/SVN源代码泄露漏洞/漏洞发现.jpg" alt=""><br><a id="more"></a></p>
-<p>漏洞利用工具：<br><img src="/SVN源代码泄露漏洞/Seay.jpg" alt=""></p>
+<p>漏洞发现：<br><img src="/2017/05/10/SVN源代码泄露漏洞/漏洞发现.jpg" alt=""><br><a id="more"></a></p>
+<p>漏洞利用工具：<br><img src="/2017/05/10/SVN源代码泄露漏洞/Seay.jpg" alt=""></p>
 <p>防御：<br>1.查找服务器上所有.svn隐藏文件夹，删除；<br>2.开发人员在使用SVN时，严格使用导出功能，禁止直接复制代码。</p>
 
       

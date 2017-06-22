@@ -97,18 +97,18 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="软件运行效果如下：如上图所示，软件的标题为“I love fishc.com”。使用OllyDebug将标题改为“I love 123456789”！使用OllyDebug打开该程序，一路按F8，程序执行出弹窗，暂停在0X004011CE处，从右边的汇编代码中可以看出程序使用call指令调用了一个子函数：">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/运行.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/弹窗.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/进入子函数.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/修改.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/备份.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/结果.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-修改提示框标题/搜索.jpg">
-<meta property="og:updated_time" content="2017-05-01T02:42:45.436Z">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/运行.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/弹窗.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/进入子函数.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/修改.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/备份.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/结果.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/搜索.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:30:09.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OllyDebug-修改提示框标题">
 <meta name="twitter:description" content="软件运行效果如下：如上图所示，软件的标题为“I love fishc.com”。使用OllyDebug将标题改为“I love 123456789”！使用OllyDebug打开该程序，一路按F8，程序执行出弹窗，暂停在0X004011CE处，从右边的汇编代码中可以看出程序使用call指令调用了一个子函数：">
-<meta name="twitter:image" content="http://yoursite.com/OllyDebug-修改提示框标题/运行.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/30/OllyDebug-修改提示框标题/运行.jpg">
 
 
 
@@ -418,8 +418,8 @@
       
 
       
-        <p>软件运行效果如下：<br><img src="/OllyDebug-修改提示框标题/运行.jpg" alt=""><br>如上图所示，软件的标题为“I love fishc.com”。使用OllyDebug将标题改为“I love 123456789”！<br>使用OllyDebug打开该程序，一路按F8，程序执行出弹窗，暂停在0X004011CE处，从右边的汇编代码中可以看出程序使用call指令调用了一个子函数：<br><img src="/OllyDebug-修改提示框标题/弹窗.jpg" alt=""><br><a id="more"></a><br>选中该地址，按下F2，在该地址处设置断点重新运行程序，按下F9快捷键快速运行到断点处，然后单步步入进入子函数（快捷键F7）:<br><img src="/OllyDebug-修改提示框标题/进入子函数.jpg" alt=""><br>在上图中的红框在，我们可以看到4条push指令，找到标题的地址为：0X00422030。然后在数据窗口中，使用Ctrl+g，查找该地址，修改数据内容为I love 123456789，注意不要勾选保持大小，修改完之后，需要在末尾加上0x00，字符串结束标志。<br><img src="/OllyDebug-修改提示框标题/修改.jpg" alt=""><br>在数据窗口中任意地方右键-&gt;复制到可执行文件：<br><img src="/OllyDebug-修改提示框标题/备份.jpg" alt=""><br>然后在弹出的窗口中，右键-&gt;备份-&gt;保存数据到文件，给文件重命名之后就ok了。<br><img src="/OllyDebug-修改提示框标题/结果.jpg" alt=""></p>
-<p>查找标题的另一种方式：<br>在反汇编窗口中，右键-&gt;中文搜索引擎-&gt;搜索ASCII，程序会跳转到如下窗口：<br><img src="/OllyDebug-修改提示框标题/搜索.jpg" alt=""><br>Ctrl+F，搜索“I love fishc.com”，可以定位到指令所在位置，双击改行，跳转到反汇编窗口所在位置。</p>
+        <p>软件运行效果如下：<br><img src="/2017/04/30/OllyDebug-修改提示框标题/运行.jpg" alt=""><br>如上图所示，软件的标题为“I love fishc.com”。使用OllyDebug将标题改为“I love 123456789”！<br>使用OllyDebug打开该程序，一路按F8，程序执行出弹窗，暂停在0X004011CE处，从右边的汇编代码中可以看出程序使用call指令调用了一个子函数：<br><img src="/2017/04/30/OllyDebug-修改提示框标题/弹窗.jpg" alt=""><br><a id="more"></a><br>选中该地址，按下F2，在该地址处设置断点重新运行程序，按下F9快捷键快速运行到断点处，然后单步步入进入子函数（快捷键F7）:<br><img src="/2017/04/30/OllyDebug-修改提示框标题/进入子函数.jpg" alt=""><br>在上图中的红框在，我们可以看到4条push指令，找到标题的地址为：0X00422030。然后在数据窗口中，使用Ctrl+g，查找该地址，修改数据内容为I love 123456789，注意不要勾选保持大小，修改完之后，需要在末尾加上0x00，字符串结束标志。<br><img src="/2017/04/30/OllyDebug-修改提示框标题/修改.jpg" alt=""><br>在数据窗口中任意地方右键-&gt;复制到可执行文件：<br><img src="/2017/04/30/OllyDebug-修改提示框标题/备份.jpg" alt=""><br>然后在弹出的窗口中，右键-&gt;备份-&gt;保存数据到文件，给文件重命名之后就ok了。<br><img src="/2017/04/30/OllyDebug-修改提示框标题/结果.jpg" alt=""></p>
+<p>查找标题的另一种方式：<br>在反汇编窗口中，右键-&gt;中文搜索引擎-&gt;搜索ASCII，程序会跳转到如下窗口：<br><img src="/2017/04/30/OllyDebug-修改提示框标题/搜索.jpg" alt=""><br>Ctrl+F，搜索“I love fishc.com”，可以定位到指令所在位置，双击改行，跳转到反汇编窗口所在位置。</p>
 <p>总结：<br>F7：单步步入，执行到子函数内部<br>F8：单步步过，执行完该行<br>F9：全速运行，知道遇到断点或者程序结束<br>Ctrl+g：打开跟随表达式窗口</p>
 <p>程序是调用的MessageBoxA，该方法有四个参数，在调用子函数的时候，会将参数全部入栈。</p>
 

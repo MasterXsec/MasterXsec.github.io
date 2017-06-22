@@ -96,13 +96,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/20/OS命令注入/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="原理OS命令注入漏洞，体现在很多方面。命令连接符号可以起到很大的作用，如果语句没有筛选直接进行执行系统常规命令，可以用“||”等连接符进行命令拼接，从而执行用户输入的命令。">
-<meta property="og:image" content="http://yoursite.com/OS命令注入/ping.jpg">
-<meta property="og:image" content="http://yoursite.com/OS命令注入/ifconfig.jpg">
-<meta property="og:updated_time" content="2017-05-22T00:55:30.617Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/OS命令注入/ping.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/20/OS命令注入/ifconfig.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:13:45.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OS命令注入">
 <meta name="twitter:description" content="原理OS命令注入漏洞，体现在很多方面。命令连接符号可以起到很大的作用，如果语句没有筛选直接进行执行系统常规命令，可以用“||”等连接符进行命令拼接，从而执行用户输入的命令。">
-<meta name="twitter:image" content="http://yoursite.com/OS命令注入/ping.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/20/OS命令注入/ping.jpg">
 
 
 
@@ -413,7 +413,7 @@
 
       
         <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>OS命令注入漏洞，体现在很多方面。<br>命令连接符号可以起到很大的作用，如果语句没有筛选直接进行执行系统常规命令，可以用“||”等连接符进行命令拼接，从而执行用户输入的命令。<br><a id="more"></a></p>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>某网络设备：<br><img src="/OS命令注入/ping.jpg" alt=""><br>点击Summit之后，可以看到返回的结果。<br>将“127.0.0.1”替换为“||ifconfig”可在输出结果中查看到当前系统的网卡信息。<br><img src="/OS命令注入/ifconfig.jpg" alt=""><br>通过如图返回的结果信息可知该处可注入并执行操作系统命令。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>某网络设备：<br><img src="/2017/05/20/OS命令注入/ping.jpg" alt=""><br>点击Summit之后，可以看到返回的结果。<br>将“127.0.0.1”替换为“||ifconfig”可在输出结果中查看到当前系统的网卡信息。<br><img src="/2017/05/20/OS命令注入/ifconfig.jpg" alt=""><br>通过如图返回的结果信息可知该处可注入并执行操作系统命令。</p>
 
       
     </div>

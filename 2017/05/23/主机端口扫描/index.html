@@ -96,12 +96,12 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/23/主机端口扫描/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="概念端口扫描就是通过连接到目标系统的TCP或UDP端口，来确定什么服务正在运行。一个端口就是一个潜在的通信通道，也就是一个入侵通道。从对黑客攻击行为的分析和收集的漏洞来看，绝大多数都是针对某一个网络服务，也就是针对某一个特定的端口的。对目标计算机进行端口扫描，能得到许多有用的信息。">
-<meta property="og:image" content="http://yoursite.com/主机端口扫描/sP.jpg">
-<meta property="og:updated_time" content="2017-05-24T01:11:58.230Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/23/主机端口扫描/sP.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:16:53.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="主机端口扫描">
 <meta name="twitter:description" content="概念端口扫描就是通过连接到目标系统的TCP或UDP端口，来确定什么服务正在运行。一个端口就是一个潜在的通信通道，也就是一个入侵通道。从对黑客攻击行为的分析和收集的漏洞来看，绝大多数都是针对某一个网络服务，也就是针对某一个特定的端口的。对目标计算机进行端口扫描，能得到许多有用的信息。">
-<meta name="twitter:image" content="http://yoursite.com/主机端口扫描/sP.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/23/主机端口扫描/sP.jpg">
 
 
 
@@ -422,7 +422,7 @@
 <h2 id="SYN-ACK扫描"><a href="#SYN-ACK扫描" class="headerlink" title="SYN/ACK扫描"></a>SYN/ACK扫描</h2><p>这种扫描故意忽略TCP的三次握手：SYN—SYN/ACK—ACK。这里，扫描主机不向目标主机发送SYN数据包，而先发送SYN/ACK数据包。目标主机将报错，并判断为一次错误的连接。若目标端口开放，目标主机将返回RST信息，若目标端口关闭，目标主机将不返回任何信息，数据包会被丢掉。</p>
 <h1 id="UDP-ICMP端口不可达扫描"><a href="#UDP-ICMP端口不可达扫描" class="headerlink" title="UDP ICMP端口不可达扫描"></a>UDP ICMP端口不可达扫描</h1><p>由于UDP协议很简单，所以扫描变得相对比较困难。这是由于打开的端口对扫描探测并不发送一个确认，关闭的端口也并不需要发送一个错误数据包。幸运的是，许多主机在你向一个未打开的UDP端口发送一个数据包时，会返回一个ICMP_PORT_UNREACH错误。<strong>这样就能发现哪个端口是关闭的。</strong>由于UDP协议是面向无连接的协议，这种扫描技术的精确性高度依赖于网络性能和系统资源。另外，如果目标主机采用了大量的分组过滤技术，那么UDP扫描过程会变的非常慢。比如大部分系统都采用了 RFC1812 的建议，限定了ICMP差错分组的速率，比如LINUX系统中只允许4秒最多只发送80个目的地不可达消息，而Solaris每秒只允许发送两个不可到达消息，然而微软仍保留了它一贯的做法，忽略了RFC1812的建议，没有对速率进行任何限制，因此，能在很短的时间内扫完WINDOWS机器上所有64K 的UDP端口。说到这里，我想大家都应该心里有数，在什么情况下可以有效的使用UDP扫描，而不是一味去埋怨扫描器的速度慢了。UDP和ICMP错误都不保证能到达，因此这种扫描器必须还实现在一个包看上去是丢失的时候能重新传输。同样，这种扫描方法需要具有root权限。<br>优点：<br>能够很方便的判断哪些UDP端口是关闭的；<br>缺点：<br>扫描的精确性高度依赖于网络性能和系统资源；</p>
 <h1 id="Nmap扫描类型"><a href="#Nmap扫描类型" class="headerlink" title="Nmap扫描类型"></a>Nmap扫描类型</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-sT：全TCP连接扫描</div><div class="line">-sS：TCP-SYN扫描</div><div class="line">-sP：以ping方式进行扫描</div><div class="line">-sU：以UDP数据包格式进行扫描</div><div class="line">-sF,-sX,-sN：以Fin,Xmas,Null方式扫描</div></pre></td></tr></table></figure>
-<p>nmap -sP 192.168.1.100<br>Nmap给每个扫描到的主机发送一个ICMP echo和一个ACK，被扫描主机对任何一种的响应都会被Nmap得到。这种方式可用来检测局域网内有哪些主机正在运行，还能查看到机器的MAC地址。可以使用nmap -sP 192.168.1.0/24。<br><img src="/主机端口扫描/sP.jpg" alt=""></p>
+<p>nmap -sP 192.168.1.100<br>Nmap给每个扫描到的主机发送一个ICMP echo和一个ACK，被扫描主机对任何一种的响应都会被Nmap得到。这种方式可用来检测局域网内有哪些主机正在运行，还能查看到机器的MAC地址。可以使用nmap -sP 192.168.1.0/24。<br><img src="/2017/05/23/主机端口扫描/sP.jpg" alt=""></p>
 <p>nmap –sT 192.168.1.100<br>Nmap将使用connect()系统调用打开目标机上相关端口的连接，并完成三次TCP握手。</p>
 <p>nmap –sS 192.168.1.100<br>使用半开SYN标记扫描，在一定程度上防止被扫描目标主机识别和记录。-sS命令将发送一个SYN扫描探测主机或网络。通过发送一个SYN包(是TCP协议中的第一个包)开始一次SYN的扫描。任何开放的端口都将有一个SYN|ACK响应。然而，攻击者发送一个RST替代ACK，连接中止。三次握手得不到实现，也就很少有站点能记录这样的探测。如果是关闭的端口，对最初的SYN信号的响应也会是RST，让nmap知道该端口不在监听。</p>
 <p>nmap –sS –O 192.168.1.100<br>利用不同的系统对于nmap不同类型探测信号的不同响应来辨别操作系统的类型。</p>

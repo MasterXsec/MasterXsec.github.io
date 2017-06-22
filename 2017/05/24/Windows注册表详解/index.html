@@ -96,18 +96,18 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/24/Windows注册表详解/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="注册表电脑中注册表被称为Windows操作系统的核心，它的工作原理实质是一个庞大的数据库，存放了关于计算机硬件的配置信息、系统和应用软件的初始化信息、应用软件和文档文件的关联关系、硬件设备的说明以及各种状态信息和数据，包括Windows操作时不断引用的信息。例如：系统中的硬件资源、硬件信息、分配正在使用的端口、每个用户的配置文件、计算机上安装的应用程序以及每个应用程序可以创建的文件类型等。主要作用">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/HKEY_CLASSES_ROOT.jpg">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/HKEY_CURRENT_USER.jpg">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/HKEY_LOCAL_MACHINE.jpg">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/HKEY_USERS.jpg">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/HKEY_CURRENT_CONFIG.jpg">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/键.jpg">
-<meta property="og:image" content="http://yoursite.com/Windows注册表详解/自启动.jpg">
-<meta property="og:updated_time" content="2017-05-24T03:24:12.350Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/HKEY_CLASSES_ROOT.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/HKEY_CURRENT_USER.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/HKEY_LOCAL_MACHINE.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/HKEY_USERS.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/HKEY_CURRENT_CONFIG.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/键.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/自启动.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:16:09.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows注册表详解">
 <meta name="twitter:description" content="注册表电脑中注册表被称为Windows操作系统的核心，它的工作原理实质是一个庞大的数据库，存放了关于计算机硬件的配置信息、系统和应用软件的初始化信息、应用软件和文档文件的关联关系、硬件设备的说明以及各种状态信息和数据，包括Windows操作时不断引用的信息。例如：系统中的硬件资源、硬件信息、分配正在使用的端口、每个用户的配置文件、计算机上安装的应用程序以及每个应用程序可以创建的文件类型等。主要作用">
-<meta name="twitter:image" content="http://yoursite.com/Windows注册表详解/HKEY_CLASSES_ROOT.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/24/Windows注册表详解/HKEY_CLASSES_ROOT.jpg">
 
 
 
@@ -418,10 +418,10 @@
 
       
         <h1 id="注册表"><a href="#注册表" class="headerlink" title="注册表"></a>注册表</h1><p>电脑中注册表被称为Windows操作系统的核心，它的工作原理实质是一个庞大的数据库，存放了关于计算机硬件的配置信息、系统和应用软件的初始化信息、应用软件和文档文件的关联关系、硬件设备的说明以及各种状态信息和数据，包括Windows操作时不断引用的信息。例如：系统中的硬件资源、硬件信息、分配正在使用的端口、每个用户的配置文件、计算机上安装的应用程序以及每个应用程序可以创建的文件类型等。<br>主要作用：<br>1、记录安装信息<br>2、设置硬件<br>3、设置软件<br>4、定制Windows<br>5、系统安全管理<br>6、自动运行程序<br>7、网络设置<br><a id="more"></a></p>
-<h1 id="注册表结构"><a href="#注册表结构" class="headerlink" title="注册表结构"></a>注册表结构</h1><p>注册表中，所有的数据都是通过一种树状结构以键和子键的方式组织起来的,就象磁盘文件系统的目录结构一样。每个键都包含了一组特定的信息，每个键的键名都是和它所包含的信息相关联的。注册表的根键共有5个，全为大写，并以HKEY为前缀，这种命令约定是以Win32API的Registry函数的关键字的符号变量为基础的。它们分别为：<br>HKEY_CLASSES_ROOT：<br>管理文件系统，根据在Windows中安装的应用程序的扩展名，该根键指明其文件类型的名称，相应打开该文件所要调用的程序等信息。<br><img src="/Windows注册表详解/HKEY_CLASSES_ROOT.jpg" alt=""><br>HKEY_CURRENT_USER：<br>管理系统当前的用户信息，在这个根键中保存了本地计算机中存放的当前登录的用户信息，包括用户登录用户名和暂存的密码，在用户登录Windows时，其信息从HKEY_USERS中相应的项拷贝到HKEY_CURRENT_USER中。<br><img src="/Windows注册表详解/HKEY_CURRENT_USER.jpg" alt=""><br>HKEY_LOCAL_MACHINE：<br>该根键存放本地计算机硬件数据，管理当前系统硬件配置，此根键下的子关键字包括在SYSTEM.DAT中，用来提供HKEY_LOCAL_MACHINE所需的信息。<br><img src="/Windows注册表详解/HKEY_LOCAL_MACHINE.jpg" alt=""><br>HKEY_USERS：<br>管理系统的用户信息，在这个根键中保存了存放在本地计算机口令列表中的用户标识和密码列表，同时每个用户的预配置信息都存储在HKEY_USERS根键中，HKEY_USERS是远程计算机中访问的根键之一。<br><img src="/Windows注册表详解/HKEY_USERS.jpg" alt=""><br>HKEY_CURRENT_CONFIG：<br>管理当前用户的系统配置，在这个根键中保存着定义当前用户桌面配置(如显示器等等)的数据，该用户使用过的文档列表，应用程序配置和其他有关当前用户的安装信息。<br><img src="/Windows注册表详解/HKEY_CURRENT_CONFIG.jpg" alt=""></p>
-<p>注册表由键（或称“项”）、子键（子项）和值项构成。一个键就是分支中的一个文件夹，而子键就是这个文件夹中的子文件夹，子键同样是一个键。一个值项则是一个键的当前定义，由名称、数据类型以及分配的值组成。一个键可以有一个或多个值，每个值的名称各不相同，如果一个值的名称为空，则该值为该键的默认值。<br>在注册表编辑器（Regedit.exe）中，数据结构显示如下，其中，360Scan键是360Safe键的子键，(默认)表示该值是默认值，值名称为空，其数据类型为REG_SZ，数据值为空。<br><img src="/Windows注册表详解/键.jpg" alt=""></p>
+<h1 id="注册表结构"><a href="#注册表结构" class="headerlink" title="注册表结构"></a>注册表结构</h1><p>注册表中，所有的数据都是通过一种树状结构以键和子键的方式组织起来的,就象磁盘文件系统的目录结构一样。每个键都包含了一组特定的信息，每个键的键名都是和它所包含的信息相关联的。注册表的根键共有5个，全为大写，并以HKEY为前缀，这种命令约定是以Win32API的Registry函数的关键字的符号变量为基础的。它们分别为：<br>HKEY_CLASSES_ROOT：<br>管理文件系统，根据在Windows中安装的应用程序的扩展名，该根键指明其文件类型的名称，相应打开该文件所要调用的程序等信息。<br><img src="/2017/05/24/Windows注册表详解/HKEY_CLASSES_ROOT.jpg" alt=""><br>HKEY_CURRENT_USER：<br>管理系统当前的用户信息，在这个根键中保存了本地计算机中存放的当前登录的用户信息，包括用户登录用户名和暂存的密码，在用户登录Windows时，其信息从HKEY_USERS中相应的项拷贝到HKEY_CURRENT_USER中。<br><img src="/2017/05/24/Windows注册表详解/HKEY_CURRENT_USER.jpg" alt=""><br>HKEY_LOCAL_MACHINE：<br>该根键存放本地计算机硬件数据，管理当前系统硬件配置，此根键下的子关键字包括在SYSTEM.DAT中，用来提供HKEY_LOCAL_MACHINE所需的信息。<br><img src="/2017/05/24/Windows注册表详解/HKEY_LOCAL_MACHINE.jpg" alt=""><br>HKEY_USERS：<br>管理系统的用户信息，在这个根键中保存了存放在本地计算机口令列表中的用户标识和密码列表，同时每个用户的预配置信息都存储在HKEY_USERS根键中，HKEY_USERS是远程计算机中访问的根键之一。<br><img src="/2017/05/24/Windows注册表详解/HKEY_USERS.jpg" alt=""><br>HKEY_CURRENT_CONFIG：<br>管理当前用户的系统配置，在这个根键中保存着定义当前用户桌面配置(如显示器等等)的数据，该用户使用过的文档列表，应用程序配置和其他有关当前用户的安装信息。<br><img src="/2017/05/24/Windows注册表详解/HKEY_CURRENT_CONFIG.jpg" alt=""></p>
+<p>注册表由键（或称“项”）、子键（子项）和值项构成。一个键就是分支中的一个文件夹，而子键就是这个文件夹中的子文件夹，子键同样是一个键。一个值项则是一个键的当前定义，由名称、数据类型以及分配的值组成。一个键可以有一个或多个值，每个值的名称各不相同，如果一个值的名称为空，则该值为该键的默认值。<br>在注册表编辑器（Regedit.exe）中，数据结构显示如下，其中，360Scan键是360Safe键的子键，(默认)表示该值是默认值，值名称为空，其数据类型为REG_SZ，数据值为空。<br><img src="/2017/05/24/Windows注册表详解/键.jpg" alt=""></p>
 <h1 id="注册表中的数据类型"><a href="#注册表中的数据类型" class="headerlink" title="注册表中的数据类型"></a>注册表中的数据类型</h1><p>REG_SZ：字符串，文本字符串。<br>REG_MULTI_SZ：多字符串，含有多个文本值的字符串。<br>REG_BINARY：二进制数，二进制值，以十六进制显示。<br>REG_DWORD：双字，一个32位的二进制值，显示为8位的十六进制值。</p>
-<h1 id="系统启动项"><a href="#系统启动项" class="headerlink" title="系统启动项"></a>系统启动项</h1><p>Windows操作系统的系统启动项是在注册表中设置的，在注册表中常见的自启动位置如下：<br>HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Windows/CurrentVersion/中的Run、RunOnce、RunOnceEx、RunServices和RunServicesOnce；<br>HKEY_CURRENT_USER/SOFTWARE/Microsoft/Windows/CurrentVersion中的Run和Runonce；<br>HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/WindowsNT/CurrentVersion/Winlogon/Notify。<br>在这些注册表位置下，如果添加一新键值，并指定运行的程序，那么只要操作系统启动时，该程序自动启动。<br><img src="/Windows注册表详解/自启动.jpg" alt=""></p>
+<h1 id="系统启动项"><a href="#系统启动项" class="headerlink" title="系统启动项"></a>系统启动项</h1><p>Windows操作系统的系统启动项是在注册表中设置的，在注册表中常见的自启动位置如下：<br>HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/2017/05/24/Windows/CurrentVersion/中的Run、RunOnce、RunOnceEx、RunServices和RunServicesOnce；<br>HKEY_CURRENT_USER/SOFTWARE/Microsoft/2017/05/24/Windows/CurrentVersion中的Run和Runonce；<br>HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/2017/05/24/WindowsNT/CurrentVersion/Winlogon/Notify。<br>在这些注册表位置下，如果添加一新键值，并指定运行的程序，那么只要操作系统启动时，该程序自动启动。<br><img src="/2017/05/24/Windows注册表详解/自启动.jpg" alt=""></p>
 
       
     </div>

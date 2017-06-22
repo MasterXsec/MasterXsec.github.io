@@ -97,24 +97,24 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="分类信息收集分为：被动信息收集和主动信息收集。被动信息收集不会与目标服务器做直接的交互，在不被目标系统察觉的情况下，通过搜索引擎、社交媒体等方式对目标外围的信息进行收集。主动信息收集和被动信息收集相反，主动收集会与目标系统有直接的交互，从而得到目标系统相关的一些情报信息。">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/nmap.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/cms.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/iis.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/apache.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/SEO.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/御剑.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/awvs.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/dirb.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/旁站.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/站长之家.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/端口.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/站长之家whois.jpg">
-<meta property="og:image" content="http://yoursite.com/Web渗透测试-信息收集总结/kaliwhois.jpg">
-<meta property="og:updated_time" content="2017-05-29T16:26:38.200Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/nmap.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/cms.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/iis.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/apache.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/SEO.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/御剑.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/awvs.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/dirb.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/旁站.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/站长之家.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/端口.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/站长之家whois.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/kaliwhois.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:12:02.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web渗透测试-信息收集总结">
 <meta name="twitter:description" content="分类信息收集分为：被动信息收集和主动信息收集。被动信息收集不会与目标服务器做直接的交互，在不被目标系统察觉的情况下，通过搜索引擎、社交媒体等方式对目标外围的信息进行收集。主动信息收集和被动信息收集相反，主动收集会与目标系统有直接的交互，从而得到目标系统相关的一些情报信息。">
-<meta name="twitter:image" content="http://yoursite.com/Web渗透测试-信息收集总结/nmap.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/29/Web渗透测试-信息收集总结/nmap.jpg">
 
 
 
@@ -425,13 +425,13 @@
 
       
         <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>信息收集分为：被动信息收集和主动信息收集。<br><strong>被动信息收集</strong><br>不会与目标服务器做直接的交互，在不被目标系统察觉的情况下，通过搜索引擎、社交媒体等方式对目标外围的信息进行收集。<br><strong>主动信息收集</strong><br>和被动信息收集相反，主动收集会与目标系统有直接的交互，从而得到目标系统相关的一些情报信息。<br><a id="more"></a></p>
-<h1 id="收集信息项目"><a href="#收集信息项目" class="headerlink" title="收集信息项目"></a>收集信息项目</h1><h2 id="操作系统类型"><a href="#操作系统类型" class="headerlink" title="操作系统类型"></a>操作系统类型</h2><p><strong>1.nmap</strong><br>可以使用nmap的“-O”参数，来初步判断服务器系统类型：<br><img src="/Web渗透测试-信息收集总结/nmap.jpg" alt=""><br>探测到操作系统为Microsoft Windows Server 2008 R2的可能性很大。<br><strong>2.大小写</strong><br>访问网站：<br><a href="http://www.xxx.com/index.html" target="_blank" rel="external">http://www.xxx.com/index.html</a><br><a href="http://www.xxx.com/inDex.html" target="_blank" rel="external">http://www.xxx.com/inDex.html</a><br>Windows操作系统不区分大小写，Linux系统大小写敏感，用此方法能够判断是Windows还是Linux系统。</p>
-<h2 id="CMS类型"><a href="#CMS类型" class="headerlink" title="CMS类型"></a>CMS类型</h2><p><strong>1.robots.txt</strong><br>一般的CMS会在网站根路径下的robots.txt留下相关信息：<br><img src="/Web渗透测试-信息收集总结/cms.jpg" alt=""><br>上图中，能够发现网站使用的是wordpress。</p>
-<h2 id="Web中间件"><a href="#Web中间件" class="headerlink" title="Web中间件"></a>Web中间件</h2><p><strong>1.访问不存在的页面</strong><br>探测Web中间件的指纹信息方法有很多，比如随意提交一个错误页面，Apache、IIS、nginx的默认的错误页面都是不同的，而且不同版本的错误页面也是不同的。<br><img src="/Web渗透测试-信息收集总结/iis.jpg" alt=""><br><img src="/Web渗透测试-信息收集总结/apache.jpg" alt=""><br><strong>2.站长之家</strong><br>SEO综合查询<br><img src="/Web渗透测试-信息收集总结/SEO.jpg" alt=""></p>
-<h2 id="Web敏感目录扫描"><a href="#Web敏感目录扫描" class="headerlink" title="Web敏感目录扫描"></a>Web敏感目录扫描</h2><p>Web目录扫描也就是通过一些保存着敏感路径的字典（如：后台路径、在线编辑器路径、上传路径、备份文件等），对于一次网站渗透来说，对目录进行暴力猜解是前期阶段必不可少的一个步骤。如果运气好扫到了备份文件之类的，也许会事半功倍。<br><strong>1.御剑</strong><br><img src="/Web渗透测试-信息收集总结/御剑.jpg" alt=""><br><strong>2.Awvs扫描器目录爬行</strong><br><img src="/Web渗透测试-信息收集总结/awvs.jpg" alt=""><br><strong>3.dirb</strong><br>kali中的目录扫描器<br><img src="/Web渗透测试-信息收集总结/dirb.jpg" alt=""></p>
-<h2 id="旁站查询"><a href="#旁站查询" class="headerlink" title="旁站查询"></a>旁站查询</h2><p><strong>1.在线查询网站</strong><br><a href="https://www.phpinfo.me/bing.php" target="_blank" rel="external">https://www.phpinfo.me/bing.php</a><br><img src="/Web渗透测试-信息收集总结/旁站.jpg" alt=""><br><strong>2.站长之家</strong><br><img src="/Web渗透测试-信息收集总结/站长之家.jpg" alt=""></p>
-<h2 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h2><p><strong>1.nmap扫描</strong><br><img src="/Web渗透测试-信息收集总结/端口.jpg" alt=""></p>
-<h2 id="whois查询"><a href="#whois查询" class="headerlink" title="whois查询"></a>whois查询</h2><p>收集该信息，能够找到管理员的注册邮箱，为社工做准备。<br><strong>1.站长之家</strong><br><img src="/Web渗透测试-信息收集总结/站长之家whois.jpg" alt=""><br><strong>2.Linux中的whois工具</strong><br><img src="/Web渗透测试-信息收集总结/kaliwhois.jpg" alt=""></p>
+<h1 id="收集信息项目"><a href="#收集信息项目" class="headerlink" title="收集信息项目"></a>收集信息项目</h1><h2 id="操作系统类型"><a href="#操作系统类型" class="headerlink" title="操作系统类型"></a>操作系统类型</h2><p><strong>1.nmap</strong><br>可以使用nmap的“-O”参数，来初步判断服务器系统类型：<br><img src="/2017/05/29/Web渗透测试-信息收集总结/nmap.jpg" alt=""><br>探测到操作系统为Microsoft Windows Server 2008 R2的可能性很大。<br><strong>2.大小写</strong><br>访问网站：<br><a href="http://www.xxx.com/index.html" target="_blank" rel="external">http://www.xxx.com/index.html</a><br><a href="http://www.xxx.com/inDex.html" target="_blank" rel="external">http://www.xxx.com/inDex.html</a><br>Windows操作系统不区分大小写，Linux系统大小写敏感，用此方法能够判断是Windows还是Linux系统。</p>
+<h2 id="CMS类型"><a href="#CMS类型" class="headerlink" title="CMS类型"></a>CMS类型</h2><p><strong>1.robots.txt</strong><br>一般的CMS会在网站根路径下的robots.txt留下相关信息：<br><img src="/2017/05/29/Web渗透测试-信息收集总结/cms.jpg" alt=""><br>上图中，能够发现网站使用的是wordpress。</p>
+<h2 id="Web中间件"><a href="#Web中间件" class="headerlink" title="Web中间件"></a>Web中间件</h2><p><strong>1.访问不存在的页面</strong><br>探测Web中间件的指纹信息方法有很多，比如随意提交一个错误页面，Apache、IIS、nginx的默认的错误页面都是不同的，而且不同版本的错误页面也是不同的。<br><img src="/2017/05/29/Web渗透测试-信息收集总结/iis.jpg" alt=""><br><img src="/2017/05/29/Web渗透测试-信息收集总结/apache.jpg" alt=""><br><strong>2.站长之家</strong><br>SEO综合查询<br><img src="/2017/05/29/Web渗透测试-信息收集总结/SEO.jpg" alt=""></p>
+<h2 id="Web敏感目录扫描"><a href="#Web敏感目录扫描" class="headerlink" title="Web敏感目录扫描"></a>Web敏感目录扫描</h2><p>Web目录扫描也就是通过一些保存着敏感路径的字典（如：后台路径、在线编辑器路径、上传路径、备份文件等），对于一次网站渗透来说，对目录进行暴力猜解是前期阶段必不可少的一个步骤。如果运气好扫到了备份文件之类的，也许会事半功倍。<br><strong>1.御剑</strong><br><img src="/2017/05/29/Web渗透测试-信息收集总结/御剑.jpg" alt=""><br><strong>2.Awvs扫描器目录爬行</strong><br><img src="/2017/05/29/Web渗透测试-信息收集总结/awvs.jpg" alt=""><br><strong>3.dirb</strong><br>kali中的目录扫描器<br><img src="/2017/05/29/Web渗透测试-信息收集总结/dirb.jpg" alt=""></p>
+<h2 id="旁站查询"><a href="#旁站查询" class="headerlink" title="旁站查询"></a>旁站查询</h2><p><strong>1.在线查询网站</strong><br><a href="https://www.phpinfo.me/bing.php" target="_blank" rel="external">https://www.phpinfo.me/bing.php</a><br><img src="/2017/05/29/Web渗透测试-信息收集总结/旁站.jpg" alt=""><br><strong>2.站长之家</strong><br><img src="/2017/05/29/Web渗透测试-信息收集总结/站长之家.jpg" alt=""></p>
+<h2 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h2><p><strong>1.nmap扫描</strong><br><img src="/2017/05/29/Web渗透测试-信息收集总结/端口.jpg" alt=""></p>
+<h2 id="whois查询"><a href="#whois查询" class="headerlink" title="whois查询"></a>whois查询</h2><p>收集该信息，能够找到管理员的注册邮箱，为社工做准备。<br><strong>1.站长之家</strong><br><img src="/2017/05/29/Web渗透测试-信息收集总结/站长之家whois.jpg" alt=""><br><strong>2.Linux中的whois工具</strong><br><img src="/2017/05/29/Web渗透测试-信息收集总结/kaliwhois.jpg" alt=""></p>
 
       
     </div>

@@ -97,14 +97,14 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/30/软件逆向基础/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="调试逆向技术动态分析技术：指的是使用调试工具加载程序并运行。随着程序运行，调试者可以随时中断目标的指令流程，以便观察相关计算的结果和当前的设备情况。静态分析技术：是相对于动态分析而言的。由于在实际分析中，很多场合不方便运行目标（例如病毒程序，设备不兼容，软件的单独某一模块）。那么这个时候静态分析技术就该上场了！">
-<meta property="og:image" content="http://yoursite.com/软件逆向基础/顺序.jpg">
-<meta property="og:image" content="http://yoursite.com/软件逆向基础/区别.jpg">
-<meta property="og:image" content="http://yoursite.com/软件逆向基础/数组.jpg">
-<meta property="og:updated_time" content="2017-05-06T09:46:15.531Z">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/软件逆向基础/顺序.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/软件逆向基础/区别.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/30/软件逆向基础/数组.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:30:52.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件逆向基础">
 <meta name="twitter:description" content="调试逆向技术动态分析技术：指的是使用调试工具加载程序并运行。随着程序运行，调试者可以随时中断目标的指令流程，以便观察相关计算的结果和当前的设备情况。静态分析技术：是相对于动态分析而言的。由于在实际分析中，很多场合不方便运行目标（例如病毒程序，设备不兼容，软件的单独某一模块）。那么这个时候静态分析技术就该上场了！">
-<meta name="twitter:image" content="http://yoursite.com/软件逆向基础/顺序.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/30/软件逆向基础/顺序.jpg">
 
 
 
@@ -423,10 +423,10 @@
 <p>下面是_stdcall调用约定的一个函数调用的例子：<br>push 参数3；<br>push 参数2；<br>push 参数1；<br>call 函数地址；这里call指令将完成两个工作：1.返回地址入栈2.跳转到被调用的函数地址。<br>push ebp；保存旧栈帧的底部<br>mov ebp，esp；设置新栈帧的底部<br>sub esp，xxx；为新的栈开辟空间</p>
 <p>函数返回的过程：<br>1.保存返回值：通常将函数的返回值保存在eax寄存器中。<br>2.弹出当前栈帧，返回下一个栈帧。在堆栈平衡的基础上，给esp加上栈帧的大小，降低栈顶，回收当前栈帧的空间。将当前栈帧底部保存的前栈帧ebp值弹入ebp寄存器，恢复出上一个栈帧。将函数返回地址弹给eip寄存器。<br>3.跳转：按照函数返回地址跳回母函数中继续执行。</p>
 <p>函数返回时的关键序列：<br>add esp，xxx；降低栈顶，回收当前的栈帧<br>pop ebp；将上一个栈帧底部恢复到ebp<br>retn；这条指令有两个功能： 1.弹出栈帧中的返回地址，完成栈帧的恢复工作。 2.跳回弹出的返回地址，继续下面的执行。</p>
-<p>函数参数入栈顺序：<br><img src="/软件逆向基础/顺序.jpg" alt=""></p>
+<p>函数参数入栈顺序：<br><img src="/2017/04/30/软件逆向基础/顺序.jpg" alt=""></p>
 <p>下面用一个实际的例子来介绍函数的调用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">int fun_b(int b1,intb2)</div><div class="line">&#123;</div><div class="line">  int b3;</div><div class="line">  b3=b1+b2;</div><div class="line">  <span class="built_in">return</span> b3;</div><div class="line">&#125;</div><div class="line">int fun_a(int a1,int a2)</div><div class="line">&#123;</div><div class="line">  int a3,a4;</div><div class="line">  a3=a1-a2;</div><div class="line">  a4=fun_b(a1,a2);</div><div class="line">  <span class="built_in">return</span> a3*a4;</div><div class="line">&#125;</div><div class="line">void <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">  int m_main;</div><div class="line">  m_main=fun_a(1,2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>编译方式的识别</strong><br>VC<br>VC的编译方式有Debug和Release方式。<br>Debug：通常称为调试版本，它包含调试信息，并且不作任何优化，便于程序员调试程序。<br>Release：称为发布版本，它往往是进行了各种优化，使得程序在代码大小和运行速度上都是最优的，以便用户很好地使用。<br>Debug版与Release版的区别：<br>1.Debug版会初始化内存为CC，而Release版不会。<br><img src="/软件逆向基础/区别.jpg" alt=""><br>2.Debug版会使用一个检查堆栈平衡的函数checkesp，而Release版不需要。</p>
-<p><strong>数组的识别</strong><br>数组是相同数据类型的数据集合，以线性方式存储在内存中。其数据排列顺序是由低到高，数组的名称表示该数组的首地址。<br><img src="/软件逆向基础/数组.jpg" alt=""></p>
+<p><strong>编译方式的识别</strong><br>VC<br>VC的编译方式有Debug和Release方式。<br>Debug：通常称为调试版本，它包含调试信息，并且不作任何优化，便于程序员调试程序。<br>Release：称为发布版本，它往往是进行了各种优化，使得程序在代码大小和运行速度上都是最优的，以便用户很好地使用。<br>Debug版与Release版的区别：<br>1.Debug版会初始化内存为CC，而Release版不会。<br><img src="/2017/04/30/软件逆向基础/区别.jpg" alt=""><br>2.Debug版会使用一个检查堆栈平衡的函数checkesp，而Release版不需要。</p>
+<p><strong>数组的识别</strong><br>数组是相同数据类型的数据集合，以线性方式存储在内存中。其数据排列顺序是由低到高，数组的名称表示该数组的首地址。<br><img src="/2017/04/30/软件逆向基础/数组.jpg" alt=""></p>
 <p><strong>流程控制语句的识别</strong><br>if语句<br>先进行比较指令，再通过条件跳转命令来执行。<br>；先执行各类影响标志位的指令，如cmp<br>；其后是各种跳转指令<br>jxx xxxx</p>
 <p>if…else语句<br>先进行比较指令，然后判断条件跳转到if的分支代码处，执行完成后采用无条件跳转指令（ jmp）跳转到else分支的结束代码处。</p>
 <p>switch语句<br>先进行比较指令，然后执行跳转，但与if的多分支语句的区别是： switch语句将比较指令放在一起，后面的case模块是放在一起的。<br>；获取switch中考察的变量值<br>；先执行各类影响标志位的指令，如cmp<br>jxx xxx1<br>；先执行各类影响标志位的指令，如cmp<br>jxx xxx2<br>；先执行各类影响标志位的指令，如cmp<br>jxx xxx3<br>xxx1:<br>……<br>jmp end<br>xxx2:<br>……<br>jmp end<br>xxx3:<br>……<br>jmp end</p>

@@ -96,13 +96,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/05/冰河木马查杀/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="木马木马是隐藏在正常程序中的具有特殊功能恶意代码，是具备破坏，删除和修改文件，发送密码，记录键盘，实施Dos攻击后门程序。它隐藏在目标计算机里，可以随计算机自动启动并在某一端口监听来自控制端的控制信息。木马工作原理包含如下三点：  传统连接技术一般木马都采用C/S(client/server,即服务器/客户端)运行模式，因此它分为两部分，即客户端和服务前端木马程序。其原理是，当服务器端程序在目标计">
-<meta property="og:image" content="http://yoursite.com/CMS识别方法/冰河.jpg">
-<meta property="og:image" content="http://yoursite.com/CMS识别方法/默认.jpg">
-<meta property="og:updated_time" content="2017-06-05T03:29:49.291Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/05/冰河木马查杀/冰河.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/05/冰河木马查杀/默认.jpg">
+<meta property="og:updated_time" content="2017-06-22T10:57:46.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冰河木马查杀">
 <meta name="twitter:description" content="木马木马是隐藏在正常程序中的具有特殊功能恶意代码，是具备破坏，删除和修改文件，发送密码，记录键盘，实施Dos攻击后门程序。它隐藏在目标计算机里，可以随计算机自动启动并在某一端口监听来自控制端的控制信息。木马工作原理包含如下三点：  传统连接技术一般木马都采用C/S(client/server,即服务器/客户端)运行模式，因此它分为两部分，即客户端和服务前端木马程序。其原理是，当服务器端程序在目标计">
-<meta name="twitter:image" content="http://yoursite.com/CMS识别方法/冰河.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/05/冰河木马查杀/冰河.jpg">
 
 
 
@@ -417,12 +417,12 @@
 <li>传统连接技术<br>一般木马都采用C/S(client/server,即服务器/客户端)运行模式，因此它分为两部分，即客户端和服务前端木马程序。其原理是，当服务器端程序在目标计算机上被执行后，一般会打开一个默认的端口进行监听，当客户端向服务器端主动提出连接请求，服务器端的木马程序就会自动运行，来应答客户端的请求，从而建立连接。第一代和第二代木马就采用这种方式。冰河木马属于此类。</li>
 <li>反弹端口技术<br>随着防火墙技术的发展，它可有效拦截从外部主动发起的连接的木马程序。但防火墙对内部发起的连接请求则认为是正常连接，第三代第四代木马就是利用这个缺点，其服务器端程序主动发起对外连接请求，再通过某些方式连接到木马的客户端，就是说“反弹式”木马是服务器端主动发起连接请求，而客户端是被动的连接。</li>
 <li>线程插入技术<br>一个应用程序在运行之后，会在系统之中产生一个进程，同时，每个进程分别对应了一个不同的进程标识符。系统会分配一个虚拟的内存空间地址段给这个进程，一切相关的程序操作，都会在这个虚拟的空间中进行。一般情况下，线程之间是相互独立的，当一个线程发生错误的时候，并不一定会导致整个进程的崩溃。“线程插入”技术就是利用线程之间运行的相对独立性，使木马完全地融进了系统那个内核。系统运行时会有很多的进程，而每个进程又有许多的线程，这就导致了查杀利用“线程插入”技术木马程序的难度。<a id="more"></a>
-<h1 id="冰河木马"><a href="#冰河木马" class="headerlink" title="冰河木马"></a>冰河木马</h1>木马分为客户端和服务端：G_client.exe和G_server.exe，被控制端运行G_server.exe，控制端使用G_client.exe。<br>被控制端运行G_server.exe之后，会默认开放7626端口（据说是冰河的生日），将自身写入注册表，修改.txt文件的默认打开方式为sysexplr.exe（木马程序），这样系统重启之后，只要受害者打开.txt文件，服务器端木马就会运行。<br>客户端运行G_client.exe之后，打开冰河控制界面，添加主机，建立连接之后能够远程控制目标主机。具有文件管理和执行命令的功能。<br>服务器端的程序可以由客户端配置密码：<br>启动客户端-&gt;设置-&gt;配置服务器-&gt;添加密码。<br><img src="/CMS识别方法/冰河.jpg" alt=""></li>
+<h1 id="冰河木马"><a href="#冰河木马" class="headerlink" title="冰河木马"></a>冰河木马</h1>木马分为客户端和服务端：G_client.exe和G_server.exe，被控制端运行G_server.exe，控制端使用G_client.exe。<br>被控制端运行G_server.exe之后，会默认开放7626端口（据说是冰河的生日），将自身写入注册表，修改.txt文件的默认打开方式为sysexplr.exe（木马程序），这样系统重启之后，只要受害者打开.txt文件，服务器端木马就会运行。<br>客户端运行G_client.exe之后，打开冰河控制界面，添加主机，建立连接之后能够远程控制目标主机。具有文件管理和执行命令的功能。<br>服务器端的程序可以由客户端配置密码：<br>启动客户端-&gt;设置-&gt;配置服务器-&gt;添加密码。<br><img src="/2017/06/05/冰河木马查杀/冰河.jpg" alt=""></li>
 </ol>
 <h1 id="服务器端冰河木马查杀"><a href="#服务器端冰河木马查杀" class="headerlink" title="服务器端冰河木马查杀"></a>服务器端冰河木马查杀</h1><ol>
 <li>清理注册表<br>cmd-&gt;regedit<br>依次打开：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run，该目录中会存在木马添加的一个默认键值：C:\WINNT\System32\kernel32.exe，删除之。<br>依次打开：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Runservices，目录中也会存在木马添加的默认键值：C:\WINNT\System32\kernel32.exe，删除之。</li>
 <li>删除木马可执行文件<br>进入目录：C:\WINNT\System32，找到冰河木马的两个可执行文件Kernel32.exe和Sysexplr.exe文件，删除之。</li>
-<li>修复.txt文件默认打开方式<br>冰河木马将.txt文件的缺省打开方式由notepad.exe改为木马的启动程序，打开注册表，HKEY_CLASSES_ROOT\txtfile\Shell\open\command，修改C:\Windows\System32\Sysexplr.exe%1为正常的C:\Windows\notepad.exe%1即可。<br><img src="/CMS识别方法/默认.jpg" alt=""></li>
+<li>修复.txt文件默认打开方式<br>冰河木马将.txt文件的缺省打开方式由notepad.exe改为木马的启动程序，打开注册表，HKEY_CLASSES_ROOT\txtfile\Shell\open\command，修改C:\Windows\System32\Sysexplr.exe%1为正常的C:\Windows\notepad.exe%1即可。<br><img src="/2017/06/05/冰河木马查杀/默认.jpg" alt=""></li>
 </ol>
 
       

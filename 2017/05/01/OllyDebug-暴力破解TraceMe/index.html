@@ -97,20 +97,20 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="首先来看下TraceMe这个序列号验证程序流程图：">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/流程图.png">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/程序运行.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/载入.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/跟随.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/入栈.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/跳转.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/nop.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/破解完成.jpg">
-<meta property="og:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/注释.png">
-<meta property="og:updated_time" content="2017-05-01T06:50:58.696Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/流程图.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/程序运行.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/载入.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/跟随.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/入栈.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/跳转.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/nop.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/破解完成.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/注释.png">
+<meta property="og:updated_time" content="2017-06-22T14:28:41.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OllyDebug-暴力破解TraceMe">
 <meta name="twitter:description" content="首先来看下TraceMe这个序列号验证程序流程图：">
-<meta name="twitter:image" content="http://yoursite.com/OllyDebug-暴力破解TraceMe/流程图.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/01/OllyDebug-暴力破解TraceMe/流程图.png">
 
 
 
@@ -420,12 +420,12 @@
       
 
       
-        <p>首先来看下TraceMe这个序列号验证程序流程图：<br><img src="/OllyDebug-暴力破解TraceMe/流程图.png" alt=""><br><a id="more"></a><br>程序运行截图：<br><img src="/OllyDebug-暴力破解TraceMe/程序运行.jpg" alt=""><br>程序流程：用户输入用户名和序列号，程序通过GetDlgItemTextA函数获取到用户输入的内容，然后调用比较序列号的函数判断序列号是否正确，函数会有返回值来表示正确与否。根据返回值来选择弹出正确还是错误的对话框。</p>
-<p>使用OllyDebug载入程序：<br><img src="/OllyDebug-暴力破解TraceMe/载入.jpg" alt=""><br>在反汇编窗口中Ctrl+G，查找GetDlgItemTextA函数，如下图所示：<br><img src="/OllyDebug-暴力破解TraceMe/跟随.jpg" alt=""><br>然后在该地址处设置断点，重新F9运行到该断点处，程序提示输入用户名和注册号“lzx123,123456”，输入完成之后，一直F8，找到程序将刚才输入的lzx123入栈的地方：<br><img src="/OllyDebug-暴力破解TraceMe/入栈.jpg" alt=""><br>edx存放用户名，eax存放注册号。<br>注意，程序将我们输入的用户名和注册号入栈之后，下一步一般就是判断注册号是否合法了，注意下面一个CALL函数，根据上面的汇编代码，大致能够反推出验证函数大致如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int a(注册号,用户名,用户名长度)</div><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  <span class="built_in">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>本次破解不考虑函数内部，我们只管函数的返回值，程序继续执行，运行到下面的一个跳转语句，如下图所示：<br><img src="/OllyDebug-暴力破解TraceMe/跳转.jpg" alt=""><br>由于我们输入的注册码是任意输入的，那个这个跳转按照正常流程，一定是调到错误处理，所以，破解的办法就是不让程序跳转，使用nop指令替换该跳转语句。<br>选中该跳转语句，右键-&gt;二进制-&gt;用nop填充：<br><img src="/OllyDebug-暴力破解TraceMe/nop.jpg" alt=""></p>
-<p>然后使用之前的方法，将修改保存到可执行文件就ok了。<br>破解之后，运行效果如下：<br><img src="/OllyDebug-暴力破解TraceMe/破解完成.jpg" alt=""></p>
+        <p>首先来看下TraceMe这个序列号验证程序流程图：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/流程图.png" alt=""><br><a id="more"></a><br>程序运行截图：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/程序运行.jpg" alt=""><br>程序流程：用户输入用户名和序列号，程序通过GetDlgItemTextA函数获取到用户输入的内容，然后调用比较序列号的函数判断序列号是否正确，函数会有返回值来表示正确与否。根据返回值来选择弹出正确还是错误的对话框。</p>
+<p>使用OllyDebug载入程序：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/载入.jpg" alt=""><br>在反汇编窗口中Ctrl+G，查找GetDlgItemTextA函数，如下图所示：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/跟随.jpg" alt=""><br>然后在该地址处设置断点，重新F9运行到该断点处，程序提示输入用户名和注册号“lzx123,123456”，输入完成之后，一直F8，找到程序将刚才输入的lzx123入栈的地方：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/入栈.jpg" alt=""><br>edx存放用户名，eax存放注册号。<br>注意，程序将我们输入的用户名和注册号入栈之后，下一步一般就是判断注册号是否合法了，注意下面一个CALL函数，根据上面的汇编代码，大致能够反推出验证函数大致如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int a(注册号,用户名,用户名长度)</div><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  <span class="built_in">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>本次破解不考虑函数内部，我们只管函数的返回值，程序继续执行，运行到下面的一个跳转语句，如下图所示：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/跳转.jpg" alt=""><br>由于我们输入的注册码是任意输入的，那个这个跳转按照正常流程，一定是调到错误处理，所以，破解的办法就是不让程序跳转，使用nop指令替换该跳转语句。<br>选中该跳转语句，右键-&gt;二进制-&gt;用nop填充：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/nop.jpg" alt=""></p>
+<p>然后使用之前的方法，将修改保存到可执行文件就ok了。<br>破解之后，运行效果如下：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/破解完成.jpg" alt=""></p>
 <p>(注意，跳转语句之前有一条语句：<br>test eax，eax；任何函数执行之后的返回值，都会放在这个寄存器里面，如果返回的内容大于4个字节，那么寄存器会存储返回数据的地址。)</p>
-<p>关键代码注释：<br><img src="/OllyDebug-暴力破解TraceMe/注释.png" alt=""></p>
+<p>关键代码注释：<br><img src="/2017/05/01/OllyDebug-暴力破解TraceMe/注释.png" alt=""></p>
 
       
     </div>

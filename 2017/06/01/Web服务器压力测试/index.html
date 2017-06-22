@@ -97,18 +97,18 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/01/Web服务器压力测试/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="前言一个网站或者博客到底能够承受多大的用户访问量经常是我们在用VPS或者独立服务器搭建网站了最关心的问题，还有不少人喜欢对LNMP或者LAMP进行一些优化以便提高Web性能，而优化后到底有多大的效果，就需要我们对网站进行服务器压力测试了。">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/website.jpg">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/ab.jpg">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/ab压力测试.jpg">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/ab测试结果.gif">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/日志.jpg">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/安装.jpg">
-<meta property="og:image" content="http://yoursite.com/Web服务器压力测试/测试结果.jpg">
-<meta property="og:updated_time" content="2017-06-01T08:16:51.066Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/website.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/ab.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/ab压力测试.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/ab测试结果.gif">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/日志.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/安装.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/测试结果.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:08:22.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web服务器压力测试">
 <meta name="twitter:description" content="前言一个网站或者博客到底能够承受多大的用户访问量经常是我们在用VPS或者独立服务器搭建网站了最关心的问题，还有不少人喜欢对LNMP或者LAMP进行一些优化以便提高Web性能，而优化后到底有多大的效果，就需要我们对网站进行服务器压力测试了。">
-<meta name="twitter:image" content="http://yoursite.com/Web服务器压力测试/website.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/01/Web服务器压力测试/website.jpg">
 
 
 
@@ -418,14 +418,14 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个网站或者博客到底能够承受多大的用户访问量经常是我们在用VPS或者独立服务器搭建网站了最关心的问题，还有不少人喜欢对LNMP或者LAMP进行一些优化以便提高Web性能，而优化后到底有多大的效果，就需要我们对网站进行服务器压力测试了。<br><img src="/Web服务器压力测试/website.jpg" alt=""><br><a id="more"></a><br>目前来说Webbench，Apache Bench，http_load是三款比较流行的网站服务器压力Web性能测试工具，安装和使用都非常简单，只要有一台VPS主机或者直接用本地电脑就可以开始测试，由于受网络等各种因素的影响，测试结果不一定很准确，但可以当作参考。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个网站或者博客到底能够承受多大的用户访问量经常是我们在用VPS或者独立服务器搭建网站了最关心的问题，还有不少人喜欢对LNMP或者LAMP进行一些优化以便提高Web性能，而优化后到底有多大的效果，就需要我们对网站进行服务器压力测试了。<br><img src="/2017/06/01/Web服务器压力测试/website.jpg" alt=""><br><a id="more"></a><br>目前来说Webbench，Apache Bench，http_load是三款比较流行的网站服务器压力Web性能测试工具，安装和使用都非常简单，只要有一台VPS主机或者直接用本地电脑就可以开始测试，由于受网络等各种因素的影响，测试结果不一定很准确，但可以当作参考。</p>
 <h1 id="软件介绍"><a href="#软件介绍" class="headerlink" title="软件介绍"></a>软件介绍</h1><p><strong>Apache Bench</strong><br>Apache Bench又叫做AB，是Apache附带的一个小工具，专门用于HTTP Server的benchmark testing，ab命令会创建很多的并发访问线程，模拟多个访问者同时对某一URL进行访问，可用来测试Apache的负载压力，也可以测试nginx、lighthttp、IIS等其它Web服务器的压力。<br><strong>Webbench</strong><br>Webbench是由Lionbridge公司开发出来的一个网站压力测试工具，可用于测试ASP,PHP,JAVA,CGI等服务器压力，也可用于SSL的安全网站的负载能力进行测试，最多可以模拟3万个并发连接去测试网站的负载能力，Webbench操作简单，一行命令就可以显示出服务器压力。<br><strong>http_load</strong><br>这是国外一个博主开发的基于linux平台的性能测试工具，主要是以并行复用的方式运行，可以用来测试web服务器的吞吐量与负载，测试结果一目了然。</p>
 <p>Apache Bench,Webbench,http_load这三款网站服务器压力测试工具还要根据测试者的主机性能来决定参数，防止把测试主机给搞成死机了。</p>
 <h1 id="Apache-Bench：Apache自带服务器压力测试工具"><a href="#Apache-Bench：Apache自带服务器压力测试工具" class="headerlink" title="Apache Bench：Apache自带服务器压力测试工具"></a>Apache Bench：Apache自带服务器压力测试工具</h1><p>Apache Bench是Apache自带的一款功能强大的测试工具，安装了Apache一般就自带了。在Apache的安装目录下的bin文件夹中：ab.exe。<br>Apache Bench工具用法命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ab -n 100 -c 50 http://www.qq.com/</div></pre></td></tr></table></figure></p>
-<p>“-n”表示：每次请求数，默认不能超过1024个，“-c”表示：请求的并发连接数，模拟客户端的数量。<br><img src="/Web服务器压力测试/ab.jpg" alt=""><br><img src="/Web服务器压力测试/ab压力测试.jpg" alt=""><br><img src="/Web服务器压力测试/ab测试结果.gif" alt=""><br>被测试的网站服务器可以在日志中查看到Apache Bench工具访问的记录：<br><img src="/Web服务器压力测试/日志.jpg" alt=""></p>
+<p>“-n”表示：每次请求数，默认不能超过1024个，“-c”表示：请求的并发连接数，模拟客户端的数量。<br><img src="/2017/06/01/Web服务器压力测试/ab.jpg" alt=""><br><img src="/2017/06/01/Web服务器压力测试/ab压力测试.jpg" alt=""><br><img src="/2017/06/01/Web服务器压力测试/ab测试结果.gif" alt=""><br>被测试的网站服务器可以在日志中查看到Apache Bench工具访问的记录：<br><img src="/2017/06/01/Web服务器压力测试/日志.jpg" alt=""></p>
 <h1 id="Webbench：最多模拟3万个并发连接数测试压力"><a href="#Webbench：最多模拟3万个并发连接数测试压力" class="headerlink" title="Webbench：最多模拟3万个并发连接数测试压力"></a>Webbench：最多模拟3万个并发连接数测试压力</h1><p>Webbench最多可以模拟3万个并发连接数来对服务器进行压力测试，可以设置压力测试时间。安装Webbench命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install ctags</div><div class="line">wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz</div><div class="line">tar zxvf webbench-1.5.tar.gz</div><div class="line"><span class="built_in">cd</span> webbench-1.5</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
-<p><img src="/Web服务器压力测试/安装.jpg" alt=""><br>Webbench测试命令是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webbench -c 100 -t 10 http://www.qq.com/index.php</div></pre></td></tr></table></figure></p>
-<p>-c是并发数<br>-t是运行测试时间，即10秒钟内中以每次100个请求进行测试。<br><img src="/Web服务器压力测试/测试结果.jpg" alt=""><br>以上是运行Webbench测试结果，Speed显示的是每分钟响应请求数和每秒钟传输数据量，Requests显示的是成功请求数和失败请求数。</p>
+<p><img src="/2017/06/01/Web服务器压力测试/安装.jpg" alt=""><br>Webbench测试命令是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webbench -c 100 -t 10 http://www.qq.com/index.php</div></pre></td></tr></table></figure></p>
+<p>-c是并发数<br>-t是运行测试时间，即10秒钟内中以每次100个请求进行测试。<br><img src="/2017/06/01/Web服务器压力测试/测试结果.jpg" alt=""><br>以上是运行Webbench测试结果，Speed显示的是每分钟响应请求数和每秒钟传输数据量，Requests显示的是成功请求数和失败请求数。</p>
 <p>为准确得到服务器的承受压力，测试时并发数可逐渐加大，如并发100时观察一下网站负载是多少、打开页面是否流畅，当网站打开缓慢时并发是多少、网站打不开时并发又是多少。</p>
 <h1 id="http-load：测试web服务器的吞吐量与负载"><a href="#http-load：测试web服务器的吞吐量与负载" class="headerlink" title="http_load：测试web服务器的吞吐量与负载"></a>http_load：测试web服务器的吞吐量与负载</h1><p>参考如下链接：<a href="https://yusi123.com/2950.html" target="_blank" rel="external">https://yusi123.com/2950.html</a></p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>1.Apache Bench,Webbench,http_load对网站压力Web性能进行测试时，为了得到更加客观和准确的数值，应该从远程访问、局域网访问和本地等多个方面进行全方位的测试。一般用127.0.0.1进行本机测试。<br>2.当然，单纯数值判断并不准确，还要参考CPU、内存的等消耗综合考虑。这三款工具大家使用也须谨慎，防止一次上太多的负载，造成目标服务器直接因内存耗光死机，而不得不硬重启，得不偿失。</p>

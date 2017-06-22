@@ -97,14 +97,14 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/01/计算机原理&汇编语言复习/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="寄存器EAX：扩展累加寄存器EBX：扩展基址寄存器ECX：扩展计数寄存器EDX：扩展数据寄存器ESI：扩展来源寄存器EDI：扩展目标寄存器EBP：扩展基址指针寄存器ESP：扩展堆栈指针寄存器，指向当前进程的栈空间地址。EIP：扩展指令指针寄存器，指向下一条要被执行的指令。寄存器的大小都是32bit，4个字节。">
-<meta property="og:image" content="http://yoursite.com/计算机原理&汇编语言复习/栈.png">
-<meta property="og:image" content="http://yoursite.com/计算机原理&汇编语言复习/ring3.png">
-<meta property="og:image" content="http://yoursite.com/计算机原理&汇编语言复习/条件跳转指令总结.gif">
-<meta property="og:updated_time" content="2017-05-01T03:32:11.486Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/计算机原理&汇编语言复习/栈.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/计算机原理&汇编语言复习/ring3.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/01/计算机原理&汇编语言复习/条件跳转指令总结.gif">
+<meta property="og:updated_time" content="2017-06-22T14:29:23.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机原理&amp;汇编语言复习">
 <meta name="twitter:description" content="寄存器EAX：扩展累加寄存器EBX：扩展基址寄存器ECX：扩展计数寄存器EDX：扩展数据寄存器ESI：扩展来源寄存器EDI：扩展目标寄存器EBP：扩展基址指针寄存器ESP：扩展堆栈指针寄存器，指向当前进程的栈空间地址。EIP：扩展指令指针寄存器，指向下一条要被执行的指令。寄存器的大小都是32bit，4个字节。">
-<meta name="twitter:image" content="http://yoursite.com/计算机原理&汇编语言复习/栈.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/01/计算机原理&汇编语言复习/栈.png">
 
 
 
@@ -418,13 +418,13 @@
 <p><strong>栈</strong><br>内存中的一部分，具有两个特殊性质：</p>
 <ul>
 <li>FILO（Fisrt In Last Out，先进后出）；</li>
-<li>地址反向增长（栈底为大地址，栈顶为小地址）；<br><img src="/计算机原理&amp;汇编语言复习/栈.png" alt=""></li>
+<li>地址反向增长（栈底为大地址，栈顶为小地址）；<br><img src="/2017/05/01/计算机原理&amp;汇编语言复习/栈.png" alt=""></li>
 </ul>
-<p><strong>系统API</strong><br>Windows应用程序运行在Ring3级别，包括OllyDebug。<br><img src="/计算机原理&amp;汇编语言复习/ring3.png" alt=""><br>有时候需要Ring0级别才能进行操作，可以通过系统为我们搭建的桥梁：使用API函数来处理，因为系统只信任自己提供的函数，所以我们要通过API才能实现对内核的操作。</p>
+<p><strong>系统API</strong><br>Windows应用程序运行在Ring3级别，包括OllyDebug。<br><img src="/2017/05/01/计算机原理&amp;汇编语言复习/ring3.png" alt=""><br>有时候需要Ring0级别才能进行操作，可以通过系统为我们搭建的桥梁：使用API函数来处理，因为系统只信任自己提供的函数，所以我们要通过API才能实现对内核的操作。</p>
 <p><strong>标志位</strong><br>在逆向中，需要关心的标志位只有三个，也就是cmp指令能修改的那三个：Z/O/C。<br>Z标志位（0标志），这个标志位是最常用的，运算结果为0时候，Z标志位置1，否则置0。<br>O标志位（溢出标志），在运行过程中，如操作数超出了机器能表示的范围则称为溢出，此时OF位置1，否则置0。<br>C标志位（进位标志），记录运算时从最高有效位产生的进位值。例如执行加法指令时，最高有效位有进位时置1，否则置0。</p>
 <p><strong>CALL指令</strong><br>call XXX;等于push EIP; 然后jmp XXX；<br>解释：调用函数的时候，需要先将函数的返回地址进行入栈，然后跳转到子函数处执行，执行完之后建返回地址出栈到EIP。<br>CALL有一下几种方式：<br>call 404000h；直接跳到函数或过程的地址<br>call eax；函数或过程地址存放在eax<br>call dword ptr [eax]；<br>首先按照dword类型取出eax寄存器中存放的数值，然后取出该数值对应的地址中的数据。<br>call dword ptr [eax+5]；<br>首先按照dword类型取出eax寄存器中存放的数值，然后取出该数值+5对应的地址中的数据。<br>call dword ptr [&lt;&amp;API&gt;]；执行一个系统API。</p>
 <p><strong>mov指令</strong><br>mov指令格式：mov dest, src；将src的内容拷贝到dest。<br>movs/movsb​​/movsw/movsd edi，esi；这些变体按串/字节/字/双字为单位将esi寄存器指向的数据复制到edi寄存器指向的空间。<br>movsx符号位扩展，byte-&gt;word，word-&gt;dword（扩展后高位全用符号位填充），然后实现mov。<br>movzx零扩展，byte-&gt;word，word-&gt;dword（扩展后高位全用0填充），然后实现mov。</p>
-<p><strong>cmp指令</strong><br>cmp指令格式：cmp dest, src；cmp指令比较dest和src两个操作数，并通过比较结果设置C/​O/Z标志位。<br>cmp指令大概有以下几种格式：<br>cmp eax,ebx;如果相等，Z标志位置1，否则0。<br>cmp eax, [404000] ;将eax和404000地址处的dword型数据相比较并同上置位。<br>cmp [404000], eax ;同上。<br><img src="/计算机原理&amp;汇编语言复习/条件跳转指令总结.gif" alt=""></p>
+<p><strong>cmp指令</strong><br>cmp指令格式：cmp dest, src；cmp指令比较dest和src两个操作数，并通过比较结果设置C/​O/Z标志位。<br>cmp指令大概有以下几种格式：<br>cmp eax,ebx;如果相等，Z标志位置1，否则0。<br>cmp eax, [404000] ;将eax和404000地址处的dword型数据相比较并同上置位。<br>cmp [404000], eax ;同上。<br><img src="/2017/05/01/计算机原理&amp;汇编语言复习/条件跳转指令总结.gif" alt=""></p>
 <p><strong>test指令</strong><br>test指令格式：test dest, src<br>这个指令和and指令一样，对两个操作数进行按位的‘与’运算，唯一不同之处是不将‘与’的结果保存到dest。即本指令对两个操作数的内容均不进行修改，仅是在逻辑与操作后，对标志位重新置位。<br>该指令的实战形态百分之九十九是酱紫：test eax, eax（如果eax的值为0，则Z标志位置1）</p>
 
       

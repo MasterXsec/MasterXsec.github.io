@@ -96,15 +96,15 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/30/Linux口令破解/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="1.获取密码密文1cat /etc/shadow root：用户名；$6$：是表示一种类型标记为6的密码散列suans fa,这里指SHA-512哈希算法；mxuA5cdy：指的是加盐(Salt)值； 2.保存root用户的hash密文到passwd.lst文件中1cp /etc/shadow /root/Desktop/passwd.lst">
-<meta property="og:image" content="http://yoursite.com/Linux口令破解/获取密文.jpg">
-<meta property="og:image" content="http://yoursite.com/Linux口令破解/pw.jpg">
-<meta property="og:image" content="http://yoursite.com/Linux口令破解/SHA512.jpg">
-<meta property="og:image" content="http://yoursite.com/Linux口令破解/1700.jpg">
-<meta property="og:updated_time" content="2017-05-30T03:54:01.163Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/30/Linux口令破解/获取密文.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/30/Linux口令破解/pw.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/30/Linux口令破解/SHA512.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/30/Linux口令破解/1700.jpg">
+<meta property="og:updated_time" content="2017-06-22T11:11:02.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux口令破解">
 <meta name="twitter:description" content="1.获取密码密文1cat /etc/shadow root：用户名；$6$：是表示一种类型标记为6的密码散列suans fa,这里指SHA-512哈希算法；mxuA5cdy：指的是加盐(Salt)值； 2.保存root用户的hash密文到passwd.lst文件中1cp /etc/shadow /root/Desktop/passwd.lst">
-<meta name="twitter:image" content="http://yoursite.com/Linux口令破解/获取密文.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/30/Linux口令破解/获取密文.jpg">
 
 
 
@@ -415,13 +415,13 @@
 
       
         <p><strong>1.获取密码密文</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/shadow</div></pre></td></tr></table></figure></p>
-<p><img src="/Linux口令破解/获取密文.jpg" alt=""><br>root：用户名；<br>$6$：是表示一种类型标记为6的密码散列suans fa,这里指SHA-512哈希算法；<br>mxuA5cdy：指的是加盐(Salt)值；</p>
+<p><img src="/2017/05/30/Linux口令破解/获取密文.jpg" alt=""><br>root：用户名；<br>$6$：是表示一种类型标记为6的密码散列suans fa,这里指SHA-512哈希算法；<br>mxuA5cdy：指的是加盐(Salt)值；</p>
 <p><strong>2.保存root用户的hash密文到passwd.lst文件中</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/shadow /root/Desktop/passwd.lst</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>由于我们只关心root账户的密码，所以删除的其他用户的信息，只保留root用户的：<br><img src="/Linux口令破解/pw.jpg" alt=""><br>使用Hashcat破解(hash值比对,查表)Linux登录密码时,并不需要一条完整的/etc/shadow记录,要把上面的完整记录削减成如下形式：<br>$6$mxuA5cdy$XZRk0CvnPFqOgVopqiPEFAFK72SogKVwwwp7gWaUOb7b6tVwfCpcSUsCEk64ktLLYmzyew/xd0O0hPG/yrm2X.</p>
+<p>由于我们只关心root账户的密码，所以删除的其他用户的信息，只保留root用户的：<br><img src="/2017/05/30/Linux口令破解/pw.jpg" alt=""><br>使用Hashcat破解(hash值比对,查表)Linux登录密码时,并不需要一条完整的/etc/shadow记录,要把上面的完整记录削减成如下形式：<br>$6$mxuA5cdy$XZRk0CvnPFqOgVopqiPEFAFK72SogKVwwwp7gWaUOb7b6tVwfCpcSUsCEk64ktLLYmzyew/xd0O0hPG/yrm2X.</p>
 <p><strong>3.查看加密算法</strong><br>Linux密码文件/etc/shadow中hash算法包括缺省的DES经典算法、MD5哈希算法($1)、Blowfish加密算法($2或$2a)和SHA哈希算法($5或$6）。因此利用hashcat工具进行破解的时候参数也不同，比如MD5哈希算法($1)，使用hashcat -m 500参数；SHA哈希算法($5或$6），使用hashcat -m 1800 参数。<br>查看加密类型：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/login.defs</div></pre></td></tr></table></figure></p>
-<p>找到ENCRYPT_METHOD对应的参数，这里能够看到是使用的SHA算法：SHA512<br><img src="/Linux口令破解/SHA512.jpg" alt=""><br>查看SHA512对应的参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hashcat --/<span class="built_in">help</span></div></pre></td></tr></table></figure></p>
-<p><img src="/Linux口令破解/1700.jpg" alt=""></p>
+<p>找到ENCRYPT_METHOD对应的参数，这里能够看到是使用的SHA算法：SHA512<br><img src="/2017/05/30/Linux口令破解/SHA512.jpg" alt=""><br>查看SHA512对应的参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hashcat --/<span class="built_in">help</span></div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/30/Linux口令破解/1700.jpg" alt=""></p>
 <p><strong>4.使用工具进行破解</strong><br>进入之前保存的passwd.lst文件所在的目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hashcat -m 1700 -a 0 -o cracked.txt passwd.lst <span class="string">'/usr/share/sqlmap/txt/wordlist.txt'</span></div></pre></td></tr></table></figure></p>
 <p>-m：（–hash-type=NUM）#hash种类，下面有列表，后面跟对应数字；<br>1700：SHA512对应的参数；<br>-a （–attack-mode=NUM）#攻击模式<br>[ 攻击模式 ]<br>  X | Mode<br> ===+======<br>  0 | Straight                  (字典破解)<br>  1 | Combination               (组合破解)<br>  3 | Brute-force<br>  6 | Hybrid Wordlist + Mask    (掩码暴力破解)<br>  7 | Hybrid Mask + Wordlist<br>0：字典破解；<br>-o：结果输出；<br>cracked.txt：输出结果存放文件；<br>passwd.lst：密文文件；<br>‘/usr/share/sqlmap/txt/wordlist.txt’：字典文件；</p>
 

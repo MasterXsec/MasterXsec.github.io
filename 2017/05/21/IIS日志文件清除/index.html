@@ -97,15 +97,15 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/21/IIS日志文件清除/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="郑重声明：本文介绍的内容只是为了让读者了解黑客攻击的一般原理和方法，从而加强网络安全的意识，并非让读者真正的成为危害网络及社会的黑客。由于读者利用本文介绍的某些方法和工具对网络或别人的系统造成了危害或严重后果，作者不负任何责任。由此带来的一切法律后果由使用者自负。 IIS日志的基本介绍默认位置：%systemroot%system32/logfiles，存放位置可自由设置。默认日志格式：ex+年份">
-<meta property="og:image" content="http://yoursite.com/IIS日志文件清除/W3SVC.png">
-<meta property="og:image" content="http://yoursite.com/IIS日志文件清除/日志文件.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS日志文件清除/删除日志.jpg">
-<meta property="og:image" content="http://yoursite.com/IIS日志文件清除/删除成功.jpg">
-<meta property="og:updated_time" content="2017-06-05T14:52:44.516Z">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/IIS日志文件清除/W3SVC.png">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/IIS日志文件清除/日志文件.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/IIS日志文件清除/删除日志.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/05/21/IIS日志文件清除/删除成功.jpg">
+<meta property="og:updated_time" content="2017-06-22T14:12:42.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IIS日志文件清除">
 <meta name="twitter:description" content="郑重声明：本文介绍的内容只是为了让读者了解黑客攻击的一般原理和方法，从而加强网络安全的意识，并非让读者真正的成为危害网络及社会的黑客。由于读者利用本文介绍的某些方法和工具对网络或别人的系统造成了危害或严重后果，作者不负任何责任。由此带来的一切法律后果由使用者自负。 IIS日志的基本介绍默认位置：%systemroot%system32/logfiles，存放位置可自由设置。默认日志格式：ex+年份">
-<meta name="twitter:image" content="http://yoursite.com/IIS日志文件清除/W3SVC.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/05/21/IIS日志文件清除/W3SVC.png">
 
 
 
@@ -417,8 +417,8 @@
       
         <p>郑重声明：<br>本文介绍的内容只是为了让读者了解黑客攻击的一般原理和方法，从而加强网络安全的意识，并非让读者真正的成为危害网络及社会的黑客。由于读者利用本文介绍的某些方法和工具对网络或别人的系统造成了危害或严重后果，作者不负任何责任。由此带来的一切法律后果由使用者自负。</p>
 <p>IIS日志的基本介绍<br>默认位置：%systemroot%system32/logfiles，存放位置可自由设置。<br>默认日志格式：ex+年份的末两位数字+月份+日期<br>文件后缀：.log<br>如2010年7月30日的日志生成文件是ex100730.log<br>IIS日志是每个服务器管理者都必须学会查看的，服务器的一些状况和访问IP的来源都会记录在IIS日志中，所以IIS日志对每个服务器管理者非常的重要。<br><a id="more"></a><br>注意，IIS服务在运行过程中，日志服务也在运行，日志文件是无法删除的，需要先停止日志服务才行，所以删除IIS日志，建议使用专门的IIS日志清除工具来删除。</p>
-<p>日志文件夹以“W3SVC”进行命名，如果有多个网站目录，则会存在多个“W3SVC”目录：<br><img src="/IIS日志文件清除/W3SVC.png" alt=""><br><img src="/IIS日志文件清除/日志文件.jpg" alt=""></p>
-<p>使用的到的工具为cleanIISlog.exe，使用方法：<br>命令行中输入：cleanIISlog.exe “日志文件地址” “ip地址”：<br>示例：CleanIISLog.exe C:\WINDOWS\system32\Logfiles\W3SVC1\ex130222.log 127.0.0.1<br><img src="/IIS日志文件清除/删除日志.jpg" alt=""><br>可以看到程序会首先停止日志服务。<br>再次打开日志文件，删除成功：<br><img src="/IIS日志文件清除/删除成功.jpg" alt=""></p>
+<p>日志文件夹以“W3SVC”进行命名，如果有多个网站目录，则会存在多个“W3SVC”目录：<br><img src="/2017/05/21/IIS日志文件清除/W3SVC.png" alt=""><br><img src="/2017/05/21/IIS日志文件清除/日志文件.jpg" alt=""></p>
+<p>使用的到的工具为cleanIISlog.exe，使用方法：<br>命令行中输入：cleanIISlog.exe “日志文件地址” “ip地址”：<br>示例：CleanIISLog.exe C:\WINDOWS\system32\Logfiles\W3SVC1\ex130222.log 127.0.0.1<br><img src="/2017/05/21/IIS日志文件清除/删除日志.jpg" alt=""><br>可以看到程序会首先停止日志服务。<br>再次打开日志文件，删除成功：<br><img src="/2017/05/21/IIS日志文件清除/删除成功.jpg" alt=""></p>
 <p>总结：<br>本文通过CleanIISLog软件来修改日志文件中的内容，尤其是清除IP地址以及文件名称尤为有用，清除后，日志文件依然存在，管理员从IIS日志文件中再也找不出入侵者的“蛛丝马迹”了。</p>
 <p>手动清除IIS日志<br>首先停止日志服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net stop w3svc</div></pre></td></tr></table></figure></p>
 <p>然后删除日志文件，接着启动日志服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start w3svc</div></pre></td></tr></table></figure></p>

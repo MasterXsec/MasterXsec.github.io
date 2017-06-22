@@ -850,7 +850,7 @@
       
         
           <p>产生原因：<br>SVN（subversion）是源代码版本管理软件，造成SVN源代码漏洞的主要原因是管理员操作不规范。“在使用SVN管理本地代码过程中，会自动生成一个名为.svn的隐藏文件夹，其中包含重要的源代码信息。但一些网站管理员在发布代码时，不愿意使用‘导出’功能，而是直接复制代码文件夹到WEB服务器上，这就使.svn隐藏文件夹被暴露于外网环境，黑客可以借助其中包含的用于版本信息追踪的‘entries’文件，逐步摸清站点结构。”（可以利用.svn/entries文件，获取到服务器源码、svn服务器账号密码等信息）更严重的问题在于，SVN产生的.svn目录下还包含了以.svn-base结尾的源代码文件副本（低版本SVN具体路径为text-base目录，高版本SVN为pristine目录），如果服务器没有对此类后缀做解析，黑客则可以直接获得文件源代码。</p>
-<p>漏洞发现：<br><img src="/SVN源代码泄露漏洞/漏洞发现.jpg" alt=""><br>
+<p>漏洞发现：<br><img src="/2017/05/10/SVN源代码泄露漏洞/漏洞发现.jpg" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/10/SVN源代码泄露漏洞/#more" rel="contents">
@@ -1144,7 +1144,7 @@
 
       
         
-          <h1 id="Delphi-amp-BC"><a href="#Delphi-amp-BC" class="headerlink" title="Delphi &amp; BC++"></a>Delphi &amp; BC++</h1><p>使用Detect it Easy工具确定软件使用的编译器为Delphi或者是BC++，这两个编译器的按钮特征码相同。<br><img src="/软件按钮事件/Delphi.jpg" alt=""><br>OD载入程序，反汇编窗口右键-&gt;查找-&gt;二进制字符串：<br>然后在HEX窗口输入特征码，注意Delphi和BC++的特征码是相同的（“740E8BD38B83????????FF93????????”）：<br><img src="/软件按钮事件/特征码.jpg" alt=""><br>注意勾选整个块。<br>
+          <h1 id="Delphi-amp-BC"><a href="#Delphi-amp-BC" class="headerlink" title="Delphi &amp; BC++"></a>Delphi &amp; BC++</h1><p>使用Detect it Easy工具确定软件使用的编译器为Delphi或者是BC++，这两个编译器的按钮特征码相同。<br><img src="/2017/05/08/软件按钮事件/Delphi.jpg" alt=""><br>OD载入程序，反汇编窗口右键-&gt;查找-&gt;二进制字符串：<br>然后在HEX窗口输入特征码，注意Delphi和BC++的特征码是相同的（“740E8BD38B83????????FF93????????”）：<br><img src="/2017/05/08/软件按钮事件/特征码.jpg" alt=""><br>注意勾选整个块。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/08/软件按钮事件/#more" rel="contents">
@@ -1290,7 +1290,7 @@
 
       
         
-          <p>软件使用编译器的识别可以使用Retect it Easy工具：<br><img src="/软件编译器识别/die.jpg" alt=""><br>不管软件加了多强的壳，这个工具都可以识别出编译器。<br>
+          <p>软件使用编译器的识别可以使用Retect it Easy工具：<br><img src="/2017/05/08/软件编译器识别/die.jpg" alt=""><br>不管软件加了多强的壳，这个工具都可以识别出编译器。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/08/软件编译器识别/#more" rel="contents">
@@ -1732,7 +1732,7 @@
 
       
         
-          <p>首先使用查壳软件<strong>PEiD v0.98</strong>，查看下我们要破解的软件是否加壳了：<br><img src="/OllyDebug-带壳破解某软件-获取注册码/加壳.jpg" alt=""><br>
+          <p>首先使用查壳软件<strong>PEiD v0.98</strong>，查看下我们要破解的软件是否加壳了：<br><img src="/2017/05/05/OllyDebug-带壳破解某软件-获取注册码/加壳.jpg" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/05/OllyDebug-带壳破解某软件-获取注册码/#more" rel="contents">
