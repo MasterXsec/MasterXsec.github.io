@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="产生原因许多网站开放下载文件功能，由于下载功能代码对下载文件类型、目录未做限制或限制不当，导致攻击者可下载服务器任意文件。 测试步骤a.随便下载一个文件，获取文件的下载地址；b.复制下载地址到浏览器的地址栏：http://www.xxx.com/download.php?name=/upload/test.zipc.将name参数的值改为服务器上可能存在的其他文件测试，比如：/etc/passwd">
+<meta name="description" content="产生原因一般网站都提供下载文件功能，常见的实现方法是使用一个动态页面（php、jsp、aspx、asp等）将待下载文件作为参数，一般参数名称为filename，如download.php?filename=xxx等。一般实现过程是，在根据参数filename的值，获得该文件在网站上的绝对路径，读取文件，然后是直接发送给客户端下载。如果没有对传入的参数filename进行过滤，就可以实现下载服务任何">
 <meta name="keywords" content="文件下载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="任意文件下载漏洞">
 <meta property="og:url" content="http://yoursite.com/2017/05/20/任意文件下载漏洞/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
-<meta property="og:description" content="产生原因许多网站开放下载文件功能，由于下载功能代码对下载文件类型、目录未做限制或限制不当，导致攻击者可下载服务器任意文件。 测试步骤a.随便下载一个文件，获取文件的下载地址；b.复制下载地址到浏览器的地址栏：http://www.xxx.com/download.php?name=/upload/test.zipc.将name参数的值改为服务器上可能存在的其他文件测试，比如：/etc/passwd">
-<meta property="og:updated_time" content="2017-05-20T02:54:16.329Z">
+<meta property="og:description" content="产生原因一般网站都提供下载文件功能，常见的实现方法是使用一个动态页面（php、jsp、aspx、asp等）将待下载文件作为参数，一般参数名称为filename，如download.php?filename=xxx等。一般实现过程是，在根据参数filename的值，获得该文件在网站上的绝对路径，读取文件，然后是直接发送给客户端下载。如果没有对传入的参数filename进行过滤，就可以实现下载服务任何">
+<meta property="og:updated_time" content="2017-06-27T06:59:33.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任意文件下载漏洞">
-<meta name="twitter:description" content="产生原因许多网站开放下载文件功能，由于下载功能代码对下载文件类型、目录未做限制或限制不当，导致攻击者可下载服务器任意文件。 测试步骤a.随便下载一个文件，获取文件的下载地址；b.复制下载地址到浏览器的地址栏：http://www.xxx.com/download.php?name=/upload/test.zipc.将name参数的值改为服务器上可能存在的其他文件测试，比如：/etc/passwd">
+<meta name="twitter:description" content="产生原因一般网站都提供下载文件功能，常见的实现方法是使用一个动态页面（php、jsp、aspx、asp等）将待下载文件作为参数，一般参数名称为filename，如download.php?filename=xxx等。一般实现过程是，在根据参数filename的值，获得该文件在网站上的绝对路径，读取文件，然后是直接发送给客户端下载。如果没有对传入的参数filename进行过滤，就可以实现下载服务任何">
 
 
 
@@ -410,8 +410,10 @@
       
 
       
-        <h1 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h1><p>许多网站开放下载文件功能，由于下载功能代码对下载文件类型、目录未做限制或限制不当，导致攻击者可下载服务器任意文件。</p>
-<h1 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h1><p>a.随便下载一个文件，获取文件的下载地址；<br>b.复制下载地址到浏览器的地址栏：<a href="http://www.xxx.com/download.php?name=/upload/test.zip" target="_blank" rel="external">http://www.xxx.com/download.php?name=/upload/test.zip</a><br>c.将name参数的值改为服务器上可能存在的其他文件测试，比如：/etc/passwd<br><a href="http://www.xxx.com/download.php?name=/etc/passwd" target="_blank" rel="external">http://www.xxx.com/download.php?name=/etc/passwd</a></p>
+        <h1 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h1><p>一般网站都提供下载文件功能，常见的实现方法是使用一个动态页面（php、jsp、aspx、asp等）将待下载文件作为参数，一般参数名称为filename，如download.php?filename=xxx等。一般实现过程是，在根据参数filename的值，获得该文件在网站上的绝对路径，读取文件，然后是直接发送给客户端下载。如果没有对传入的参数filename进行过滤，就可以实现下载服务任何文件，产生任意文件下载漏洞。<br><a id="more"></a></p>
+<h1 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h1><p>假如rul如下：<br><a href="http://www.xxx.com/download.php?filename=hello.doc" target="_blank" rel="external">http://www.xxx.com/download.php?filename=hello.doc</a><br>尝试下载下载页面的源码（配合“../”）：<br><a href="http://www.xxx.com/download.php?filename=../../download.php" target="_blank" rel="external">http://www.xxx.com/download.php?filename=../../download.php</a></p>
+<h1 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h1><p>该漏洞不像其他漏洞那样有通用的利用方法和相关工具，本漏洞的利用过程与具体的网站架构关系很大，需要了解常见的网站的架构，如网站的配置文件位置等信息。<br>1.jsp站点<br>尝试下载<strong>tomcat-users.xml</strong>文件，里面保存了管理Tomcat的账号密码，该文件在：Tomcat安装目录/conf/tomcat-users.xml，下载该文件之后，就能获取管理员账号密码，然后登陆管理后台，部署带有木马文件的war包。<br>2.aspx站点<br>aspx站点一般后台都是SQL Server数据库，因此利用该漏洞的最简单的方法是下载网站根目录下的web.config文件，该文件中一般含有数据库的用户名和密码。<br>3.asp站点<br>一般的asp站点都是Access数据库，而Access数据库可以直接下载，因此利用该漏洞比较简便的方法就是直接下载Access数据库，找到管理员密码登陆后台，利用后台的上传功能，上传shell。首先目的是找到数据库文件名以及存放的路径。找到网站与数据库操作的动态页面，动态页面中一般使用include包含连接数据库的配置文件。一般网站的管理后台页面会包含这个信息，所以可以使用任意文件下载漏洞下载管理后台页面，例如admin.asp/mamage.asp等。在这些文件中一般会写有数据库文件的路径以及文件名。直接下载数据库文件可能下载不了，因为管理员一般会做限制，禁止直接下载mdb文件，可以使用任意文件下载漏洞来下载数据库文件。<br>4.php站点<br>php一般是使用MySQL数据库， 一般MySQL数据库禁止远程连接，但是可以使用phpMyAdmin进行管理。同意，尝试下载数据库连接文件，conf/config.php等等，获取数据库账户密码之后，如果是root权限，在知道网站绝对路径的情况下，尝试直接写入一句话木马。</p>
+<h1 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h1><p>从上面的利用过程可以看出，在使用该漏洞进行渗透过程中，需要利用到路径回溯符../跳出程序本身的限制目录实现下载任意文件，因此只要在下载前对传入的参数进行过滤，直接将..替换成空，就可以简单实现防范的目的。当然最好还是可以对待下载文件类型进行检查，判断是否允许下载类型。</p>
 
       
     </div>
@@ -692,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#产生原因"><span class="nav-number">1.</span> <span class="nav-text">产生原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试步骤"><span class="nav-number">2.</span> <span class="nav-text">测试步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#产生原因"><span class="nav-number">1.</span> <span class="nav-text">产生原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试步骤"><span class="nav-number">2.</span> <span class="nav-text">测试步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用方法"><span class="nav-number">3.</span> <span class="nav-text">利用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#漏洞修复"><span class="nav-number">4.</span> <span class="nav-text">漏洞修复</span></a></li></ol></div>
             
 
           </div>

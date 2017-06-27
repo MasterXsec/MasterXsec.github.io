@@ -999,11 +999,14 @@
 
       
         
-          
-            <h1 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h1><p>许多网站开放下载文件功能，由于下载功能代码对下载文件类型、目录未做限制或限制不当，导致攻击者可下载服务器任意文件。</p>
-<h1 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h1><p>a.随便下载一个文件，获取文件的下载地址；<br>b.复制下载地址到浏览器的地址栏：<a href="http://www.xxx.com/download.php?name=/upload/test.zip" target="_blank" rel="external">http://www.xxx.com/download.php?name=/upload/test.zip</a><br>c.将name参数的值改为服务器上可能存在的其他文件测试，比如：/etc/passwd<br><a href="http://www.xxx.com/download.php?name=/etc/passwd" target="_blank" rel="external">http://www.xxx.com/download.php?name=/etc/passwd</a></p>
-
-          
+          <h1 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h1><p>一般网站都提供下载文件功能，常见的实现方法是使用一个动态页面（php、jsp、aspx、asp等）将待下载文件作为参数，一般参数名称为filename，如download.php?filename=xxx等。一般实现过程是，在根据参数filename的值，获得该文件在网站上的绝对路径，读取文件，然后是直接发送给客户端下载。如果没有对传入的参数filename进行过滤，就可以实现下载服务任何文件，产生任意文件下载漏洞。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/20/任意文件下载漏洞/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
