@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="漏洞描述crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。 修复建议确保crossdomain.xml中domain的值为特定的域">
+<meta name="description" content="漏洞描述crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="允许任何域的Flash文件访问资源">
 <meta property="og:url" content="http://yoursite.com/2017/07/06/允许任何域的Flash文件访问资源/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
-<meta property="og:description" content="漏洞描述crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。 修复建议确保crossdomain.xml中domain的值为特定的域">
+<meta property="og:description" content="漏洞描述crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。">
 <meta property="og:image" content="http://yoursite.com/2017/07/06/允许任何域的Flash文件访问资源/文件.jpg">
-<meta property="og:updated_time" content="2017-07-06T12:37:04.712Z">
+<meta property="og:updated_time" content="2017-07-06T13:03:53.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="允许任何域的Flash文件访问资源">
-<meta name="twitter:description" content="漏洞描述crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。 修复建议确保crossdomain.xml中domain的值为特定的域">
+<meta name="twitter:description" content="漏洞描述crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。">
 <meta name="twitter:image" content="http://yoursite.com/2017/07/06/允许任何域的Flash文件访问资源/文件.jpg">
 
 
@@ -411,7 +411,7 @@
       
 
       
-        <h1 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h1><p>crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。</p>
+        <h1 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h1><p>crossdomain.xml 是一个策略文件，定义 Web 页面资源是否能从不同域的 Flash 应用程序进行访问。当 Web 站点的 crossdomain.xml 策略太宽容（例如，允许任何域的 Flash 文件访问站点资源）时，可能会导致“跨站点伪造请求”或“跨站点跟踪”（“跨站点脚本编制”的变体）之类的攻击。<br><a id="more"></a></p>
 <h1 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h1><p>确保crossdomain.xml中domain的值为特定的域名，例如：allow-access-from domain=”*.test.com”。</p>
 <p><img src="/2017/07/06/允许任何域的Flash文件访问资源/文件.jpg" alt=""></p>
 <h1 id="flash跨域请求"><a href="#flash跨域请求" class="headerlink" title="flash跨域请求"></a>flash跨域请求</h1><p>以www.qq.com为例，当浏览器在任意其他域的页面里加载了flash之后，如果对www.qq.com发起访问请求，flash会先检查www.qq.com上此策略文件是否存在，如果文件存在，则检查发起请求的域是否在许可范围之内。自flash 10以后，如有跨域访问需求，必须在目标域的根目录下放置crossdomain.xml文件，且该根目录下的配置文件称为“主策略文件”。若不存在主策略文件，则该域将禁止任何第三方域的flash跨域请求。主策略文件对全站的跨域访问起控制作用。</p>
@@ -460,6 +460,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/08/业务逻辑漏洞/" rel="prev" title="业务逻辑漏洞">
+                业务逻辑漏洞 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">72</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
