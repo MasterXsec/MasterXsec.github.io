@@ -317,6 +317,156 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/06/软件脱壳技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/06/软件脱壳技术/" itemprop="url">
+                  软件脱壳技术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T17:27:07+08:00">
+                2017-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件安全/" itemprop="url" rel="index">
+                    <span itemprop="name">软件安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一般的压缩壳，都有专门的脱壳机可以使用，或者使用万能脱壳机，比如：procdump。而加密壳一般很少有脱壳机，必须手动脱壳。</p>
+<h1 id="手动脱壳步骤"><a href="#手动脱壳步骤" class="headerlink" title="手动脱壳步骤"></a>手动脱壳步骤</h1><ol>
+<li>查找程序的真正入口点（OEP）（OEP：Original Entry Point原始入口点）<br>查找OEP有如下几种方法：根据跨段指令寻找OEP；根据堆栈平衡原理找OEP；根据变异语言特点找OEP；用内存断点找OEP；</li>
+<li>抓取内存映像文件<br>外科程序解压还原后就会跳转到OEP处执行，此时内存映像文件是已解压的程序。这时就可以抓取内存映像文件了（该过程成为Dump）。可以使用LoadPE工具。</li>
+<li>输入表重建<br>程序总是需要与系统打交道，每次与系统打交道的途径是API，而API的地址已经替换成了壳的HOOK-API的地址，那程序每一次与系统打交道都会让壳的代码获取一次控制权。重建输入表的关键是获得没有加密的IAT（即导入地址表,Import Address Table），一般的做法是跟踪加壳程序对IAT处理过程，修改相关指令，不让外壳加密IAT。可以使用ImportREC工具。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/06/软件脱壳技术/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/06/软件加壳技术/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1623,152 +1773,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/30/软件逆向基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Note">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favico.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Note's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/30/软件逆向基础/" itemprop="url">
-                  软件逆向基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T20:55:15+08:00">
-                2017-04-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安全/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>调试逆向技术</strong><br>动态分析技术：指的是使用调试工具加载程序并运行。<br>随着程序运行，调试者可以随时中断目标的指令流程，以便观察相关计算的结果和当前的设备情况。<br>静态分析技术：是相对于动态分析而言的。<br>由于在实际分析中，很多场合不方便运行目标（例如病毒程序，设备不兼容，软件的单独某一模块）。那么这个时候静态分析技术就该上场了！<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/30/软件逆向基础/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1818,7 +1822,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-count">73</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
