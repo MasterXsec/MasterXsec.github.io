@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux非交互式修改用户密码]]></title>
+    <url>%2F2017%2F07%2F26%2FLinux%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[添加Linux账户的时候，一般需要交互式的设置账户密码，一般在Webshell中，交互式的命令无法执行，可以使用下面的命令，无交互式的添加账户：12useradd lzxecho "lzx:123456" | chpasswd 使用该方法添加的用户，在kali中测试，能够直接通过ssh登录系统，但是需要注意的是，用户的权限过低，大多数系统命令都无法执行。 添加用户权限，可以修改修改“/etc/sudoers”文件，将用户“lzx”加入其中，如下图所示：这样，该用户能够通过“sudo”执行其他的系统命令：]]></content>
+      <categories>
+        <category>系统安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[CuteEitor任意文件读取漏洞]]></title>
     <url>%2F2017%2F07%2F26%2FCuteEitor%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E%2F</url>
     <content type="text"><![CDATA[漏洞描述CuteEditor for ASP.NET是建立在Html基础之上，最简单易用、功能最强大的所见即所得Asp.net在线编辑器。 CuteEditor可以帮助Asp.net开发者轻松的对原来文本框(Textarea)中的内容(包括文字、图片等Html内容)进行编辑，更重要得是这些内容编辑的实现是所见即所得方式。 CuteEditor还集成了文件(包括图片、文档等)上传、媒体(包括视频、声音等)文件直接插入等对你来说非常实用的功能模块。但是在 Load.ashx 文件中，未对 file 参数进行处理，可以加载任意文件。 利用方法http://www.woyigui.cn/CuteSoft_Client/CuteEditor/Load.ashx?type=image&amp;file=../../../web.config使用该方法，读取应用系统中，包含数据库连接密码的文件，从而进一步渗透。]]></content>
@@ -43,7 +51,7 @@
     <url>%2F2017%2F07%2F11%2Ftelnet%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[错误提示：1'telnet' is not recognized as an internal or external command 报错原因：在Win7, Vista, Windows Server 2008 R2上, telnet不是默认安装的，手动安装既可以解决问题。解决方案：1.点击Start-&gt;Control Panel-&gt;Programs;2.Turn Windows Features on or off;3.在列表中, 向下滚动, 选择Telnet Client;4.点击OK, 开始安装.]]></content>
       <categories>
-        <category>Web安全</category>
+        <category>系统安全</category>
       </categories>
   </entry>
   <entry>
