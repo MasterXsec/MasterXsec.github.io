@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux抓取密码神器-mimipenguin]]></title>
+    <url>%2F2017%2F07%2F27%2FLinux%E6%8A%93%E5%8F%96%E5%AF%86%E7%A0%81%E7%A5%9E%E5%99%A8-mimipenguin%2F</url>
+    <content type="text"><![CDATA[项目地址1https://github.com/huntergregal/mimipenguin 使用实例注意：需要root权限 以下环境测试通过Kali 4.3.0 (rolling) x64 (gdm3)Ubuntu Desktop 12.04 LTS x64 (Gnome Keyring 3.18.3-0ubuntu2)Ubuntu Desktop 16.04 LTS x64 (Gnome Keyring 3.18.3-0ubuntu2)XUbuntu Desktop 16.04 x64 (Gnome Keyring 3.18.3-0ubuntu2)VSFTPd 3.0.3-8+b1 (Active FTP client connections)Apache2 2.4.25-3 (Active/Old HTTP BASIC AUTH Sessions)openssh-server 1:7.3p1-1 (Active SSH connections sudo usage) 测试Centos7无法抓取密码。]]></content>
+      <categories>
+        <category>主机安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Linux非交互式修改用户密码]]></title>
     <url>%2F2017%2F07%2F26%2FLinux%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%2F</url>
     <content type="text"><![CDATA[添加Linux账户的时候，一般需要交互式的设置账户密码，一般在Webshell中，交互式的命令无法执行，可以使用下面的命令，无交互式的添加账户：12useradd lzxecho "lzx:123456" | chpasswd 使用该方法添加的用户，在kali中测试，能够直接通过ssh登录系统，但是需要注意的是，用户的权限过低，大多数系统命令都无法执行。 添加用户权限，可以修改修改“/etc/sudoers”文件，将用户“lzx”加入其中，如下图所示：这样，该用户能够通过“sudo”执行其他的系统命令：]]></content>
