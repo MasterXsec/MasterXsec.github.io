@@ -1,0 +1,1198 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。 删除数据库1drop database factory 删除factory数据库。 创建表12345678910create table worker(wid char(3) primary key,					-- id 		主键wname varch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microsoft SQL Server 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/index.html">
+<meta property="og:site_name" content="Note&#39;s blog">
+<meta property="og:description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。 删除数据库1drop database factory 删除factory数据库。 创建表12345678910create table worker(wid char(3) primary key,					-- id 		主键wname varch">
+<meta property="og:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/表与表之间的关系.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/条件谓词.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/附加子句查询格式.jpg">
+<meta property="og:updated_time" content="2017-08-08T06:51:20.799Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Microsoft SQL Server 学习笔记">
+<meta name="twitter:description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。 删除数据库1drop database factory 删除factory数据库。 创建表12345678910create table worker(wid char(3) primary key,					-- id 		主键wname varch">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/表与表之间的关系.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/"/>
+
+
+
+
+
+  <title>Microsoft SQL Server 学习笔记 | Note's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Note's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Microsoft SQL Server 学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T21:25:48+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create database factory</div></pre></td></tr></table></figure>
+<p>数据库名为factory。</p>
+<h1 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use factory</div></pre></td></tr></table></figure>
+<p>使用或者切换到数据库。</p>
+<h1 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop database factory</div></pre></td></tr></table></figure>
+<p>删除factory数据库。</p>
+<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">create table worker</div><div class="line">(</div><div class="line">wid char(3) primary key,					-- id 		主键</div><div class="line">wname varchar(10) not null,					-- 名字		非空</div><div class="line">wsex char(2) check(wsex <span class="keyword">in</span> (<span class="string">'男'</span>，<span class="string">'女'</span>)),	-- 性别		只能是‘男’或者‘女’ </div><div class="line">wbirthdate date,							-- 生日</div><div class="line">wparty char(2),								-- 政治面貌</div><div class="line">wjobdate date,								-- 参加工作时间</div><div class="line">depid char(1)								-- 部门</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>创建worker数据表，保存员工的信息。</p>
+<h1 id="MSSQL中的数据类型"><a href="#MSSQL中的数据类型" class="headerlink" title="MSSQL中的数据类型"></a>MSSQL中的数据类型</h1><p>字符类型：char(n)，varchar(n)，text，image<br>整型类型：int(4字节)，smallint(2字节)，tinyint(1字节)<br>浮点类型：float(8字节)，real(4字节)，decimal(精度28位)<br>货币类型：money(8字节)，smallmoney(4字节)<br>日期时间类型：date(年月日)，datetime(年月日时分秒毫秒)，smalldatetime（年月日时分秒）<br>浮点类型：decimal(a,b) a指定指定小数点左边和右边可以存储的十进制数字的最大个数，最大精度38。b指定小数点右边可以存储的十进制数字的最大个数。小数位数必须是从 0 到 a之间的值。默认小数位数是 0。</p>
+<h1 id="数据库中数据的移动"><a href="#数据库中数据的移动" class="headerlink" title="数据库中数据的移动"></a>数据库中数据的移动</h1><p>先分离数据库，然后移动.mdf和.ldf文件即可，两个文件需要同时移动，要不然在附加数据库的时候会报错。</p>
+<h1 id="数据库中的常用术语"><a href="#数据库中的常用术语" class="headerlink" title="数据库中的常用术语"></a>数据库中的常用术语</h1><p>关系：一个关系对应一张二维表，二维表的表名即为关系名。<br>关系模式：对关系表结构的描述。一般表示为“关系名（字段名1，字段名2，…，字段名n）”。<br>记录：二维表中的一行称为关系的一条记录，或称为元组、行。<br>字段：二维表中的列称为关系的字段，或称为属性、列。<br>主码：关系中的某个字段或字段组，能唯一地标识一条记录，又称为主键。</p>
+<h1 id="表与表之间的关系"><a href="#表与表之间的关系" class="headerlink" title="表与表之间的关系"></a>表与表之间的关系</h1><p>外码(foreign key)：外码指的是这样的字段（或字段组），它在本表中不是主码，而在其他的表中是主码，外码又称为外键。<br>参照完整性规则：外码的取值要么为空，要么必须来自于主码表中所存在的值。<br><img src="/2017/07/31/Microsoft-SQL-Server-学习笔记/表与表之间的关系.jpg" alt=""></p>
+<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><h2 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h2><p>select &lt;目标列1 [as 列名1]&gt;[，&lt;目标列2 [as 列名2]&gt;…] from &lt;表名&gt;；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select dname as 部门名,dmaster as 部门经理 from depart;</div></pre></td></tr></table></figure></p>
+<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><p>–条件查询<br>–任务一查询salary（工资）表中实际工资(actualsalary)大于3000的职工号和实际工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,actualsalary from salary <span class="built_in">where</span> actualsalary&gt;=3000</div></pre></td></tr></table></figure></p>
+<p>–任务二查询salary（工资）表中实际工资(actualsalary)在2000和3000之间的<br>–职工号和实际工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,actualsalary from salary <span class="built_in">where</span> actualsalary between 2000 and 3000</div><div class="line"></div><div class="line">select wid,actualsalary from salary <span class="built_in">where</span> actualsalary&gt;=2000 and actualsalary&lt;=3000</div></pre></td></tr></table></figure></p>
+<p>–任务三查询worker(职工)表中在部门“1”或“2”工作的职工的职工号、姓名、部门号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,wname,depid from worker <span class="built_in">where</span> depid <span class="keyword">in</span> (<span class="string">'1'</span>,<span class="string">'2'</span>)</div><div class="line"></div><div class="line">select wid,wname,depid from worker <span class="built_in">where</span> depid=<span class="string">'1'</span> or depid=<span class="string">'2'</span></div></pre></td></tr></table></figure></p>
+<p>–任务四查询worker(职工)表中所有姓“孙”职工的职工号、姓名和性别;<br>–查询worker(职工)表中所有姓名第二个字不是“华”的职工号、姓名和性别。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wsex from worker <span class="built_in">where</span> wname like <span class="string">'孙%'</span></div><div class="line"></div><div class="line">select wid,wname,wsex from worker <span class="built_in">where</span> wname not like <span class="string">'_华%'</span></div></pre></td></tr></table></figure></p>
+<p>–任务五查询depart（部门）表中部门经理为空的部门信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from depart <span class="built_in">where</span> dmaster is null</div></pre></td></tr></table></figure></p>
+<p>–任务六查询worker（职工）表中男职工是党员的职工号和姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname from worker <span class="built_in">where</span> wsex=<span class="string">'男'</span> and wparty=<span class="string">'是'</span></div></pre></td></tr></table></figure></p>
+<p>查询条件中可以使用的条件谓词<br><img src="/2017/07/31/Microsoft-SQL-Server-学习笔记/条件谓词.jpg" alt=""></p>
+<h2 id="聚集查询"><a href="#聚集查询" class="headerlink" title="聚集查询"></a>聚集查询</h2><p>聚集函数<br>平均值函数    avg()<br>计数函数        count()<br>最大值函数    max()<br>最小值函数    min()<br>求和函数        sum()</p>
+<p>–任务一：查询salary（工资）表中日期为‘2011-01-04’的总工资(totalsalary)的平均工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from salary</div><div class="line"></div><div class="line">select AVG(totalsalary) as <span class="string">'2011-01-04平均工资'</span> from salary <span class="built_in">where</span> sdate=<span class="string">'2011-01-04'</span></div></pre></td></tr></table></figure></p>
+<p>–任务二：查询职工的总数；<br>–查询在salary（工资）表中发过工资的职工人数，一个职工只计数一次。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select * from worker</div><div class="line">select * from salary</div><div class="line"></div><div class="line">select COUNT(*) as 职工总数 from worker</div><div class="line"></div><div class="line">select COUNT(distinct wid) as 职工人数 from salary</div></pre></td></tr></table></figure></p>
+<p>–任务三：查询salary（工资）表中最低的实发工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select MIN(actualsalary) as 最低工资 from salary</div></pre></td></tr></table></figure></p>
+<p>–任务四：查询salary（工资）表中最高的实际工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select max(actualsalary) as 最高工资 from salary</div></pre></td></tr></table></figure></p>
+<p>–任务五：查询salary（工资）表中‘2011-01-04’工资的总额。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select SUM(actualsalary) as 工资总额 from salary</div></pre></td></tr></table></figure></p>
+<h2 id="top和distinct"><a href="#top和distinct" class="headerlink" title="top和distinct"></a>top和distinct</h2><p>–任务一：查询worker表中前两项职工的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select top 2 * from worker</div></pre></td></tr></table></figure></p>
+<p>–任务二：查询worker表中女职工所出现的部门号，相同的只出现一次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select distinct depid from worker <span class="built_in">where</span> wsex=<span class="string">'女'</span></div></pre></td></tr></table></figure></p>
+<h2 id="附加子句查询"><a href="#附加子句查询" class="headerlink" title="附加子句查询"></a>附加子句查询</h2><h3 id="order-by子句"><a href="#order-by子句" class="headerlink" title="order by子句"></a>order by子句</h3><p>–任务一<br>–查询职工的职工号、职工姓名、出生日期、部门号，查询结果按照出生日期从早到晚排序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wbirthdate,depid from worker order by wbirthdate asc</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–查询职工的职工号、职工姓名、出生日期、部门号，查询结果按照出生日期从晚到早排序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wbirthdate,depid from worker order by wbirthdate desc</div></pre></td></tr></table></figure></p>
+<p>–任务三<br>–查询职工的职工号、职工姓名、出生日期、部门号，查询结果按照部门号从大到小排序，同一部门的按照出生日期从早到晚排序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wbirthdate,depid from worker order by depid desc,wbirthdate</div></pre></td></tr></table></figure></p>
+<h3 id="group-by子句"><a href="#group-by子句" class="headerlink" title="group by子句"></a>group by子句</h3><p>–任务一<br>–分别统计男职工和女职工的人数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wsex as 性别,COUNT(*) as 职工人数 from worker group by wsex</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–分别统计每个日期的应发工资(totalsalary)总和。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select sdate as 发工资日期,SUM(totalsalary) from salary group by sdate</div></pre></td></tr></table></figure></p>
+<h3 id="having子句"><a href="#having子句" class="headerlink" title="having子句"></a>having子句</h3><p>–任务一<br>–分别统计每位员工的应发工资(totalsalary)总和，并且只显示工资总和在5000元以上的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid as 职工号,SUM(totalsalary) as 工资总和 from salary group by wid having SUM(totalsalary)&gt;=5000</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–统计worker表中各部门党员的人数，并且显示党员人数在2个人以上的相关信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select depid as 部门号,COUNT(*) as 党员人数 from worker <span class="built_in">where</span> wparty=<span class="string">'是'</span> group by depid having COUNT(*)&gt;=1</div></pre></td></tr></table></figure></p>
+<p>注意：聚合函数不应该出现在where子句中，除非该聚合函数位于having子句或选择列表所包含的子查询中，并且要对其进行聚合的列是外部引用。</p>
+<h3 id="into子句"><a href="#into子句" class="headerlink" title="into子句"></a>into子句</h3><p>–任务一<br>–查询男职工的基本信息，并且存入临时表#worker1中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * into <span class="comment">#worker from worker where wsex='男'</span></div><div class="line"></div><div class="line">select * from <span class="comment">#worker</span></div></pre></td></tr></table></figure></p>
+<p>临时表只在当前连接中有效，断开数据库的连接，重新连接数据库，临时表丢失。</p>
+<p><img src="/2017/07/31/Microsoft-SQL-Server-学习笔记/附加子句查询格式.jpg" alt=""></p>
+<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h3 id="in谓词子查询"><a href="#in谓词子查询" class="headerlink" title="in谓词子查询"></a>in谓词子查询</h3><p>–任务一<br>–查询与职工号为“001”的职工一起进行过企业相关培训的职工号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wid</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid&lt;&gt;<span class="string">'001'</span> and study_id <span class="keyword">in</span></div><div class="line">(select study_id</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid=<span class="string">'001'</span>)</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–查询与职工号为“001”的职工一起进行过企业相关培训的职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">select wname</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wid <span class="keyword">in</span></div><div class="line">(select wid</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid&lt;&gt;<span class="string">'001'</span> and study_id <span class="keyword">in</span></div><div class="line">(select study_id</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid=<span class="string">'001'</span>) )</div></pre></td></tr></table></figure></p>
+<p>注意：’&lt;&gt;’表示’不等于’。</p>
+<h3 id="比较运算符子查询"><a href="#比较运算符子查询" class="headerlink" title="比较运算符子查询"></a>比较运算符子查询</h3><p>–任务一<br>–查询2011年1月的实发工资小于该月平均实发工资的职工号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wid</div><div class="line">from salary</div><div class="line"><span class="built_in">where</span> YEAR(sdate)=2011 and MONTH(sdate)=1 and actualsalary&lt;</div><div class="line">(select AVG(actualsalary)</div><div class="line">from salary</div><div class="line"><span class="built_in">where</span> YEAR(sdate)=2011 and MONTH(sdate)=1)</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–查询比部门号为“1”的职工年龄都小的职工姓名和出生年月。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wname,wbirthdate</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wbirthdate&gt;all</div><div class="line">(select wbirthdate</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> depid=<span class="string">'1'</span>)</div></pre></td></tr></table></figure></p>
+<p>–任务三<br>–显示最高工资（应发工资）的职工所在的部门名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">select dname</div><div class="line">from depart</div><div class="line"><span class="built_in">where</span> did=</div><div class="line">(select depid</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wid=</div><div class="line">(select wid</div><div class="line">from salary</div><div class="line"><span class="built_in">where</span> totalsalary=</div><div class="line">(select MAX(totalsalary)</div><div class="line">from salary)))</div></pre></td></tr></table></figure></p>
+<p>–等价的多表连接查询<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select dname</div><div class="line">from depart inner join worker on worker.depid=depart.did inner join salary on worker.wid=salary.wid</div><div class="line"><span class="built_in">where</span> totalsalary=</div><div class="line">(select MAX(totalsalary)</div><div class="line">from salary)</div></pre></td></tr></table></figure></p>
+<p>–in谓词子查询任务二<br>–查询与职工号为“001”的职工一起进行过企业相关培训的职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wname</div><div class="line">from worker inner join study on worker.wid=study.wid</div><div class="line"><span class="built_in">where</span> worker.wid&lt;&gt;<span class="string">'001'</span> and study_id <span class="keyword">in</span></div><div class="line">(select study_id</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid=<span class="string">'001'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="使用子查询代替表达式"><a href="#使用子查询代替表达式" class="headerlink" title="使用子查询代替表达式"></a>使用子查询代替表达式</h3><p>–任务一<br>–显示所有职工的职工号，姓名和平均工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select worker.wid,wname,AVG(totalsalary) as avgtoal</div><div class="line">from worker inner join salary on worker.wid=salary.wid</div><div class="line">group by worker.wid,wname</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–使用子查询代替表达式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select worker.wid,wname,AVG(totalsalary) as avgtotal</div><div class="line">from worker inner join salary on worker.wid=salary.wid</div><div class="line">group by worker.wid,wname</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,wname,</div><div class="line">(select AVG(totalsalary)  from salary <span class="built_in">where</span> worker.wid=salary.wid) as avgtotal</div><div class="line">from worker</div></pre></td></tr></table></figure>
+<h3 id="exists谓词子查询"><a href="#exists谓词子查询" class="headerlink" title="exists谓词子查询"></a>exists谓词子查询</h3><p>–任务一<br>–查询所有进行过岗前培训的职工号和职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">select wid,wname</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> exists</div><div class="line">(</div><div class="line">select *</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> worker.wid=study.wid and study_name=<span class="string">'岗前培训'</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–查询所有未进行过岗前培训的职工号和职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">select wid,wname</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> not exists</div><div class="line">(</div><div class="line">select *</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> worker.wid=study.wid and study_name=<span class="string">'岗前培训'</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h3 id="union组合结果集"><a href="#union组合结果集" class="headerlink" title="union组合结果集"></a>union组合结果集</h3><p>–任务一<br>–增加一个customer客户表，然后查询所有男职工和男客户的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">select wid as id,wname,wsex,wbirthdate</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wsex=<span class="string">'男'</span></div><div class="line">union</div><div class="line">select cid,cname,csex,cbirthdate</div><div class="line">from customer</div><div class="line"><span class="built_in">where</span> csex=<span class="string">'男'</span></div></pre></td></tr></table></figure></p>
+<p>–任务二<br>–对于工资信息表salary，统计该表的工资总和。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select wid,sdate,totalsalary,actualsalary </div><div class="line">from salary</div><div class="line">union</div><div class="line">select <span class="string">'小计'</span>,null,SUM(totalsalary),SUM(actualsalary)</div><div class="line">from salary</div></pre></td></tr></table></figure></p>
+<p>注意：选择列表中的表达式数目必须相同。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/27/Linux抓取密码神器-mimipenguin/" rel="next" title="Linux抓取密码神器-mimipenguin">
+                <i class="fa fa-chevron-left"></i> Linux抓取密码神器-mimipenguin
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/03/Windows抓取密码神器-mimikatz2-0/" rel="prev" title="Windows抓取密码神器-mimikatz2.0">
+                Windows抓取密码神器-mimikatz2.0 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favico.gif"
+               alt="Note" />
+          <p class="site-author-name" itemprop="name">Note</p>
+           
+              <p class="site-description motion-element" itemprop="description">布施、持戒、忍辱、精进、禅定、般若</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com/" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ichunqiu.com/" title="i春秋" target="_blank">i春秋</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.amobbs.com/" title="amoBBS" target="_blank">amoBBS</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codesec.net/" title="CodeSec" target="_blank">CodeSec</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://new.butian.360.cn/" title="补天" target="_blank">补天</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://klionsec.github.io/" title="klion" target="_blank">klion</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pediy.com/" title="看雪论坛" target="_blank">看雪论坛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.vulbox.com/" title="漏洞盒子" target="_blank">漏洞盒子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.91ri.org/" title="91ri" target="_blank">91ri</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用数据库"><span class="nav-number">2.</span> <span class="nav-text">使用数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除数据库"><span class="nav-number">3.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表"><span class="nav-number">4.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSSQL中的数据类型"><span class="nav-number">5.</span> <span class="nav-text">MSSQL中的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库中数据的移动"><span class="nav-number">6.</span> <span class="nav-text">数据库中数据的移动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库中的常用术语"><span class="nav-number">7.</span> <span class="nav-text">数据库中的常用术语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表与表之间的关系"><span class="nav-number">8.</span> <span class="nav-text">表与表之间的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询"><span class="nav-number">9.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单查询"><span class="nav-number">9.1.</span> <span class="nav-text">简单查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件查询"><span class="nav-number">9.2.</span> <span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚集查询"><span class="nav-number">9.3.</span> <span class="nav-text">聚集查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top和distinct"><span class="nav-number">9.4.</span> <span class="nav-text">top和distinct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加子句查询"><span class="nav-number">9.5.</span> <span class="nav-text">附加子句查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#order-by子句"><span class="nav-number">9.5.1.</span> <span class="nav-text">order by子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group-by子句"><span class="nav-number">9.5.2.</span> <span class="nav-text">group by子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#having子句"><span class="nav-number">9.5.3.</span> <span class="nav-text">having子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#into子句"><span class="nav-number">9.5.4.</span> <span class="nav-text">into子句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">9.6.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#in谓词子查询"><span class="nav-number">9.6.1.</span> <span class="nav-text">in谓词子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较运算符子查询"><span class="nav-number">9.6.2.</span> <span class="nav-text">比较运算符子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用子查询代替表达式"><span class="nav-number">9.6.3.</span> <span class="nav-text">使用子查询代替表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exists谓词子查询"><span class="nav-number">9.6.4.</span> <span class="nav-text">exists谓词子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union组合结果集"><span class="nav-number">9.6.5.</span> <span class="nav-text">union组合结果集</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Note</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
