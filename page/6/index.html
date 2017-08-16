@@ -1142,7 +1142,7 @@
         
           <h1 id="MySQL手工注入"><a href="#MySQL手工注入" class="headerlink" title="MySQL手工注入"></a>MySQL手工注入</h1><h2 id="判断注入点是否存在"><a href="#判断注入点是否存在" class="headerlink" title="判断注入点是否存在"></a>判断注入点是否存在</h2><p><strong>数字型</strong><br>url后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524<span class="string">'            返回错误  </span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524 and 1=1     返回正确</div><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524 and 1=2     返回错误</div></pre></td></tr></table></figure></p>
 <p><strong>字符型</strong><br>url后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x<span class="string">'                         返回错误  </span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x' and 1=1 and <span class="string">'1'</span>=<span class="string">'1      返回正确</span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x' and 1=2 and <span class="string">'1'</span>=<span class="string">'1      返回错误</span></div></pre></td></tr></table></figure></p>
-<p><strong>搜索型</strong><br>输入框中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'                         返回错误</span></div><div class="line">x%' and 1=1 and <span class="string">'%'</span>=<span class="string">'%    返回正确</span></div><div class="line">x%' and 1=2 and <span class="string">'%'</span>=<span class="string">'%    返回错误</span></div></pre></td></tr></table></figure></p>
+<p><strong>搜索型</strong><br>输入框中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'                        返回错误</span></div><div class="line">x%' and 1=1 and <span class="string">'%'</span>=<span class="string">'    返回正确</span></div><div class="line">x%' and 1=2 and <span class="string">'%'</span>=<span class="string">'    返回错误</span></div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/10/SQL注入总结/#more" rel="contents">
@@ -1951,6 +1951,18 @@
               
                 <li class="links-of-blogroll-item">
                   <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://fatofyoung.github.io/" title="fatofyoung" target="_blank">fatofyoung</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.waitalone.cn/" title="waitalone" target="_blank">waitalone</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnseay.com/" title="seay" target="_blank">seay</a>
                 </li>
               
             </ul>

