@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/10/SQL注入总结/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
 <meta property="og:description" content="MySQL手工注入判断注入点是否存在数字型url后输入123http://www.xxx.cn/list.php?page=4&amp;amp;id=524&apos;            返回错误  http://www.xxx.cn/list.php?page=4&amp;amp;id=524 and 1=1     返回正确http://www.xxx.cn/list.php?page=4&amp;amp;id=524 a">
-<meta property="og:updated_time" content="2017-08-13T14:17:02.530Z">
+<meta property="og:updated_time" content="2017-08-16T07:22:43.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL注入总结">
 <meta name="twitter:description" content="MySQL手工注入判断注入点是否存在数字型url后输入123http://www.xxx.cn/list.php?page=4&amp;amp;id=524&apos;            返回错误  http://www.xxx.cn/list.php?page=4&amp;amp;id=524 and 1=1     返回正确http://www.xxx.cn/list.php?page=4&amp;amp;id=524 a">
@@ -476,7 +476,9 @@
 <p>6.SQL注入和SQL盲注有何差别？<br>在常规的SQL注入中，应用返回数据库中的数据并呈现给你，而在SQL盲注漏洞中，你只能获取分别与注入中的真假条件相对应的两个不同响应，应用会针对真假条件返回不同的值，但是攻击者无法检索查询结果。</p>
 <p>7.什么是引发SQL注入漏洞的主要原因？<br>Web应用未对用户提供的数据进行充分审查和未对输出进行编码是产生问题的主要原因。</p>
 <p>8.什么是堆叠查询（stacked query）？<br>在单个数据库连接中，执行多个查询序列，是否允许堆叠查询是影响能否利用SQL注入漏洞的重要因素之一。在MYSQL中，SELECT * FROM members; DROP members；是可以执行的，数据库是肯定支持堆叠查询的，但是让php来执行堆叠查询的sql语句就不一定行了。</p>
-<p>9./<em>! … </em>/是啥意思？<br>MYSQL数据库特有，如果在注释的开头部分添加一个感叹号并在后面跟上数据库版本编号，那么该注释将被解析成代码，只要数据库版本高于或者等于注释中包含的版本，代码就会被执行。<br>select 1 /<em>!40119 + 1</em>/<br>该查询结果：<br>如果返回2(MySQL版本为4.01.19或者更高)<br>返回1（其他情况）</p>
+<p>9.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/*! ... */</div></pre></td></tr></table></figure></p>
+<p>是啥意思？<br>MYSQL数据库特有，如果在注释的开头部分添加一个感叹号并在后面跟上数据库版本编号，那么该注释将被解析成代码，只要数据库版本高于或者等于注释中包含的版本，代码就会被执行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 1 /*!40119 + 1*/</div></pre></td></tr></table></figure></p>
+<p>该查询结果：<br>如果返回2(MySQL版本为4.01.19或者更高)<br>返回1（其他情况）</p>
 <p>10.如果注入语句中的‘=’被过滤？<br>可以考虑使用like关键字替换：union select password from users where username like admin；</p>
 <p>11.如果空格被过滤？<br>可以考虑使用‘/**/’替换：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">union/**/select/**/password/**/from/**/users/**/<span class="built_in">where</span>/**/username/**/like/**/admin；</div></pre></td></tr></table></figure></p>
 <p>注意，如果过滤了关键字，在MySQL中，还可以在关键字内部使用内联注释来绕过：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uni/**/on/**/sel/**/ect/**/password/**/fr/**/om/**/users/**/wh/**/ere/**/username/**/like/**/admin；</div></pre></td></tr></table></figure></p>
@@ -603,7 +605,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
