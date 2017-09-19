@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Webshell下使用winRAR下载整站源代码]]></title>
+    <url>%2F2017%2F09%2F19%2FWebshell%E4%B8%8B%E4%BD%BF%E7%94%A8winRAR%E4%B8%8B%E8%BD%BD%E6%95%B4%E7%AB%99%E6%BA%90%E4%BB%A3%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[多数站点服务器都会安装winRAR，如果获得的Webshell能够运行exe文件，你就可以使用WinRAR.exe对目录进行打包。 把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：1C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\ 参数说明: a 添加文件到压缩文件中 -k 锁定压缩文件 -s产生固体存档,这样可以增大压缩比 -r包括子目录 -m1 设置压缩比 -m0 存储 添加到压缩文件时不压缩文件。 -m1 最快 使用最快方式(低压缩) -m2 较快 使用快速压缩方式 -m3 标准 使用标准(默认)压缩方式 -m4 较好 使用较好压缩方式(较好压缩，但是慢) -m5 最好 使用最大压缩方式(最好的压缩，但是最慢) 注意：在菜刀中使用该方法对网站目录打包时，菜刀返回结果可能提示失败，实际上命令已经执行完成，可能的原因是网站源码很大，打包需要比较长的时间，等命令执行完成之后，返回到备份的路径下刷新，看看是否打包完成。]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Burp抓不到登陆数据包?]]></title>
     <url>%2F2017%2F09%2F15%2FBurp%E6%8A%93%E4%B8%8D%E5%88%B0%E7%99%BB%E9%99%86%E6%95%B0%E6%8D%AE%E5%8C%85%2F</url>
     <content type="text"><![CDATA[问题：今天在做测试的时候，发现使用burp suite无法抓取登录的数据包，而有的时候又能抓到。 解决办法：原因是程序前端通过js限制了用户名和密码的长度，若用户输入的不符合规则，浏览器不会发送数据包，提示的错误信息和用户输入的账号密码符合规则，但是输入有误的错误信息相同，所以比较难分辨这种情况。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051function login(obj)&#123; var userName = $("#userName"); var userPwd = $("#userPwd"); var bindType = $("#bindType"); if(bindType.length==0) &#123; bindType = ''; &#125;else &#123; bindType = bindType.val(); &#125; if(userName.val()=="" || userName.val().length&lt;9) &#123; showMsg("用户名错误!"); userName.focus(); return; &#125; if(userPwd.val()=="" || userPwd.val().length&lt;5) &#123; showMsg("密码错误!"); userPwd.focus(); return; &#125; $(obj).val('登录中..') $(obj).attr('disabled','disabled'); $.ajax(&#123; url:$(obj).attr('data-url'), type:'post', dataType:"json", data:&#123;"username":userName.val(),"password":hbmd5(userPwd.val()),"bindType":bindType&#125;, error: function(res) &#123; $(obj).removeAttr('disabled'); $(obj).val('登录'); &#125;, success: function(res)&#123; if(res.status == 'y') &#123; $(obj).removeAttr('disabled'); $(obj).val('跳转中..'); window.location = $(obj).attr('data-back-url'); &#125;else &#123; showMsg(res.error); $(obj).removeAttr('disabled'); $(obj).val('登录'); &#125; &#125; &#125;);&#125;]]></content>
