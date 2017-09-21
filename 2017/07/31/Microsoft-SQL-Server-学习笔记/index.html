@@ -90,19 +90,19 @@
 
 
 
-<meta name="description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。 删除数据库1drop database factory 删除factory数据库。 创建表12345678910create table worker(wid char(3) primary key,					-- id 		主键wname varch">
+<meta name="description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Microsoft SQL Server 学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/index.html">
 <meta property="og:site_name" content="Note&#39;s blog">
-<meta property="og:description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。 删除数据库1drop database factory 删除factory数据库。 创建表12345678910create table worker(wid char(3) primary key,					-- id 		主键wname varch">
+<meta property="og:description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。">
 <meta property="og:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/表与表之间的关系.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/条件谓词.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/附加子句查询格式.jpg">
-<meta property="og:updated_time" content="2017-08-08T06:51:20.799Z">
+<meta property="og:updated_time" content="2017-09-21T08:44:25.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Microsoft SQL Server 学习笔记">
-<meta name="twitter:description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。 删除数据库1drop database factory 删除factory数据库。 创建表12345678910create table worker(wid char(3) primary key,					-- id 		主键wname varch">
+<meta name="twitter:description" content="创建数据库1create database factory 数据库名为factory。 使用数据库1use factory 使用或者切换到数据库。">
 <meta name="twitter:image" content="http://yoursite.com/2017/07/31/Microsoft-SQL-Server-学习笔记/表与表之间的关系.jpg">
 
 
@@ -394,7 +394,7 @@
         <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create database factory</div></pre></td></tr></table></figure>
 <p>数据库名为factory。</p>
 <h1 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use factory</div></pre></td></tr></table></figure>
-<p>使用或者切换到数据库。</p>
+<p>使用或者切换到数据库。<br><a id="more"></a></p>
 <h1 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop database factory</div></pre></td></tr></table></figure>
 <p>删除factory数据库。</p>
 <h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">create table worker</div><div class="line">(</div><div class="line">wid char(3) primary key,					-- id 		主键</div><div class="line">wname varchar(10) not null,					-- 名字		非空</div><div class="line">wsex char(2) check(wsex <span class="keyword">in</span> (<span class="string">'男'</span>，<span class="string">'女'</span>)),	-- 性别		只能是‘男’或者‘女’ </div><div class="line">wbirthdate date,							-- 生日</div><div class="line">wparty char(2),								-- 政治面貌</div><div class="line">wjobdate date,								-- 参加工作时间</div><div class="line">depid char(1)								-- 部门</div><div class="line">)</div></pre></td></tr></table></figure>
@@ -566,7 +566,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -317,6 +317,151 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/21/SQL-SERVER-数据库备份/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/21/SQL-SERVER-数据库备份/" itemprop="url">
+                  SQL SERVER 数据库备份
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T15:58:38+08:00">
+                2017-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web安全/" itemprop="url" rel="index">
+                    <span itemprop="name">Web安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在进行测试的时候，发现网站网站使用的是SQL SERVER 数据库，数据库文件为xxx_Data.MDF和xxx_Log.LDF，数据库在使用期间，两个文件会拒绝访问，用户无法对其进行其他操作，想要脱库，可以考虑使用SQL SERVER备份数据库的方法，在网站的配置文件中找到使用的数据库的数据库名，备份到网站的目录下，最好备份为rar文件，然后通过http下载，下载完成之后，将文件名改为bak，然后使用Microsoft SQL Server Management Studio还原即可。</p>
+<p>命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D:\wwwroot\xxx\pic&gt;osql -U sa(用户名) -P xxxx(密码) -Q <span class="string">"backup database xxx(数据库名) to disk='d:\wwwroot\www\pic\xxx.rar(备份文件名)'"</span></div></pre></td></tr></table></figure></p>
+<p>参数介绍：<br>-U 指定连接的用户<br>-P 密码<br>-Q 执行的SQL语句</p>
+<p><img src="/2017/09/21/SQL-SERVER-数据库备份/down.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/19/Webshell下使用winRAR下载整站源代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1264,64 +1409,17 @@
 
       
         
-          
-            <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create database factory</div></pre></td></tr></table></figure>
+          <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create database factory</div></pre></td></tr></table></figure>
 <p>数据库名为factory。</p>
 <h1 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use factory</div></pre></td></tr></table></figure>
-<p>使用或者切换到数据库。</p>
-<h1 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop database factory</div></pre></td></tr></table></figure>
-<p>删除factory数据库。</p>
-<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">create table worker</div><div class="line">(</div><div class="line">wid char(3) primary key,					-- id 		主键</div><div class="line">wname varchar(10) not null,					-- 名字		非空</div><div class="line">wsex char(2) check(wsex <span class="keyword">in</span> (<span class="string">'男'</span>，<span class="string">'女'</span>)),	-- 性别		只能是‘男’或者‘女’ </div><div class="line">wbirthdate date,							-- 生日</div><div class="line">wparty char(2),								-- 政治面貌</div><div class="line">wjobdate date,								-- 参加工作时间</div><div class="line">depid char(1)								-- 部门</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>创建worker数据表，保存员工的信息。</p>
-<h1 id="MSSQL中的数据类型"><a href="#MSSQL中的数据类型" class="headerlink" title="MSSQL中的数据类型"></a>MSSQL中的数据类型</h1><p>字符类型：char(n)，varchar(n)，text，image<br>整型类型：int(4字节)，smallint(2字节)，tinyint(1字节)<br>浮点类型：float(8字节)，real(4字节)，decimal(精度28位)<br>货币类型：money(8字节)，smallmoney(4字节)<br>日期时间类型：date(年月日)，datetime(年月日时分秒毫秒)，smalldatetime（年月日时分秒）<br>浮点类型：decimal(a,b) a指定指定小数点左边和右边可以存储的十进制数字的最大个数，最大精度38。b指定小数点右边可以存储的十进制数字的最大个数。小数位数必须是从 0 到 a之间的值。默认小数位数是 0。</p>
-<h1 id="数据库中数据的移动"><a href="#数据库中数据的移动" class="headerlink" title="数据库中数据的移动"></a>数据库中数据的移动</h1><p>先分离数据库，然后移动.mdf和.ldf文件即可，两个文件需要同时移动，要不然在附加数据库的时候会报错。</p>
-<h1 id="数据库中的常用术语"><a href="#数据库中的常用术语" class="headerlink" title="数据库中的常用术语"></a>数据库中的常用术语</h1><p>关系：一个关系对应一张二维表，二维表的表名即为关系名。<br>关系模式：对关系表结构的描述。一般表示为“关系名（字段名1，字段名2，…，字段名n）”。<br>记录：二维表中的一行称为关系的一条记录，或称为元组、行。<br>字段：二维表中的列称为关系的字段，或称为属性、列。<br>主码：关系中的某个字段或字段组，能唯一地标识一条记录，又称为主键。</p>
-<h1 id="表与表之间的关系"><a href="#表与表之间的关系" class="headerlink" title="表与表之间的关系"></a>表与表之间的关系</h1><p>外码(foreign key)：外码指的是这样的字段（或字段组），它在本表中不是主码，而在其他的表中是主码，外码又称为外键。<br>参照完整性规则：外码的取值要么为空，要么必须来自于主码表中所存在的值。<br><img src="/2017/07/31/Microsoft-SQL-Server-学习笔记/表与表之间的关系.jpg" alt=""></p>
-<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><h2 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h2><p>select &lt;目标列1 [as 列名1]&gt;[，&lt;目标列2 [as 列名2]&gt;…] from &lt;表名&gt;；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select dname as 部门名,dmaster as 部门经理 from depart;</div></pre></td></tr></table></figure></p>
-<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><p>–条件查询<br>–任务一查询salary（工资）表中实际工资(actualsalary)大于3000的职工号和实际工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,actualsalary from salary <span class="built_in">where</span> actualsalary&gt;=3000</div></pre></td></tr></table></figure></p>
-<p>–任务二查询salary（工资）表中实际工资(actualsalary)在2000和3000之间的<br>–职工号和实际工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,actualsalary from salary <span class="built_in">where</span> actualsalary between 2000 and 3000</div><div class="line"></div><div class="line">select wid,actualsalary from salary <span class="built_in">where</span> actualsalary&gt;=2000 and actualsalary&lt;=3000</div></pre></td></tr></table></figure></p>
-<p>–任务三查询worker(职工)表中在部门“1”或“2”工作的职工的职工号、姓名、部门号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,wname,depid from worker <span class="built_in">where</span> depid <span class="keyword">in</span> (<span class="string">'1'</span>,<span class="string">'2'</span>)</div><div class="line"></div><div class="line">select wid,wname,depid from worker <span class="built_in">where</span> depid=<span class="string">'1'</span> or depid=<span class="string">'2'</span></div></pre></td></tr></table></figure></p>
-<p>–任务四查询worker(职工)表中所有姓“孙”职工的职工号、姓名和性别;<br>–查询worker(职工)表中所有姓名第二个字不是“华”的职工号、姓名和性别。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wsex from worker <span class="built_in">where</span> wname like <span class="string">'孙%'</span></div><div class="line"></div><div class="line">select wid,wname,wsex from worker <span class="built_in">where</span> wname not like <span class="string">'_华%'</span></div></pre></td></tr></table></figure></p>
-<p>–任务五查询depart（部门）表中部门经理为空的部门信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from depart <span class="built_in">where</span> dmaster is null</div></pre></td></tr></table></figure></p>
-<p>–任务六查询worker（职工）表中男职工是党员的职工号和姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname from worker <span class="built_in">where</span> wsex=<span class="string">'男'</span> and wparty=<span class="string">'是'</span></div></pre></td></tr></table></figure></p>
-<p>查询条件中可以使用的条件谓词<br><img src="/2017/07/31/Microsoft-SQL-Server-学习笔记/条件谓词.jpg" alt=""></p>
-<h2 id="聚集查询"><a href="#聚集查询" class="headerlink" title="聚集查询"></a>聚集查询</h2><p>聚集函数<br>平均值函数    avg()<br>计数函数        count()<br>最大值函数    max()<br>最小值函数    min()<br>求和函数        sum()</p>
-<p>–任务一：查询salary（工资）表中日期为‘2011-01-04’的总工资(totalsalary)的平均工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from salary</div><div class="line"></div><div class="line">select AVG(totalsalary) as <span class="string">'2011-01-04平均工资'</span> from salary <span class="built_in">where</span> sdate=<span class="string">'2011-01-04'</span></div></pre></td></tr></table></figure></p>
-<p>–任务二：查询职工的总数；<br>–查询在salary（工资）表中发过工资的职工人数，一个职工只计数一次。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select * from worker</div><div class="line">select * from salary</div><div class="line"></div><div class="line">select COUNT(*) as 职工总数 from worker</div><div class="line"></div><div class="line">select COUNT(distinct wid) as 职工人数 from salary</div></pre></td></tr></table></figure></p>
-<p>–任务三：查询salary（工资）表中最低的实发工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select MIN(actualsalary) as 最低工资 from salary</div></pre></td></tr></table></figure></p>
-<p>–任务四：查询salary（工资）表中最高的实际工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select max(actualsalary) as 最高工资 from salary</div></pre></td></tr></table></figure></p>
-<p>–任务五：查询salary（工资）表中‘2011-01-04’工资的总额。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select SUM(actualsalary) as 工资总额 from salary</div></pre></td></tr></table></figure></p>
-<h2 id="top和distinct"><a href="#top和distinct" class="headerlink" title="top和distinct"></a>top和distinct</h2><p>–任务一：查询worker表中前两项职工的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select top 2 * from worker</div></pre></td></tr></table></figure></p>
-<p>–任务二：查询worker表中女职工所出现的部门号，相同的只出现一次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select distinct depid from worker <span class="built_in">where</span> wsex=<span class="string">'女'</span></div></pre></td></tr></table></figure></p>
-<h2 id="附加子句查询"><a href="#附加子句查询" class="headerlink" title="附加子句查询"></a>附加子句查询</h2><h3 id="order-by子句"><a href="#order-by子句" class="headerlink" title="order by子句"></a>order by子句</h3><p>–任务一<br>–查询职工的职工号、职工姓名、出生日期、部门号，查询结果按照出生日期从早到晚排序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wbirthdate,depid from worker order by wbirthdate asc</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–查询职工的职工号、职工姓名、出生日期、部门号，查询结果按照出生日期从晚到早排序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wbirthdate,depid from worker order by wbirthdate desc</div></pre></td></tr></table></figure></p>
-<p>–任务三<br>–查询职工的职工号、职工姓名、出生日期、部门号，查询结果按照部门号从大到小排序，同一部门的按照出生日期从早到晚排序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid,wname,wbirthdate,depid from worker order by depid desc,wbirthdate</div></pre></td></tr></table></figure></p>
-<h3 id="group-by子句"><a href="#group-by子句" class="headerlink" title="group by子句"></a>group by子句</h3><p>–任务一<br>–分别统计男职工和女职工的人数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wsex as 性别,COUNT(*) as 职工人数 from worker group by wsex</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–分别统计每个日期的应发工资(totalsalary)总和。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select sdate as 发工资日期,SUM(totalsalary) from salary group by sdate</div></pre></td></tr></table></figure></p>
-<h3 id="having子句"><a href="#having子句" class="headerlink" title="having子句"></a>having子句</h3><p>–任务一<br>–分别统计每位员工的应发工资(totalsalary)总和，并且只显示工资总和在5000元以上的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select wid as 职工号,SUM(totalsalary) as 工资总和 from salary group by wid having SUM(totalsalary)&gt;=5000</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–统计worker表中各部门党员的人数，并且显示党员人数在2个人以上的相关信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select depid as 部门号,COUNT(*) as 党员人数 from worker <span class="built_in">where</span> wparty=<span class="string">'是'</span> group by depid having COUNT(*)&gt;=1</div></pre></td></tr></table></figure></p>
-<p>注意：聚合函数不应该出现在where子句中，除非该聚合函数位于having子句或选择列表所包含的子查询中，并且要对其进行聚合的列是外部引用。</p>
-<h3 id="into子句"><a href="#into子句" class="headerlink" title="into子句"></a>into子句</h3><p>–任务一<br>–查询男职工的基本信息，并且存入临时表#worker1中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * into <span class="comment">#worker from worker where wsex='男'</span></div><div class="line"></div><div class="line">select * from <span class="comment">#worker</span></div></pre></td></tr></table></figure></p>
-<p>临时表只在当前连接中有效，断开数据库的连接，重新连接数据库，临时表丢失。</p>
-<p><img src="/2017/07/31/Microsoft-SQL-Server-学习笔记/附加子句查询格式.jpg" alt=""></p>
-<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h3 id="in谓词子查询"><a href="#in谓词子查询" class="headerlink" title="in谓词子查询"></a>in谓词子查询</h3><p>–任务一<br>–查询与职工号为“001”的职工一起进行过企业相关培训的职工号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wid</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid&lt;&gt;<span class="string">'001'</span> and study_id <span class="keyword">in</span></div><div class="line">(select study_id</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid=<span class="string">'001'</span>)</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–查询与职工号为“001”的职工一起进行过企业相关培训的职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">select wname</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wid <span class="keyword">in</span></div><div class="line">(select wid</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid&lt;&gt;<span class="string">'001'</span> and study_id <span class="keyword">in</span></div><div class="line">(select study_id</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid=<span class="string">'001'</span>) )</div></pre></td></tr></table></figure></p>
-<p>注意：’&lt;&gt;’表示’不等于’。</p>
-<h3 id="比较运算符子查询"><a href="#比较运算符子查询" class="headerlink" title="比较运算符子查询"></a>比较运算符子查询</h3><p>–任务一<br>–查询2011年1月的实发工资小于该月平均实发工资的职工号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wid</div><div class="line">from salary</div><div class="line"><span class="built_in">where</span> YEAR(sdate)=2011 and MONTH(sdate)=1 and actualsalary&lt;</div><div class="line">(select AVG(actualsalary)</div><div class="line">from salary</div><div class="line"><span class="built_in">where</span> YEAR(sdate)=2011 and MONTH(sdate)=1)</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–查询比部门号为“1”的职工年龄都小的职工姓名和出生年月。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wname,wbirthdate</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wbirthdate&gt;all</div><div class="line">(select wbirthdate</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> depid=<span class="string">'1'</span>)</div></pre></td></tr></table></figure></p>
-<p>–任务三<br>–显示最高工资（应发工资）的职工所在的部门名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">select dname</div><div class="line">from depart</div><div class="line"><span class="built_in">where</span> did=</div><div class="line">(select depid</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wid=</div><div class="line">(select wid</div><div class="line">from salary</div><div class="line"><span class="built_in">where</span> totalsalary=</div><div class="line">(select MAX(totalsalary)</div><div class="line">from salary)))</div></pre></td></tr></table></figure></p>
-<p>–等价的多表连接查询<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select dname</div><div class="line">from depart inner join worker on worker.depid=depart.did inner join salary on worker.wid=salary.wid</div><div class="line"><span class="built_in">where</span> totalsalary=</div><div class="line">(select MAX(totalsalary)</div><div class="line">from salary)</div></pre></td></tr></table></figure></p>
-<p>–in谓词子查询任务二<br>–查询与职工号为“001”的职工一起进行过企业相关培训的职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select wname</div><div class="line">from worker inner join study on worker.wid=study.wid</div><div class="line"><span class="built_in">where</span> worker.wid&lt;&gt;<span class="string">'001'</span> and study_id <span class="keyword">in</span></div><div class="line">(select study_id</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> wid=<span class="string">'001'</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="使用子查询代替表达式"><a href="#使用子查询代替表达式" class="headerlink" title="使用子查询代替表达式"></a>使用子查询代替表达式</h3><p>–任务一<br>–显示所有职工的职工号，姓名和平均工资。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select worker.wid,wname,AVG(totalsalary) as avgtoal</div><div class="line">from worker inner join salary on worker.wid=salary.wid</div><div class="line">group by worker.wid,wname</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–使用子查询代替表达式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select worker.wid,wname,AVG(totalsalary) as avgtotal</div><div class="line">from worker inner join salary on worker.wid=salary.wid</div><div class="line">group by worker.wid,wname</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select wid,wname,</div><div class="line">(select AVG(totalsalary)  from salary <span class="built_in">where</span> worker.wid=salary.wid) as avgtotal</div><div class="line">from worker</div></pre></td></tr></table></figure>
-<h3 id="exists谓词子查询"><a href="#exists谓词子查询" class="headerlink" title="exists谓词子查询"></a>exists谓词子查询</h3><p>–任务一<br>–查询所有进行过岗前培训的职工号和职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">select wid,wname</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> exists</div><div class="line">(</div><div class="line">select *</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> worker.wid=study.wid and study_name=<span class="string">'岗前培训'</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–查询所有未进行过岗前培训的职工号和职工姓名。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">select wid,wname</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> not exists</div><div class="line">(</div><div class="line">select *</div><div class="line">from study</div><div class="line"><span class="built_in">where</span> worker.wid=study.wid and study_name=<span class="string">'岗前培训'</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
-<h3 id="union组合结果集"><a href="#union组合结果集" class="headerlink" title="union组合结果集"></a>union组合结果集</h3><p>–任务一<br>–增加一个customer客户表，然后查询所有男职工和男客户的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">select wid as id,wname,wsex,wbirthdate</div><div class="line">from worker</div><div class="line"><span class="built_in">where</span> wsex=<span class="string">'男'</span></div><div class="line">union</div><div class="line">select cid,cname,csex,cbirthdate</div><div class="line">from customer</div><div class="line"><span class="built_in">where</span> csex=<span class="string">'男'</span></div></pre></td></tr></table></figure></p>
-<p>–任务二<br>–对于工资信息表salary，统计该表的工资总和。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select wid,sdate,totalsalary,actualsalary </div><div class="line">from salary</div><div class="line">union</div><div class="line">select <span class="string">'小计'</span>,null,SUM(totalsalary),SUM(actualsalary)</div><div class="line">from salary</div></pre></td></tr></table></figure></p>
-<p>注意：选择列表中的表达式数目必须相同。</p>
-
-          
+<p>使用或者切换到数据库。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/31/Microsoft-SQL-Server-学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1645,149 +1743,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/26/CuteEitor任意文件读取漏洞/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Note">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favico.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Note's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/26/CuteEitor任意文件读取漏洞/" itemprop="url">
-                  CuteEitor任意文件读取漏洞
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T00:00:06+08:00">
-                2017-07-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web安全/" itemprop="url" rel="index">
-                    <span itemprop="name">Web安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h1><p>CuteEditor for ASP.NET是建立在Html基础之上，最简单易用、功能最强大的所见即所得Asp.net在线编辑器。 CuteEditor可以帮助Asp.net开发者轻松的对原来文本框(Textarea)中的内容(包括文字、图片等Html内容)进行编辑，更重要得是这些内容编辑的实现是所见即所得方式。 CuteEditor还集成了文件(包括图片、文档等)上传、媒体(包括视频、声音等)文件直接插入等对你来说非常实用的功能模块。但是在 Load.ashx 文件中，未对 file 参数进行处理，可以加载任意文件。</p>
-<h1 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h1><p><a href="http://www.woyigui.cn/CuteSoft_Client/CuteEditor/Load.ashx?type=image&amp;file=../../../web.config" target="_blank" rel="external">http://www.woyigui.cn/CuteSoft_Client/CuteEditor/Load.ashx?type=image&amp;file=../../../web.config</a><br>使用该方法，读取应用系统中，包含数据库连接密码的文件，从而进一步渗透。<br><img src="/2017/07/26/CuteEitor任意文件读取漏洞/cute.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1837,7 +1792,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SQL SERVER 数据库备份]]></title>
+    <url>%2F2017%2F09%2F21%2FSQL-SERVER-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%2F</url>
+    <content type="text"><![CDATA[今天在进行测试的时候，发现网站网站使用的是SQL SERVER 数据库，数据库文件为xxx_Data.MDF和xxx_Log.LDF，数据库在使用期间，两个文件会拒绝访问，用户无法对其进行其他操作，想要脱库，可以考虑使用SQL SERVER备份数据库的方法，在网站的配置文件中找到使用的数据库的数据库名，备份到网站的目录下，最好备份为rar文件，然后通过http下载，下载完成之后，将文件名改为bak，然后使用Microsoft SQL Server Management Studio还原即可。 命令如下：1D:\wwwroot\xxx\pic&gt;osql -U sa(用户名) -P xxxx(密码) -Q "backup database xxx(数据库名) to disk='d:\wwwroot\www\pic\xxx.rar(备份文件名)'" 参数介绍：-U 指定连接的用户-P 密码-Q 执行的SQL语句]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Webshell下使用winRAR下载整站源代码]]></title>
     <url>%2F2017%2F09%2F19%2FWebshell%E4%B8%8B%E4%BD%BF%E7%94%A8winRAR%E4%B8%8B%E8%BD%BD%E6%95%B4%E7%AB%99%E6%BA%90%E4%BB%A3%E7%A0%81%2F</url>
     <content type="text"><![CDATA[多数站点服务器都会安装winRAR，如果获得的Webshell能够运行exe文件，你就可以使用WinRAR.exe对目录进行打包。 把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：1C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\ 参数说明: a 添加文件到压缩文件中 -k 锁定压缩文件 -s产生固体存档,这样可以增大压缩比 -r包括子目录 -m1 设置压缩比 -m0 存储 添加到压缩文件时不压缩文件。 -m1 最快 使用最快方式(低压缩) -m2 较快 使用快速压缩方式 -m3 标准 使用标准(默认)压缩方式 -m4 较好 使用较好压缩方式(较好压缩，但是慢) -m5 最好 使用最大压缩方式(最好的压缩，但是最慢) 注意：在菜刀中使用该方法对网站目录打包时，菜刀返回结果可能提示失败，实际上命令已经执行完成，可能的原因是网站源码很大，打包需要比较长的时间，等命令执行完成之后，返回到备份的路径下刷新，看看是否打包完成。]]></content>
