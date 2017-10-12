@@ -100,7 +100,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/08/12/阿里云相关安全产品的工作原理/高防IP.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/阿里云相关安全产品的工作原理/高防IP接入流程.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/阿里云相关安全产品的工作原理/云盾-WAF的工作原理.jpg">
-<meta property="og:updated_time" content="2017-08-12T01:37:26.922Z">
+<meta property="og:image" content="http://yoursite.com/2017/08/12/阿里云相关安全产品的工作原理/Region.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/08/12/阿里云相关安全产品的工作原理/关系.jpg">
+<meta property="og:updated_time" content="2017-10-12T04:04:02.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云相关安全产品的工作原理">
 <meta name="twitter:description" content="基础DDoS防护的实现如下图，正常情况下，流量会从网络入口，经过核心路由器和路由器，到达业务服务器，同时在网络入口会将流量做镜像，复制一份，到达DDoS攻击预警模块，预警模块会对流量进行分析，如果发现了攻击行为，会通知DDoS防护管理中心，然后触发清洗路由器，将原来的流量迁移到DDoS攻击清理集群，然后将清洗完成后的流量回注到核心路由器。">
@@ -418,6 +420,8 @@
 <h1 id="高防IP"><a href="#高防IP" class="headerlink" title="高防IP"></a>高防IP</h1><p>高防IP是基础DDoS防护的补充或者说是能力的扩大。基础的DDoS防护能力有限，当攻击流量更大时，可以考虑使用高防IP。<br><img src="/2017/08/12/阿里云相关安全产品的工作原理/高防IP.jpg" alt=""><br>高防中心建立在阿里云主要机房之外。</p>
 <h2 id="高防IP接入流程"><a href="#高防IP接入流程" class="headerlink" title="高防IP接入流程"></a>高防IP接入流程</h2><p>1.DNS服务器更换对外服务IP。根据高防提VIP1，在DNS服务器把原来的域名IP更换为VIP1。<br>2.流量完成切换。客户端向源站的访问流量直接流向VIP1，安全防护由高防接管。<br>3.回源正常用户。回注方式与传统方式不同，传统是要打上VPN标签进行回注隔离主机路由，把处理完成的流量再送给源站IP1实现回注。<br><img src="/2017/08/12/阿里云相关安全产品的工作原理/高防IP接入流程.jpg" alt=""></p>
 <h1 id="云盾-WAF的工作原理"><a href="#云盾-WAF的工作原理" class="headerlink" title="云盾-WAF的工作原理"></a>云盾-WAF的工作原理</h1><p>1.用户浏览某个网站。<br>2.DNS服务器将域名解析到WAF集群地址。<br>3.开始请求访问WAF的IP地址，网站的流量到达WAF防护集群，进行安全防护清洗。<br>4.防护集群将清洗后的安全、干净的流量根据域名回书到网站真实服务器。<br>5.服务器响应内容会到WAF集群。<br>6.WAF进行响应内容的防护清洗，实现请求/响应双向检测。<br><img src="/2017/08/12/阿里云相关安全产品的工作原理/云盾-WAF的工作原理.jpg" alt=""></p>
+<h1 id="阿里云ECS相关概念"><a href="#阿里云ECS相关概念" class="headerlink" title="阿里云ECS相关概念"></a>阿里云ECS相关概念</h1><p>Region（地域）和Zone（可用区）<br><strong>地域</strong>，是阿里云提供云计算服务的城市位置。一般一个Ragion会覆盖一片区域，如北京地域覆盖华北区域。<br><strong>可用区</strong>，是一个Ragion下，电力和网络独立，软件故障隔离的物理数据中心。可用区的开放，目前是容许用户自行进行选择资源的分配策略。<br><img src="/2017/08/12/阿里云相关安全产品的工作原理/Region.jpg" alt=""><br>同一地域的不同可用区之间，可以通过内网互联，可以实现更高可用的架构。</p>
+<h1 id="阿里云ECS产品概念之间的关系"><a href="#阿里云ECS产品概念之间的关系" class="headerlink" title="阿里云ECS产品概念之间的关系"></a>阿里云ECS产品概念之间的关系</h1><p><img src="/2017/08/12/阿里云相关安全产品的工作原理/关系.jpg" alt=""><br>磁盘：磁盘只能挂载在同一个可用区的实例上。<br>可用区：同一地域不同可用区通过内网互联。<br>安全组：允许包含跨可用区的实例。<br>快照和镜像：在地域内可见，跨可用区。</p>
 
       
     </div>
@@ -704,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础DDoS防护的实现"><span class="nav-number">1.</span> <span class="nav-text">基础DDoS防护的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高防IP"><span class="nav-number">2.</span> <span class="nav-text">高防IP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高防IP接入流程"><span class="nav-number">2.1.</span> <span class="nav-text">高防IP接入流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#云盾-WAF的工作原理"><span class="nav-number">3.</span> <span class="nav-text">云盾-WAF的工作原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础DDoS防护的实现"><span class="nav-number">1.</span> <span class="nav-text">基础DDoS防护的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高防IP"><span class="nav-number">2.</span> <span class="nav-text">高防IP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高防IP接入流程"><span class="nav-number">2.1.</span> <span class="nav-text">高防IP接入流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#云盾-WAF的工作原理"><span class="nav-number">3.</span> <span class="nav-text">云盾-WAF的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阿里云ECS相关概念"><span class="nav-number">4.</span> <span class="nav-text">阿里云ECS相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阿里云ECS产品概念之间的关系"><span class="nav-number">5.</span> <span class="nav-text">阿里云ECS产品概念之间的关系</span></a></li></ol></div>
             
 
           </div>
