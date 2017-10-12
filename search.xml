@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[云服务器和云虚拟主机的区别]]></title>
+    <url>%2F2017%2F10%2F12%2F%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[阿里云ECS服务器：是一种弹性计算服务，支持各种应用软件灵活扩展，需要有专业技术人员来维护。适合有技术实力、懂得服务器配置及维护的用户及开发者。 阿里云虚拟主机：云虚拟主机即通过相关技术把一台服务器划分成多个一定大小的空间，每个空间都给予单独的FTP权限和Web访问权限，多个用户共同平均使用这台服务器的硬件资源。共享云虚拟主机资源共享，空间较大，固定流量，经济实惠，可以满足个人基本建站需求。 独享云虚拟主机：云虚拟主机分为共享云虚拟主机和独享云虚拟主机。优点是CPU、内存、带宽、硬盘均为独享，且不限流量、独立IP、预装了网站应用环境就和数据库环境，同时具备了虚机和服务器的优势，且提供可视化操作的控制面板环境，操作简单，即买即用。独享资源，空间超大，不限流量，更高配置，适合中小企业使用。 云虚拟主机主机和云服务器区别：虚拟主机有单独的面板管理，通过ftp更新网站，一般只能放一个站点，功能有限，只能进行资源的存储和访问；云服务器给你一个完全的服务器操作系统控制，可以搭建多个网站，并可以自己配置开发环境，一般需要远程管理，自己配置环境，站点个数和流量不限制。]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[SQL SERVER 数据库备份]]></title>
     <url>%2F2017%2F09%2F21%2FSQL-SERVER-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%2F</url>
     <content type="text"><![CDATA[今天在进行测试的时候，发现网站网站使用的是SQL SERVER 数据库，数据库文件为xxx_Data.MDF和xxx_Log.LDF，数据库在使用期间，两个文件会拒绝访问，用户无法对其进行其他操作，想要脱库，可以考虑使用SQL SERVER备份数据库的方法，在网站的配置文件中找到使用的数据库的数据库名，备份到网站的目录下，最好备份为rar文件，然后通过http下载，下载完成之后，将文件名改为bak，然后使用Microsoft SQL Server Management Studio还原即可。 命令如下：1D:\wwwroot\xxx\pic&gt;osql -U sa(用户名) -P xxxx(密码) -Q "backup database xxx(数据库名) to disk='d:\wwwroot\www\pic\xxx.rar(备份文件名)'" 参数介绍：-U 指定连接的用户-P 密码-Q 执行的SQL语句]]></content>
