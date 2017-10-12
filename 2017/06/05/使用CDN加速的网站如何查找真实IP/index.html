@@ -99,7 +99,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/06/05/使用CDN加速的网站如何查找真实IP/nslookup.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/06/05/使用CDN加速的网站如何查找真实IP/ping.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/06/05/使用CDN加速的网站如何查找真实IP/ip.jpg">
-<meta property="og:updated_time" content="2017-06-22T11:00:22.234Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/05/使用CDN加速的网站如何查找真实IP/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/05/使用CDN加速的网站如何查找真实IP/2.jpg">
+<meta property="og:updated_time" content="2017-10-12T03:32:17.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用CDN加速的网站如何查找真实IP">
 <meta name="twitter:description" content="什么是CDN？参考文章，https://www.zhihu.com/question/37353035实际在访问一个网站的时候，可能访问的并不是网站真实的服务器ip地址，可能访问的是cdn的缓存服务器。">
@@ -426,6 +428,7 @@
 <li>二级域名<br>通过二级域名查找。找到网站的二级域名，查询二级域名的ip地址，可能分站没有采用cdn加速，而主站和分站放在同一台服务器上，或者是在同一个网段，然后进行c段扫描，也许能够找到主站的真是ip。</li>
 <li>邮件服务器<br>如果对方的网站能够注册，并且使用了邮件认证，那么我们可以尝试注册，接收验证邮箱之后，找到发件人的邮件服务器地址，再通过c段查询。</li>
 </ol>
+<h1 id="绕过云盾WAF查找真实IP"><a href="#绕过云盾WAF查找真实IP" class="headerlink" title="绕过云盾WAF查找真实IP"></a>绕过云盾WAF查找真实IP</h1><p>2017.10.11<br>今天在对某站进行测试的时候，发现网站部署在阿里云上，使用了CDN，有云盾WAF，查找真实IP使用的方法是二级域名。<br>网站的某个二级域名没有使用CDN加速。<br><img src="/2017/06/05/使用CDN加速的网站如何查找真实IP/1.jpg" alt=""><br>可以看到，最后一个子域名的WEB服务器未IIS，有点像是真实IP，记录下该IP地址，修改本机的hosts文件，将其他域名全部指向该IP地址，如果能够访问，证明该地址是真实IP。结果其他几个域名全部可以访问，证明网站全部放在这个地址上。<br>hosts文件路径：c:\Windows\System32\drivers\etc\<br><img src="/2017/06/05/使用CDN加速的网站如何查找真实IP/2.jpg" alt=""></p>
 
       
     </div>
@@ -712,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是CDN？"><span class="nav-number">1.</span> <span class="nav-text">什么是CDN？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何识别网站是否采用cdn加速？"><span class="nav-number">2.</span> <span class="nav-text">如何识别网站是否采用cdn加速？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何查找网站的真实IP地址？"><span class="nav-number">3.</span> <span class="nav-text">如何查找网站的真实IP地址？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是CDN？"><span class="nav-number">1.</span> <span class="nav-text">什么是CDN？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何识别网站是否采用cdn加速？"><span class="nav-number">2.</span> <span class="nav-text">如何识别网站是否采用cdn加速？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何查找网站的真实IP地址？"><span class="nav-number">3.</span> <span class="nav-text">如何查找网站的真实IP地址？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绕过云盾WAF查找真实IP"><span class="nav-number">4.</span> <span class="nav-text">绕过云盾WAF查找真实IP</span></a></li></ol></div>
             
 
           </div>
