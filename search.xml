@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[利用BurpSuite突破JS限制登陆后台]]></title>
+    <url>%2F2017%2F12%2F14%2F%E5%88%A9%E7%94%A8BurpSuite%E7%AA%81%E7%A0%B4JS%E9%99%90%E5%88%B6%E7%99%BB%E9%99%86%E5%90%8E%E5%8F%B0%2F</url>
+    <content type="text"><![CDATA[使用Burpsuite突破js跳转今天在测试网站的时候，发现某个网站的后台登录页面，再输入错误的账号密码之后，首先会进入后台，然后程序验证密码错误之后，再使用js将页面重定向到后台的登录页面，如果我们禁用了这个跳转的js，那么就可以直接进入后台了。当然突破js的方法比较多，比如以前使用firefox浏览器就有禁用js的功能，但是禁用js以后，后台的很多功能是无法使用的，这就需要我们找一个工具来实现禁用一小部分js代码的功能，比如去掉跳转的js，今天使用burp来禁止。 1.使用burp抓取到post错误账号密码之后的返回包，找到html body中的js重定向语句。2.修改proxy-&gt;options里面的match and replace，将js语句替换为空即可。]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[图片验证码安全问题]]></title>
     <url>%2F2017%2F11%2F12%2F%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[验证码未设置为POST一次就失效测试的时候发现，有些web应用，未设置验证码验证一次就失效，导致攻击者能够通过抓包重放的方式，暴力破解，验证码形态虚设（用户登录失败，放回到登录页面的时候会重新请求一次验证码，只要不重新请求验证码，上一次的验证码就一直有效）。 验证成功一次之后，以后不再验证有些应用，在验证用户的验证码正确一次之后，就不再验证了，攻击者通过抓包，第一次验证成功之后，下次开始进行暴力破解的时候，数据包中的验证码设置为空就可以了。]]></content>
