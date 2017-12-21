@@ -1140,9 +1140,10 @@
 
       
         
-          <h1 id="MySQL手工注入"><a href="#MySQL手工注入" class="headerlink" title="MySQL手工注入"></a>MySQL手工注入</h1><h2 id="判断注入点是否存在"><a href="#判断注入点是否存在" class="headerlink" title="判断注入点是否存在"></a>判断注入点是否存在</h2><p><strong>数字型</strong><br>url后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524<span class="string">'            返回错误  </span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524 and 1=1     返回正确</div><div class="line">http://www.xxx.cn/list.php?page=4&amp;id=524 and 1=2     返回错误</div></pre></td></tr></table></figure></p>
-<p><strong>字符型</strong><br>url后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x<span class="string">'                         返回错误  </span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x' and 1=1 and <span class="string">'1'</span>=<span class="string">'1      返回正确</span></div><div class="line">http://www.xxx.cn/list.php?page=4&amp;cid=x' and 1=2 and <span class="string">'1'</span>=<span class="string">'1      返回错误</span></div></pre></td></tr></table></figure></p>
-<p><strong>搜索型</strong><br>输入框中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'                        返回错误</span></div><div class="line">x%' and 1=1 and <span class="string">'%'</span>=<span class="string">'    返回正确</span></div><div class="line">x%' and 1=2 and <span class="string">'%'</span>=<span class="string">'    返回错误</span></div></pre></td></tr></table></figure></p>
+          <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>SQL注入的攻击方式根据应用程序处理数据库返回内容的不同，可以分为可显注入、报错注入和盲注。</p>
+<h2 id="可显注入"><a href="#可显注入" class="headerlink" title="可显注入"></a>可显注入</h2><p>攻击者可以直接在当前界面内容中获取想要获得的内容。</p>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><p>数据库查询返回结果并没有在页面中显示，但是应用程序将数据库报错信息打印到了页面中，所以攻击者可以构造数据库报错语句，从报错信息中获取想要获得的内容。</p>
+<h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><p>数据库查询结果无法从直观页面中获取，攻击者通过使用数据库逻辑或使数据库库执行延时等方法获取想要获得的内容。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/10/SQL注入总结/#more" rel="contents">

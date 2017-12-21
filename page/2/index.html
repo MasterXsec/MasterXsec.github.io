@@ -566,7 +566,8 @@
 <h2 id="问题：如果参数值中就包含-或-amp-这种特殊字符的时候该怎么办？"><a href="#问题：如果参数值中就包含-或-amp-这种特殊字符的时候该怎么办？" class="headerlink" title="问题：如果参数值中就包含=或&amp;这种特殊字符的时候该怎么办？"></a>问题：如果参数值中就包含=或&amp;这种特殊字符的时候该怎么办？</h2><p>比如说“name1=value1”,其中value1的值是“va&amp;lu=e1”字符串，那么实际在传输过程中就会变成这样“name1=va&amp;lu=e1”。我们的本意是就只有一个键值对，但是服务端会解析成两个键值对，这样就产生了歧义。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决的办法就是对参数进行URL编码。URL编码只是简单的在特殊字符的各个字节前加上%，例如，我们对上述会产生奇异的字符进行URL编码后结果：“name1=va%26lu%3D”，这样服务端会把紧跟在“%”后的字节当成普通的字节，就是不会把它当成各个参数或键值对的分隔符。原文地址：<a href="http://www.cnblogs.com/jerrysion/p/5522673.html" target="_blank" rel="external">http://www.cnblogs.com/jerrysion/p/5522673.html</a></p>
 <h1 id="URL中“-”的处理"><a href="#URL中“-”的处理" class="headerlink" title="URL中“+”的处理"></a>URL中“+”的处理</h1><p>客户端请求：<a href="http://www.xxx.com/index.php?username=a+b" target="_blank" rel="external">http://www.xxx.com/index.php?username=a+b</a><br>服务器端，username参数接收到的内容实际为“a b”，即username=“a b”，注意中间有个空格，这是因为“+”是URL的保留字符，代表“空格”。如果想要传输正常的“+”，而不被转义为“空格”，需要对“+”进行URL编码：<a href="http://www.xxx.com/index.php?username=a%2Bb。" target="_blank" rel="external">http://www.xxx.com/index.php?username=a%2Bb。</a></p>
-<p>如果要想正确的让服务器端接收到数据中的“+”，需要在URL中对“+”进行编码，%2B。<br>如果要想正确的让服务器端接收到数据中的“空格”，可以在URL中直接使用“+”，或者是使用“空格”的URL编码，%20。</p>
+<p>如果要想正确的让服务器端接收到数据中的“+”，需要在URL中对“+”进行编码，%2B。<br>如果要想正确的让服务器端接收到数据中的“空格”，可以在URL中直接使用“+”，或者是使用“空格”的URL编码，%20，或者直接在URL中输入空格，因为浏览器会默认将空格进行URL编码之后再发送给服务器。</p>
+<p><strong>提醒</strong>：如果想将特殊字符带入到数据库中执行，建议将输入得到语句全部进行URL编码之后发送。</p>
 
           
         
