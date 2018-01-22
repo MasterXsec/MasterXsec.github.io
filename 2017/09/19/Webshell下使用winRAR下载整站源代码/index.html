@@ -98,7 +98,7 @@
 <meta property="og:description" content="多数站点服务器都会安装winRAR，如果获得的Webshell能够运行exe文件，你就可以使用WinRAR.exe对目录进行打包。 把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：1C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\ 参数说明:  a 添加文件到压缩文件中">
 <meta property="og:image" content="http://yoursite.com/2017/09/19/Webshell下使用winRAR下载整站源代码/bak.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/09/19/Webshell下使用winRAR下载整站源代码/菜刀.jpg">
-<meta property="og:updated_time" content="2017-09-19T07:49:29.315Z">
+<meta property="og:updated_time" content="2018-01-22T03:39:42.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Webshell下使用winRAR下载整站源代码">
 <meta name="twitter:description" content="多数站点服务器都会安装winRAR，如果获得的Webshell能够运行exe文件，你就可以使用WinRAR.exe对目录进行打包。 把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：1C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\ 参数说明:  a 添加文件到压缩文件中">
@@ -416,6 +416,8 @@
 <p>把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\</div></pre></td></tr></table></figure></p>
 <p>参数说明:<br>  a 添加文件到压缩文件中<br>  -k 锁定压缩文件<br>  -s产生固体存档,这样可以增大压缩比<br>  -r包括子目录<br>  -m1 设置压缩比<br>    -m0   存储     添加到压缩文件时不压缩文件。<br>    -m1   最快     使用最快方式(低压缩)<br>    -m2   较快     使用快速压缩方式<br>    -m3   标准     使用标准(默认)压缩方式<br>    -m4   较好     使用较好压缩方式(较好压缩，但是慢)<br>    -m5   最好     使用最大压缩方式(最好的压缩，但是最慢)<br><img src="/2017/09/19/Webshell下使用winRAR下载整站源代码/bak.jpg" alt=""></p>
 <p>注意：在菜刀中使用该方法对网站目录打包时，菜刀返回结果可能提示失败，实际上命令已经执行完成，可能的原因是网站源码很大，打包需要比较长的时间，等命令执行完成之后，返回到备份的路径下刷新，看看是否打包完成。<br><img src="/2017/09/19/Webshell下使用winRAR下载整站源代码/菜刀.jpg" alt=""></p>
+<p>注意：使用WinRAR在打包的时候，在服务器桌面上回显示打包的界面，如果这个时候管理员在线就完了，不过我们可以使用另一个命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\WinRAR\RAR.exe a -r -m3 C:\root.rar C:\SW\</div></pre></td></tr></table></figure></p>
+<p>使用rar命令在进行压缩的时候，不会在桌面显示压缩窗口。</p>
 
       
     </div>
@@ -527,7 +529,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">95</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

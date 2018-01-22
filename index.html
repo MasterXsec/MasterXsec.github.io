@@ -317,6 +317,152 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/22/在cmd中执行命令路径中包含空格的解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Note">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favico.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Note's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/22/在cmd中执行命令路径中包含空格的解决办法/" itemprop="url">
+                  在cmd中执行命令路径中包含空格的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T18:44:32+08:00">
+                2018-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web安全/" itemprop="url" rel="index">
+                    <span itemprop="name">Web安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天找到一个站存在Struts-045漏洞，但是使用工具在执行命令的时候，由于命令中存在空格，执行时会报错：<br><img src="/2018/01/22/在cmd中执行命令路径中包含空格的解决办法/报错.jpg" alt=""><br>出错的原因就是因为路径中存在空格。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="将整个路径和程序使用双引号包起来："><a href="#将整个路径和程序使用双引号包起来：" class="headerlink" title="将整个路径和程序使用双引号包起来："></a>将整个路径和程序使用双引号包起来：</h2><p><img src="/2018/01/22/在cmd中执行命令路径中包含空格的解决办法/使用引号.jpg" alt=""></p>
+<h2 id="短文件名法："><a href="#短文件名法：" class="headerlink" title="短文件名法："></a>短文件名法：</h2><p>比如c:\Program Files缩写为c:\Progra~1。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">采用8个字符缩写，即写头六个字母(略去空白），另加波浪号和1,首字母不足六个字母，略去空白，用了第二个词的字母，凑成六个。例如：</div><div class="line"><span class="string">"Documents and Settings"</span> -- DOCUME~1</div><div class="line"><span class="string">"Local Settings"</span> -- LOCALS~1 （注意略去空白，用了第二个词的字母，凑成六个，再加波浪号和1）</div></pre></td></tr></table></figure></p>
+<p>如果多个文件前6字符一样怎么办？为什么最后是1而不是0或者其他数字呢？看看这个例子:<br>假设下面是你的C盘根目录中的文件夹：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Program Files</div><div class="line">Progra file</div><div class="line">Progra zhang</div></pre></td></tr></table></figure></p>
+<p>则三个目录分别表示为：C:\Progra~1; C:\Progra~2; C:\Progra~3;<br><img src="/2018/01/22/在cmd中执行命令路径中包含空格的解决办法/短文件名.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/07/XSS钓鱼获取后台账号密码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -414,7 +560,8 @@
 
       
         
-          <p>前几天在测试某个网站的时候，发现存在存储型跨站脚本漏洞，但是cookie被设置了http-only属性，导致无法获取到cookie的内容，有用的信息只是能够知道后台的地址，如下图所示：<br><img src="/2018/01/07/XSS钓鱼获取后台账号密码/XSS.jpg" alt=""><br>获得的信息并没有Sessionid，也没有授权key,更没有账号和密码，于是把思路转向钓鱼，访问后台，查看源代码。<br>
+          <p>前几天在测试某个网站的时候，发现存在存储型跨站脚本漏洞，但是cookie被设置了http-only属性，导致无法获取到cookie的内容，有用的信息只是能够知道后台的地址，重要的cookie被保护起来了，获得的信息并没有Sessionid，也没有授权key,更没有账号和密码，于是把思路转向钓鱼，访问后台，查看源代码。</p>
+<h1 id="使用钓鱼的方式获取网站后台账号密码"><a href="#使用钓鱼的方式获取网站后台账号密码" class="headerlink" title="使用钓鱼的方式获取网站后台账号密码"></a>使用钓鱼的方式获取网站后台账号密码</h1><h2 id="伪造后台登录界面"><a href="#伪造后台登录界面" class="headerlink" title="伪造后台登录界面"></a>伪造后台登录界面</h2><p>查看后台源代码，在本地保存为html文件，并且整理网站链接的路径，将原来的相对路径补充为完整的绝对路径（注意，网站的绝对路径需要是目标网站的域名）：<br><img src="/2018/01/07/XSS钓鱼获取后台账号密码/源代码.jpg" alt=""><br>这样，我们就在本地伪造了一个一模一样的后台登录界面。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/07/XSS钓鱼获取后台账号密码/#more" rel="contents">
@@ -1571,149 +1718,8 @@
 <p>把C:\SW\目录下的所有东西打包为root.rar放到C:\目录下，以便下载，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\WinRAR\WinRAR.exe a -k -r -s -m1 C:\root.rar C:\SW\</div></pre></td></tr></table></figure></p>
 <p>参数说明:<br>  a 添加文件到压缩文件中<br>  -k 锁定压缩文件<br>  -s产生固体存档,这样可以增大压缩比<br>  -r包括子目录<br>  -m1 设置压缩比<br>    -m0   存储     添加到压缩文件时不压缩文件。<br>    -m1   最快     使用最快方式(低压缩)<br>    -m2   较快     使用快速压缩方式<br>    -m3   标准     使用标准(默认)压缩方式<br>    -m4   较好     使用较好压缩方式(较好压缩，但是慢)<br>    -m5   最好     使用最大压缩方式(最好的压缩，但是最慢)<br><img src="/2017/09/19/Webshell下使用winRAR下载整站源代码/bak.jpg" alt=""></p>
 <p>注意：在菜刀中使用该方法对网站目录打包时，菜刀返回结果可能提示失败，实际上命令已经执行完成，可能的原因是网站源码很大，打包需要比较长的时间，等命令执行完成之后，返回到备份的路径下刷新，看看是否打包完成。<br><img src="/2017/09/19/Webshell下使用winRAR下载整站源代码/菜刀.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/15/Burp抓不到登陆数据包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Note">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favico.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Note's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/15/Burp抓不到登陆数据包/" itemprop="url">
-                  Burp抓不到登陆数据包?
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T09:58:07+08:00">
-                2017-09-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web安全/" itemprop="url" rel="index">
-                    <span itemprop="name">Web安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题：<br>今天在做测试的时候，发现使用burp suite无法抓取登录的数据包，而有的时候又能抓到。</p>
-<p>解决办法：<br>原因是程序前端通过js限制了用户名和密码的长度，若用户输入的不符合规则，浏览器不会发送数据包，提示的错误信息和用户输入的账号密码符合规则，但是输入有误的错误信息相同，所以比较难分辨这种情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> login(obj)</div><div class="line">&#123;</div><div class="line">	var userName = $(<span class="string">"#userName"</span>);</div><div class="line">	var userPwd = $(<span class="string">"#userPwd"</span>);</div><div class="line">	var bindType = $(<span class="string">"#bindType"</span>);</div><div class="line">	<span class="keyword">if</span>(bindType.length==0)</div><div class="line">	&#123;</div><div class="line">		bindType = <span class="string">''</span>;</div><div class="line">	&#125;<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		bindType = bindType.val();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(userName.val()==<span class="string">""</span> || userName.val().length&lt;9)</div><div class="line">	&#123;</div><div class="line">		showMsg(<span class="string">"用户名错误!"</span>);</div><div class="line">		userName.focus();</div><div class="line">		<span class="built_in">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(userPwd.val()==<span class="string">""</span> || userPwd.val().length&lt;5)</div><div class="line">	&#123;</div><div class="line">		showMsg(<span class="string">"密码错误!"</span>);</div><div class="line">		userPwd.focus();</div><div class="line">		<span class="built_in">return</span>;</div><div class="line">	&#125;</div><div class="line">	$(obj).val(<span class="string">'登录中..'</span>)</div><div class="line">	$(obj).attr(<span class="string">'disabled'</span>,<span class="string">'disabled'</span>);</div><div class="line">	$.ajax(&#123;</div><div class="line">		url:$(obj).attr(<span class="string">'data-url'</span>),</div><div class="line">		<span class="built_in">type</span>:<span class="string">'post'</span>,</div><div class="line">		dataType:<span class="string">"json"</span>,</div><div class="line">		data:&#123;<span class="string">"username"</span>:userName.val(),<span class="string">"password"</span>:hbmd5(userPwd.val()),<span class="string">"bindType"</span>:bindType&#125;,</div><div class="line">		error: <span class="keyword">function</span>(res)</div><div class="line">		&#123;</div><div class="line">			$(obj).removeAttr(<span class="string">'disabled'</span>);</div><div class="line">			$(obj).val(<span class="string">'登录'</span>);</div><div class="line">		&#125;,</div><div class="line">		success: <span class="keyword">function</span>(res)&#123;</div><div class="line">		    <span class="keyword">if</span>(res.status == <span class="string">'y'</span>)</div><div class="line">			&#123;</div><div class="line">				$(obj).removeAttr(<span class="string">'disabled'</span>);</div><div class="line">				$(obj).val(<span class="string">'跳转中..'</span>);</div><div class="line">				window.location = $(obj).attr(<span class="string">'data-back-url'</span>);	</div><div class="line">			&#125;<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				showMsg(res.error);</div><div class="line">				$(obj).removeAttr(<span class="string">'disabled'</span>);</div><div class="line">				$(obj).val(<span class="string">'登录'</span>);	</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意：使用WinRAR在打包的时候，在服务器桌面上回显示打包的界面，如果这个时候管理员在线就完了，不过我们可以使用另一个命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\WinRAR\RAR.exe a -r -m3 C:\root.rar C:\SW\</div></pre></td></tr></table></figure></p>
+<p>使用rar命令在进行压缩的时候，不会在桌面显示压缩窗口。</p>
 
           
         
@@ -1797,7 +1803,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">95</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
