@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[IIS7.5解析php解析漏洞shell权限过低的解决办法]]></title>
+    <url>%2F2018%2F01%2F30%2FIIS7-5%E8%A7%A3%E6%9E%90php%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9Eshell%E6%9D%83%E9%99%90%E8%BF%87%E4%BD%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[今天在进行测试的时候，遇到一个IIS7.5的服务器，解析php脚本文件是存在解析漏洞，上传图片木马之后，配合解析漏洞getshell，发现只对上传的目录有读写权限，其他目录全部无法访问，解决的办法是上传asp或者aspx的脚本目录，能够获取到更高的权限。]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[在cmd中执行命令路径中包含空格的解决办法]]></title>
     <url>%2F2018%2F01%2F22%2F%E5%9C%A8cmd%E4%B8%AD%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%B7%AF%E5%BE%84%E4%B8%AD%E5%8C%85%E5%90%AB%E7%A9%BA%E6%A0%BC%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%2F</url>
     <content type="text"><![CDATA[今天找到一个站存在Struts-045漏洞，但是使用工具在执行命令的时候，由于命令中存在空格，执行时会报错：出错的原因就是因为路径中存在空格。 解决方案将整个路径和程序使用双引号包起来： 短文件名法：比如c:\Program Files缩写为c:\Progra~1。123采用8个字符缩写，即写头六个字母(略去空白），另加波浪号和1,首字母不足六个字母，略去空白，用了第二个词的字母，凑成六个。例如："Documents and Settings" -- DOCUME~1"Local Settings" -- LOCALS~1 （注意略去空白，用了第二个词的字母，凑成六个，再加波浪号和1） 如果多个文件前6字符一样怎么办？为什么最后是1而不是0或者其他数字呢？看看这个例子:假设下面是你的C盘根目录中的文件夹：123Program FilesProgra fileProgra zhang 则三个目录分别表示为：C:\Progra~1; C:\Progra~2; C:\Progra~3;]]></content>
