@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[L2TP/IPSec一键安装脚本]]></title>
+    <url>%2F2018%2F04%2F09%2FL2TP-IPSec%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[脚本适用环境：系统支持：CentOS6+，Debian7+，Ubuntu12+内存要求：≥128M 使用方法：root用户登录后，运行以下命令：123wget --no-check-certificate https://raw.githubusercontent.com/teddysun/across/master/l2tp.shchmod +x l2tp.sh./l2tp.sh 执行后，会有如下交互界面：按下任意按键继续，如果想取消安装，请按Ctrl+c键。安装完成后，脚本会执行 ipsec verify 命令并提示如下：123456789101112131415If there are no [FAILED] above, then you can connect to yourL2TP VPN Server with the default Username/Password is below:ServerIP:your_server_IPPSK:your PSKUsername:your usenamePassword:your passwordIf you want to modify user settings, please use command(s):l2tp -a (Add a user)l2tp -d (Delete a user)l2tp -l (List all users)l2tp -m (Modify a user password)Welcome to visit https://teddysun.com/448.htmlEnjoy it! 如果你要想对用户进行操作，可以使用如下命令：l2tp -a 新增用户l2tp -d 删除用户l2tp -m 修改现有的用户的密码l2tp -l 列出所有用户名和密码l2tp -h 列出帮助信息 其他事项：1.脚本在安装完成后，已自动启动进程，并加入了开机自启动。2.脚本会改写 iptables 或 firewalld 的规则。3.脚本安装时，会即时将安装日志写到 /root/l2tp.log 文件里，如果你安装失败，可以通过此文件来寻找错误信息。 使用命令：ipsec status （查看 IPSec 运行状态）ipsec verify （查看 IPSec 检查结果）/etc/init.d/ipsec start|stop|restart|status （CentOS6 下使用）/etc/init.d/xl2tpd start|stop|restart （CentOS6 下使用）systemctl start|stop|restart|status ipsec （CentOS7 下使用）systemctl start|stop|restart xl2tpd （CentOS7 下使用）service ipsec start|stop|restart|status （Debian/Ubuntu 下使用）service xl2tpd start|stop|restart （Debian/Ubuntu 下使用） 转自：秋水逸冰的博客https://teddysun.com/448.html]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[火狐浏览器常用插件]]></title>
     <url>%2F2018%2F02%2F24%2F%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[火狐浏览器各版本的下载地址，来自火狐官方服务器：http://ftp.mozilla.org/pub/mozilla.org//firefox/releases/ 常用的插件更新速度较慢，更不上火狐浏览器的更新速度，导致很多插件在最新版本的浏览器上无法使用，这里我使用的是：Firefox Setup 50.1.0.exe，下载地址如下：http://ftp.mozilla.org/pub/firefox/releases/50.1.0/win64/zh-CN/Firefox Setup 50.1.0.exe 常用插件Hackbar提供SQL注入和XSS攻击，能够快速对字符串进行各种编码。 Firebug修改cookie等。 Live Http Headers重放request数据包。 User Agent Switcher修改客户端USER Agent的插件。 Wappalyzer查看网站使用的应用程序。 FlagFox可以在地址栏或状态栏上显示出当前网站所在国家的国旗，也有更多的其他功能，如：双击国旗可以实现WOT功能，鼠标中键点击是WHOIS功能。当然用户可以在选项里设置快捷键实现诸如复制IP，维基百科查询等功能。]]></content>
